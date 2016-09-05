@@ -1,0 +1,13 @@
+{% load cms_tags thumbnail %}
+
+<div class="plugin plugin_imagetext {{ object.layout }}">
+    <div class="imagetext_text">
+        {{ instance.body|safe }}
+    </div>
+    {% if instance.image %}
+        {% thumbnail instance.image image_size crop=1 upscale=1 as resized %}
+        <div class="image">
+            <img src="{{ resized.url }}" alt="{{ instance.alt_text }}">
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,14 @@
+{% load cms_tags %}
+
+<div class="plugin plugin_teasersection teasersection_{{ instance.section_type }}">
+    {% if instance.title %}<h3>{{ instance.title }}</h3>{% endif %}
+    <div>
+        {% for child_plugin in instance.child_plugin_instances %}
+            {% render_plugin child_plugin %}
+        {% endfor %}
+    </div>
+    {% if instance.section_type == 'scroll' %}
+        <a class="next"></a>
+        <a class="prev"></a>
+    {% endif %}
+</div>

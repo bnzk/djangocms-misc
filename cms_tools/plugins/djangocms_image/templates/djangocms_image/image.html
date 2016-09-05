@@ -1,0 +1,15 @@
+{% load cms_tags thumbnail %}
+
+{% if instance.image %}
+<div class="plugin plugin_image">
+    {% if instance.parent %}
+        {% thumbnail instance.image 700x900 crop=0 upscale=0 as resized %}
+    {% else %}
+        {% thumbnail instance.image 1200x1500 crop=0 upscale=0 as resized %}
+    {% endif %}
+    <img src="{{ resized.url }}"
+         width="{{ resized.width }}"
+         height="{{ resized.height }}"
+         alt="{{ instance.alt_text }}">
+</div>
+{% endif %}

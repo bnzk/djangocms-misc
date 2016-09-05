@@ -1,0 +1,9 @@
+
+==== 0.xxx (not yet) ===
+
+- fix for djangocms-admin-styles
+
+
+==== 0.0.1 (not yet) ===
+
+- basic alpha release

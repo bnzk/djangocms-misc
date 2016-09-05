@@ -1,0 +1,14 @@
+{% load thumbnail %}
+
+{% if instance.image %}
+{% thumbnail instance.image 1500x500 crop=1 upscale=1 as resized %}
+{% endif %}
+<div class="plugin plugin_header_teaser {{ instance.teaser_type }} {{ instance.colour }}" style="background-image: url({{ resized.url }})">
+    <div class="limited_width">
+        <div class="teaser_text">
+            <h2>{{ instance.title }}</h2>
+            <h1>{{ instance.full_name }}</h1>
+            <p>{{ instance.body|linebreaksbr }}</p>
+        </div>
+    </div>
+</div>

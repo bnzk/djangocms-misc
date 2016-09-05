@@ -1,0 +1,7 @@
+include LICENSES
+include README.rst
+global-exclude *.orig *.pyc *.log *.swp
+
+recursive-include formfieldstash/templates *
+recursive-include formfieldstash/static *
+recursive-include formfieldstash/locale *

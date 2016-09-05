@@ -1,0 +1,17 @@
+{% load thumbnail %}
+
+{% if instance.image %}
+{% thumbnail instance.image 1500x500 crop=1 upscale=1 as resized %}
+{% endif %}
+<div class="plugin plugin_header_teaser {{ instance.teaser_type }}_{{ instance.colour }}" style="background-image: url({{ resized.url }})">
+    <div class="limited_width">
+        <div class="teaser_text">
+            <h2>{{ instance.title }}</h2>
+            <p>{{ instance.body }}
+            {% if instance.link_type %}
+                {% if instance.body %}<br>{% endif %}<a class="button" href="{{ instance.get_link }}">{{ instance.name }}</a>
+            {% endif %}
+            </p>
+        </div>
+    </div>
+</div>

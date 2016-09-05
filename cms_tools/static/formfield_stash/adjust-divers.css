@@ -1,0 +1,12 @@
+/* important hackks, thx djangocms-admin-style */
+
+.sortable-tabular .tabular tr.has_original td {
+    padding: 1em 5px !important;
+}
+
+.sortable-tabular .has_original .original,
+.sortable-tabular .tabular tr.has_original.inline-fallback .original {
+    width: 20px !important;
+    background-image: url("../admin_sort/imgs/drag.png") !important;
+    background-size: 5px auto !important;
+}
