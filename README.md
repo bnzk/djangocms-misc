@@ -1,5 +1,5 @@
 # djangocms-bnzk-style
-customizing django / django-cms. as reusable app, bnzk style. 
+customizing django / django-cms. as reusable app.
 
 to come / to think about
 
