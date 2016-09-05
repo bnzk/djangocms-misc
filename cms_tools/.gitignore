@@ -1,0 +1,15 @@
+
+*.pyc
+*.egg
+*.log
+*.egg-info
+.idea/*
+db.sqlite
+.coverage
+htmlcov
+.tox
+test_app_media
+folderless/tests/coverage
+/dist/
+_build
+
