@@ -5,7 +5,7 @@
         {{ instance.body|safe }}
     </div>
     {% if instance.image %}
-        {% thumbnail instance.image image_size crop=1 upscale=1 as resized %}
+        {% thumbnail instance.image 1000x1000 crop=0 upscale=1 as resized %}
         <div class="image">
             <img src="{{ resized.url }}" alt="{{ instance.alt_text }}">
         </div>

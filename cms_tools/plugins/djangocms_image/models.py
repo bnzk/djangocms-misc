@@ -17,4 +17,5 @@ class Image(CMSPlugin, CMSToolsPluginBaseModel):
     image = FilerImageField(null=True, blank=True)
 
     def __str__(self):
-        return str(self.image)
+        hidden = self.get_hidden_state_text()
+        return "%s %s" % (str(self.image), hidden, )

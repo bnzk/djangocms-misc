@@ -3,7 +3,7 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext_lazy as _
 
-from .models import Image
+from .models import Gallery
 
 
 class GalleryPlugin(CMSPluginBase):
@@ -11,6 +11,6 @@ class GalleryPlugin(CMSPluginBase):
     name = _(u'Gallery')
     render_template = "djangocms_gallery/gallery.html"
     allow_children = True
-    child_classes = ('GalleryImagePlugin', )
+    child_classes = ('ImagePlugin', )
 
 plugin_pool.register_plugin(GalleryPlugin)

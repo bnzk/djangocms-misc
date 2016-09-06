@@ -1,9 +1,23 @@
-{% load cms_tags sekizai_tags %}
+{% load cms_tags cms_tools_tags sekizai_tags %}
+<html>
+<head>
 
 {% render_block 'css' %}
 
+</head>
+<body>
+
+<link rel="stylesheet" href="{{ STATIC_URL }}cms_tools/cms_adjust.css">
+
 {% cms_toolbar %}
+
+{% page_link "home" "" "link text HOME" %}<br>
+{% page_link "home" "button" %}<br>
+{% page_link "home" %}
+
 {% placeholder 'testing_test_yea' %}
 
 {% render_block 'js' %}
 
+</body>
+</html>

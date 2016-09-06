@@ -11,7 +11,7 @@ import settings as my_settings
 class CMSToolsPluginMixin(object):
     def render(self, context, instance, placeholder):
         context = super(CMSToolsPluginMixin, self).render(context, instance, placeholder)
-        if not context.get('request').toolbar.edit_mode and self.instance.hide:
+        if not context.get('request').toolbar.edit_mode and instance.hide:
             self.render_template = 'cms_tools/hide.html'
         return context
 

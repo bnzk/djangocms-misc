@@ -1,5 +1,5 @@
 """Settings that need to be set in order to run the tests."""
-import os
+import os, sys
 import tempfile
 import logging
 
@@ -17,6 +17,7 @@ SELENIUM_WEBDRIVER = webdriver
 APP_ROOT = os.path.abspath(
     os.path.join(os.path.dirname(__file__), ".."))
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -32,17 +33,12 @@ LANGUAGES = (
 
 ROOT_URLCONF = 'cms_tools.tests.urls'
 
-# media root is overridden when needed in tests
-MEDIA_ROOT = tempfile.mkdtemp(suffix='folderless_media_root')
+MEDIA_ROOT = os.path.join(APP_ROOT, 'tests/test_app_media')
 MEDIA_URL = "/media/"
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(APP_ROOT, '../test_app_static')
 STATICFILES_DIRS = (
     os.path.join(APP_ROOT, 'static'),
-)
-
-TEMPLATE_DIRS = (
-    os.path.join(APP_ROOT, 'tests/test_app/templates'),
 )
 
 TEMPLATES = [
@@ -106,10 +102,12 @@ EXTERNAL_APPS = (
 )
 
 INTERNAL_APPS = (
+    'cms_tools.plugins.djangocms_gallery',
     'cms_tools.plugins.djangocms_image',
     'cms_tools.plugins.djangocms_text',
     'cms_tools.plugins.djangocms_imagetext',
     'cms_tools.tests.test_app',
+    'cms_tools',
 )
 
 MIDDLEWARE_CLASSES = (

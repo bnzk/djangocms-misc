@@ -9,7 +9,7 @@ db.sqlite
 htmlcov
 .tox
 test_app_media
-folderless/tests/coverage
+cms_tools/tests/coverage
 /dist/
 _build
 

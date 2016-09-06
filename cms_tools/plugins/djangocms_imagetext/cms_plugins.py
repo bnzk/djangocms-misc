@@ -1,4 +1,6 @@
 # coding: utf-8
+from __future__ import unicode_literals
+
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext_lazy as _
@@ -9,7 +11,7 @@ from .models import ImageText
 
 class ImageTextPlugin(CMSToolsPluginMixin, CMSPluginBase):
     model = ImageText
-    name = _(u'Bild + Text')
+    name = _('Bild + Text')
     render_template = "djangocms_imagetext/imagetext.html"
     text_enabled = False
     fieldsets = [

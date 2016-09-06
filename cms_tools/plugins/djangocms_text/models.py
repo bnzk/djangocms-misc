@@ -17,4 +17,6 @@ class Text(CMSPlugin, CMSToolsPluginBaseModel):
     body = RichTextField(blank=True, default='')
 
     def __str__(self):
-        return Truncator(strip_tags(self.body).replace('&shy;', '')).words(3, truncate="...")
+        hidden = self.get_hidden_state_text()
+        truncated = Truncator(strip_tags(self.body).replace('&shy;', '')).words(3, truncate="...")
+        return "%s %s" % (truncated, hidden, )
