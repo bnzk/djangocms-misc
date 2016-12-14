@@ -1,8 +1,7 @@
 # django-cms-tools
 
-customizing django / django-cms
+customizing django / django-cms, as a set of contrib apps, that can be installed individually
 
-- as a set of contrib apps, that can be installed individually
 - somehow link app_hook and template together (make apphook selectable via template -> magic [signals]) 
 - better change view styles (visible fieldsets/inlines)
 - hide "create" button in toolbar, with css
