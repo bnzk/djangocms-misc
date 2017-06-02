@@ -16,3 +16,7 @@ customizing django / django-cms, as a set of contrib apps, that can be installed
 - djangocms_tools.apphook_templates
   - somehow link app_hook and template together (make apphook selectable via template -> magic [signals])
   - needs proofe of concept
+- management commands
+  - wipe filer thumbnails folder
+  - remove orphaned filer files?!
+  - other?
