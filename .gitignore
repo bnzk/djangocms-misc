@@ -13,3 +13,4 @@ cms_tools/tests/coverage
 /dist/
 _build
 
+node_modules

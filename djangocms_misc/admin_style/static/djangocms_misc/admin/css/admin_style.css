@@ -1,12 +1,11 @@
-/*
-some adjustements to djangocms-admin-style styles
-nevermind !important
-
-*/
-
 .djangocms-admin-style div.calendarbox {
   margin-left: -247px;
   margin-top: -1px; }
+
+.djangocms-admin-style #content h1 {
+  font-size: 22px !important; }
+  .djangocms-admin-style #content h1 select {
+    font-size: inherit !important; }
 
 .djangocms-admin-style #content form label, .djangocms-admin-style #content form label.aligned {
   text-transform: none; }
@@ -17,8 +16,8 @@ nevermind !important
 .djangocms-admin-style #content form fieldset, .djangocms-admin-style #content form .inline-group {
   padding-bottom: 18px; }
   .djangocms-admin-style #content form fieldset > h2, .djangocms-admin-style #content form .inline-group > h2 {
-    padding: 10px 0 10px 0;
-    font-size: 16px !important;
+    padding: 20px 0 15px 0;
+    font-size: 22px !important;
     font-weight: bold;
     border-bottom: 3px solid #d3d3d3; }
 
@@ -36,4 +35,3 @@ nevermind !important
   .djangocms-admin-style .ui-tabs .ui-tabs-nav .ui-state-default {
     border: none;
     padding-top: 0; }
-
