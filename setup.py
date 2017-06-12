@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 import os
 
 # not so bad: http://joebergantine.com/blog/2015/jul/17/releasing-package-pypi/
-version = __import__('formfieldstash').__version__
+version = __import__('djangocms_misc').__version__
 
 
 def read(fname):
@@ -11,12 +11,12 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
-    name="django-formfieldstash",
+    name="djangocms-misc",
     version=version,
-    url='http://github.com/benzkji/django-formfieldstash',
+    url='http://github.com/benzkji/djangocms-misc',
     license='BSD',
     platforms=['OS Independent'],
-    description="formfieldstash",
+    description="djangocms misc",
     long_description=read('README.md'),
     author=u'Ben Stähli',
     author_email='bnzk@bnzk.ch',
