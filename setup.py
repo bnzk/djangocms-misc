@@ -17,7 +17,7 @@ setup(
     license='BSD',
     platforms=['OS Independent'],
     description="formfieldstash",
-    long_description=read('README.rst'),
+    long_description=read('README.md'),
     author=u'Ben Stähli',
     author_email='bnzk@bnzk.ch',
     packages=find_packages(),
