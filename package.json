@@ -5,6 +5,7 @@
     "gulp-jshint": "^1.11.2",
     "gulp-sass": "^2.0.4",
     "jshint": "^2.8.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "gulp-rename": "^1.2.2"
   }
 }

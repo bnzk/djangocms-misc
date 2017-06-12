@@ -1,0 +1,16 @@
+
+//minor adjustements to cms frontend (toolbar, etc)
+//include this file in your main base.html
+// <link rel="stylesheet" href="{{ STATIC_URL }}djangocms_misc/css/cms_frontend_adjust.css">
+
+
+/* hide CREATE button */
+.cms-toolbar-item.cms-toolbar-item-buttons
+    .cms-btn[data-rel="modal"]
+        display: none
+
+
+// make structure mode very slightly transparent
+div.cms .cms-structure,
+#cms_toolbar .cms_structure .cms_structure-dimmer
+    background: rgba(240, 240, 240, 0.96) !important

@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     jshint= require('gulp-jshint'),
     path = require('path'),
+    rename = require('gulp-rename'),
     dummy = 'last';
 
 
@@ -9,13 +10,20 @@ var gulp = require('gulp'),
 require('es6-promise').polyfill();
 
 
+sass_paths = [
+    'djangocms_misc/admin_style/static/djangocms_misc/admin/sass/*.sass',
+    'djangocms_misc/static/djangocms_misc/sass/*.sass'
+]
+
+
 gulp.task('sass', function () {
-    return gulp.src('djangocms_misc/admin_style/static/djangocms_misc/admin/sass/*.sass')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('djangocms_misc/admin_style/static/djangocms_misc/admin/css'));
-    return gulp.src('djangocms_misc/static/djangocms_misc/*.sass')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('djangocms_misc/static/djangocms_misc/css'));
+    return gulp.src(sass_paths, { base: '.' })
+        .pipe(sass({errLogToConsole: true}))
+        .pipe(rename(function(path) {
+            path.dirname = path.dirname.replace('/sass', '/css');
+            path.extname = '.css';
+        }))
+        .pipe(gulp.dest('.'));
 });
 
 
