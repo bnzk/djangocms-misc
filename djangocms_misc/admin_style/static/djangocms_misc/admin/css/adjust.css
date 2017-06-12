@@ -1,0 +1,39 @@
+/*
+some adjustements to djangocms-admin-style styles
+nevermind !important
+
+*/
+
+.djangocms-admin-style div.calendarbox {
+  margin-left: -247px;
+  margin-top: -1px; }
+
+.djangocms-admin-style #content form label, .djangocms-admin-style #content form label.aligned {
+  text-transform: none; }
+
+.djangocms-admin-style #content form .field-type label, .djangocms-admin-style #content form .sortedm2m label, .djangocms-admin-style #content form .vCheckboxLabel {
+  font-size: 14px !important; }
+
+.djangocms-admin-style #content form fieldset, .djangocms-admin-style #content form .inline-group {
+  padding-bottom: 18px; }
+  .djangocms-admin-style #content form fieldset > h2, .djangocms-admin-style #content form .inline-group > h2 {
+    padding: 10px 0 10px 0;
+    font-size: 16px !important;
+    font-weight: bold;
+    border-bottom: 3px solid #d3d3d3; }
+
+.djangocms-admin-style #content form .inline-group {
+  padding-bottom: 40px; }
+  .djangocms-admin-style #content form .inline-group .inline-related, .djangocms-admin-style #content form .inline-group .add-row {
+    margin: 0 25px; }
+  .djangocms-admin-style #content form .inline-group .form-row {
+    padding: 0 5px 22px; }
+
+.djangocms-admin-style .ui-tabs .ui-tabs-nav {
+  padding: 0;
+  border: none;
+  margin: 0; }
+  .djangocms-admin-style .ui-tabs .ui-tabs-nav .ui-state-default {
+    border: none;
+    padding-top: 0; }
+

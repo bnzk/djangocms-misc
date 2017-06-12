@@ -1,9 +1,0 @@
-{% load cms_tags thumbnail %}
-
-{% if instance.child_plugin_instances|length %}
-<div class="plugin plugin_gallery">
-    {% for child_plugin in instance.child_plugin_instances %}
-        {% render_plugin child_plugin %}
-    {% endfor %}
-</div>
-{% endif %}
