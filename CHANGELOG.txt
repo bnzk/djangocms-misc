@@ -3,6 +3,12 @@
 
 - fix for djangocms-admin-styles
 
+
+==== 0.0.3 ===
+
+- fixed template tag error
+
+
 ==== 0.0.2 ===
 
 - basic beta release

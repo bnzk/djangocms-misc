@@ -12,5 +12,6 @@ test_app_media
 cms_tools/tests/coverage
 /dist/
 _build
+/build/
 
 node_modules

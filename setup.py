@@ -14,7 +14,7 @@ setup(
     name="djangocms-misc",
     version=version,
     url='https://github.com/bnzk/djangocms-misc',
-    license='BSD',
+    license='MIT Licence',
     platforms=['OS Independent'],
     description="djangocms misc",
     long_description=read('PYPI.rst'),

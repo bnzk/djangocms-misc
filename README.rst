@@ -1,4 +1,4 @@
-django-cms-misc
+djangocms-misc
 ===============
 
 .. image:: https://travis-ci.org/bnzk/djangocms-misc.svg
@@ -55,23 +55,40 @@ Add needed ``djangocms-misc`` subapps to your ``INSTALLED_APPS``
         'djangocms_misc.apphook_templates',  # experimental, not implemented
     )
 
-Add the following middlware to MIDDLEWARE_CLASSES (1.10 style middlewares will be supported soon),
-to make basic redirects work.
+Basic
+*****
 
-.. code-block:: bash
+**Pagelink tag**, looks for page, displays nothing if nothing found.
 
-    painless_redirects.middleware.ManualRedirectMiddleware
+.. code-block:: django
 
-If you want to be redirected to the domain name entered in your current site (django.contrib.sites must be installed),
-also add this middleware:
+    {% load djangocms_misc_tags %}
+    {% djangocms_misc_page_link 'contact' %}
 
-.. code-block:: bash
+**CMS Frontend style**, very small adaptions, plus removing the "create" button in the toolbar. You must include
+the following stylesheet in your main html template.
 
-    painless_redirects.middleware.ForceSiteDomainRedirectMiddleware
+.. code-block:: django
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}djangocms_misc/css/cms_frontend_adjust.css">
+
+
+Admin Style
+***********
+
+Install this subapp to have a slightly optimized/opiniated djangocms-admin-style version. No further action needed.
+
+
+Apphook Templates
+*****************
+
+Experimental, not developed yet.
 
 
 Development
 -----------
+
+No testsuite yet!
 
 - there is test app, available with `./manage.py runserver`.
 - to run tests: ./manage.py test
