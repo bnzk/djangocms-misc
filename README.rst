@@ -1,4 +1,4 @@
-django-cms-misc
+djangocms-misc
 ===============
 
 .. image:: https://travis-ci.org/bnzk/djangocms-misc.svg
