@@ -58,12 +58,19 @@ Add needed ``djangocms-misc`` subapps to your ``INSTALLED_APPS``
 Basic
 *****
 
-Pagelink tag, looks for page, displays nothing if nothing found.
+**Pagelink tag**, looks for page, displays nothing if nothing found.
 
 .. code-block:: django
 
     {% load djangocms_misc_tags %}
     {% djangocms_misc_page_link 'contact' %}
+
+**CMS Frontend style**, very small adaptions, plus removing the "create" button in the toolbar. You must include
+the following stylesheet in your main html template.
+
+.. code-block:: django
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}djangocms_misc/css/cms_frontend_adjust.css">
 
 
 Admin Style
