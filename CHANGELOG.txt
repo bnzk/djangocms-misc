@@ -2,6 +2,7 @@
 ==== 0.xxx (not yet) ===
 
 - fix for djangocms-admin-styles
+- re
 
 
 ==== 0.0.1 (not yet) ===
