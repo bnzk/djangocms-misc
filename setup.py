@@ -13,11 +13,11 @@ def read(fname):
 setup(
     name="djangocms-misc",
     version=version,
-    url='http://github.com/benzkji/djangocms-misc',
+    url='https://github.com/bnzk/djangocms-misc',
     license='BSD',
     platforms=['OS Independent'],
     description="djangocms misc",
-    long_description=read('README.md'),
+    long_description=read('PYPI.rst'),
     author=u'Ben Stähli',
     author_email='bnzk@bnzk.ch',
     packages=find_packages(),

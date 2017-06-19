@@ -11,8 +11,8 @@ logging.getLogger("factory").setLevel(logging.WARN)
 SITE_ID = 1
 
 # from selenium.webdriver.firefox import webdriver
-from selenium.webdriver.phantomjs import webdriver
-SELENIUM_WEBDRIVER = webdriver
+# from selenium.webdriver.phantomjs import webdriver
+# SELENIUM_WEBDRIVER = webdriver
 
 APP_ROOT = os.path.abspath(
     os.path.join(os.path.dirname(__file__), ".."))
@@ -21,9 +21,10 @@ APP_ROOT = os.path.abspath(
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:',
+        'NAME': 'db.sqlite',
     }
 }
+
 
 LANGUAGE_CODE = 'en'
 LANGUAGES = (
@@ -31,7 +32,7 @@ LANGUAGES = (
     ('de', 'Deutsch', ),
 )
 
-ROOT_URLCONF = 'cms_tools.tests.urls'
+ROOT_URLCONF = 'djangocms_misc.tests.urls'
 
 MEDIA_ROOT = os.path.join(APP_ROOT, 'tests/test_app_media')
 MEDIA_URL = "/media/"
@@ -102,12 +103,9 @@ EXTERNAL_APPS = (
 )
 
 INTERNAL_APPS = (
-    'cms_tools.plugins.djangocms_gallery',
-    'cms_tools.plugins.djangocms_image',
-    'cms_tools.plugins.djangocms_text',
-    'cms_tools.plugins.djangocms_imagetext',
-    'cms_tools.tests.test_app',
-    'cms_tools',
+    'djangocms_misc.basic',
+    'djangocms_misc.admin_style',
+    # 'djangocms_misc.apphook_templates',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -125,7 +123,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
 )
 
-INSTALLED_APPS = EXTERNAL_APPS + INTERNAL_APPS
+INSTALLED_APPS = INTERNAL_APPS + EXTERNAL_APPS
 COVERAGE_MODULE_EXCLUDES += EXTERNAL_APPS
 
 SECRET_KEY = 'foobarXXXxxsvXY'

@@ -6,6 +6,6 @@ flake8
 # mock
 selenium
 
-django-cms==3.3.2
-django-ckeditor
-django-filer
+django-cms==3.4.3
+djangocms-admin-style==1.2.7
+django-filer==1.2.7

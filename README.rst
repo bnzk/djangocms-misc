@@ -1,0 +1,96 @@
+# django-cms-misc
+
+.. image:: https://travis-ci.org/bnzk/djangocms-misc.svg
+    :target: https://travis-ci.org/bnzk/djangocms-misc/
+.. image:: https://img.shields.io/pypi/v/djangocms-misc.svg
+    :target: https://pypi.python.org/pypi/djangocms-misc/
+.. image:: https://img.shields.io/pypi/l/djangocms-misc.svg
+    :target: https://pypi.python.org/pypi/djangocms-misc/
+
+customizing django / django-cms, as a set of diferent apps, that can be installed individually
+
+
+Features
+--------
+
+**Implemented**
+
+- djangocms_misc.admin_style
+  - better change view styles for djangocms-admin-style (visible fieldsets/inlines/etc)
+  - other minor admin enhancements for djangocms-admin-style
+- djangocms_misc.usability
+  - hide "create" button in toolbar, with css
+  - other opiniated things, that you might not want
+- djangocms_misc.tags
+  - convenience page_link tag: {% page_link "reverse_id_or_the_like" "css_class_name" "custom_link_text" %}
+  - helper tag for getting images from image fields in plugins/placeholders. useful for fb:og tags and the like
+
+**Yet to be done**
+
+- djangocms_misc.apphook_templates
+  - somehow link app_hook and template together (make apphook selectable via template -> magic [signals])
+  - needs proofe of concept
+- management commands
+  - other?
+
+
+Installation & Usage
+--------------------
+
+To get the latest stable release from PyPi
+
+.. code-block:: bash
+
+    pip install djangocms-misc
+
+Add needed ``djangocms-misc`` subapps to your ``INSTALLED_APPS``
+
+.. code-block:: python
+
+    INSTALLED_APPS = (
+        ...,
+        'djangocms_misc.basic',  # tags, cms frontend enhances
+        'djangocms_misc.admin_style',  # djangocms-admin-style enhanced
+        'djangocms_misc.apphook_templates',  # experimental, not implemented
+    )
+
+Add the following middlware to MIDDLEWARE_CLASSES (1.10 style middlewares will be supported soon),
+to make basic redirects work.
+
+.. code-block:: bash
+
+    painless_redirects.middleware.ManualRedirectMiddleware
+
+If you want to be redirected to the domain name entered in your current site (django.contrib.sites must be installed),
+also add this middleware:
+
+.. code-block:: bash
+
+    painless_redirects.middleware.ForceSiteDomainRedirectMiddleware
+
+
+Development
+-----------
+
+- there is test app, available with `./manage.py runserver`.
+- to run tests: ./manage.py test
+- to run tests with django 1.8 / 1.9 / 1.10 / 1.11: `tox`
+
+
+Contributions
+-------------
+
+If you want to contribute to this project, please perform the following steps
+
+.. code-block:: bash
+
+    # Fork this repository
+    # Clone your fork
+    mkvirtualenv djangocms-misc
+    pip install -r test_requirements.txt
+    git checkout -b feature_branch
+    # Implement your feature and tests
+    git add . && git commit
+    tox
+    git push -u origin feature_branch
+    # Send us a pull request for your feature branch
