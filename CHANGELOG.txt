@@ -1,10 +1,14 @@
 
-==== 0.xxx (not yet) ===
+==== (ongoing) ===
 
 - fix for djangocms-admin-styles
-- re
+
+==== 0.0.2 ===
+
+- basic beta release
+- fix error 500 when adding a cms plugin ( {{ STATIC_URL }} not defined )
 
 
-==== 0.0.1 (not yet) ===
+==== 0.0.1 (not on pypi) ===
 
 - basic alpha release

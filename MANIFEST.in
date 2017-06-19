@@ -1,7 +1,7 @@
-include LICENSES
+include LICENSE
 include README.rst
 global-exclude *.orig *.pyc *.log *.swp
 
-recursive-include formfieldstash/templates *
-recursive-include formfieldstash/static *
-recursive-include formfieldstash/locale *
+recursive-include djangocms_misc/basic *
+recursive-include djangocms_misc/admin_style *
+recursive-include djangocms_misc/apphook_templates *

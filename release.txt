@@ -1,7 +1,7 @@
 
 
 git flow release start 0.xxx
-version bump in formfieldstash/__init__.py
+version bump in djangocms_misc/__init__.py
 git flow release finish 0.xxx
 git push --all; git push --tags
 python setup.py sdist
