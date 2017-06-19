@@ -4,9 +4,8 @@ git flow release start 0.xxx
 version bump in djangocms_misc/__init__.py
 git flow release finish 0.xxx
 git push --all; git push --tags
+git push --all upstream; git push --tags upstream
 python setup.py sdist
 # no wheel for now?! python setup.py bdist_wheel --universal
-python setup.py register -r pypitest
-twine upload dist/* -r pypitest
-python setup.py register -r pypi
-twine upload dist/*
+python setup.py register -r pypitest && twine upload dist/* -r pypitest
+python setup.py register -r pypi && twine upload dist/*
