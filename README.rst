@@ -1,5 +1,5 @@
 djangocms-misc
-===============
+==============
 
 .. image:: https://travis-ci.org/bnzk/djangocms-misc.svg
     :target: https://travis-ci.org/bnzk/djangocms-misc/
