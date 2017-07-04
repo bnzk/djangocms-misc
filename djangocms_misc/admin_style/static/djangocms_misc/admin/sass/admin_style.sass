@@ -2,9 +2,11 @@
 //some adjustements to djangocms-admin-style styles
 //nevermind !important
 
-$left_padding: 20px
-$after_field_padding: 18px
-
+$after_field_padding: 1.2em
+$after_fieldset_padding: 0.3em
+$title_font_size: 21px
+$normal_font_size: 14px
+$color_grey: #d3d3d3
 
 // ugly fix for calendar widget in modals
 .djangocms-admin-style div.calendarbox
@@ -15,31 +17,62 @@ $after_field_padding: 18px
 .djangocms-admin-style
     #content
         h1
-            font-size: 22px !important
+            // main title font size
+            font-size: $title_font_size !important
             select
+                // modeltranslation dropdown!
                 font-size: inherit !important
         form
             label, label.aligned
+                // no uppercase tranform for labels
                 text-transform: none
-            .field-type label, .sortedm2m label, .vCheckboxLabel
-                font-size: 14px !important
-            fieldset, .inline-group
+            .form-row:not(tr)
+                // after field distance
                 padding-bottom: $after_field_padding
+            .field-type label, .sortedm2m label, .vCheckboxLabel
+                font-size: $normal_font_size !important
+            fieldset, .inline-group
+                width: 100%
+                max-width: 920px
+                // after fieldset?
+                padding-bottom: $after_fieldset_padding
                 > h2
-                    padding: 20px 0 15px 0
-                    //text-transform: uppercase
-                    font-size: 22px !important
+                    // fieldset title, make visible
+                    padding: 1em 0 0.75em 0
+                    margin-bottom: 0.75em
+                    font-size: $title_font_size !important
                     font-weight: bold
-                    border-bottom: 3px solid #d3d3d3
-                    //border-top: 3px solid #d3d3d3
+                    border-bottom: 2px solid #d3d3d3
             .inline-group
-                padding-bottom: 40px
-                .inline-related, .add-row
-                    margin: 0 25px
+                .inline-related
+                    h3
+                        // inline title (has border!)
+                        padding-top: 0.5em
+                        margin-bottom: 0.5em
+                        b
+                            font-weight: bold
                 .form-row
-                    padding: 0 5px 22px
+                    // the row
+                    padding: 0 0 $after_field_padding
+                    input
+                        width: 100% !important
+                .add-row
+                    padding: 0.8em
+                    padding-left: 8px
+                    border-top: 1px solid $color_grey
+                    border-bottom: 1px solid $color_grey !important
+                    line-height: 2.3em
+            .tabular
+                table
+                    tbody
+                        td
+                            // tabular inline padding top
+                            padding: 0.8em !important
+                        tr.add-row td
+                            padding-left: 0 !important
     // no margin in popup ?
     &.popup #content
+
         // margin: 0 !important
 
     // modeltranslation adjust inline tabs!

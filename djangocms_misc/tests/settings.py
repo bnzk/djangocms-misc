@@ -17,7 +17,6 @@ SITE_ID = 1
 APP_ROOT = os.path.abspath(
     os.path.join(os.path.dirname(__file__), ".."))
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -96,7 +95,7 @@ EXTERNAL_APPS = (
     'filer',
     'mptt',
     'easy_thumbnails',
-    'ckeditor',
+    # 'ckeditor',
 
     'django.contrib.admin',
 
@@ -105,6 +104,7 @@ EXTERNAL_APPS = (
 INTERNAL_APPS = (
     'djangocms_misc.basic',
     'djangocms_misc.admin_style',
+    'djangocms_misc.tests.test_app',
     # 'djangocms_misc.apphook_templates',
 )
 
