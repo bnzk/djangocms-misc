@@ -1,7 +1,13 @@
 
 ==== (ongoing) ===
 
-- fix for djangocms-admin-styles
+- add a f**** testsuite!
+
+
+==== 0.0.4 ===
+
+- fixed template tag error, again (no output!)
+- more streamlined djangocms-admin-style experience
 
 
 ==== 0.0.3 ===
