@@ -1,4 +1,4 @@
-{% load cms_tags cms_tools_tags sekizai_tags %}
+{% load cms_tags djangocms_misc_tags sekizai_tags %}
 <html>
 <head>
 
@@ -7,13 +7,14 @@
 </head>
 <body>
 
-<link rel="stylesheet" href="{{ STATIC_URL }}cms_tools/cms_adjust.css">
+<link rel="stylesheet" media="screen" href="{{ STATIC_URL }}djangocms_misc/css/cms_frontend_adjust.css">
 
 {% cms_toolbar %}
 
-{% page_link "home" "" "link text HOME" %}<br>
-{% page_link "home" "button" %}<br>
-{% page_link "home" %}
+page_link to home: {% djangocms_misc_page_link "home" %}<br>
+page_link to home, link text "link text HOME":
+{% djangocms_misc_page_link "home" "" "link text HOME" %}<br>
+page_link to home, custom class "button": {% djangocms_misc_page_link "home" "button" %}<br>
 
 {% placeholder 'testing_test_yea' %}
 
