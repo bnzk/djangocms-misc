@@ -11,13 +11,14 @@
 
 {% cms_toolbar %}
 
+page_link to home: {% djangocms_misc_page_link "home" %}<br>
+page_link to home, link text "link text HOME":
 {% djangocms_misc_page_link "home" "" "link text HOME" %}<br>
-{% djangocms_misc_page_link "home" "button" %}<br>
-{% djangocms_misc_page_link "home" %}
+page_link to home, custom class "button": {% djangocms_misc_page_link "home" "button" %}<br>
 
 {% placeholder 'testing_test_yea' %}
 
 {% render_block 'js' %}
-c
+
 </body>
 </html>
