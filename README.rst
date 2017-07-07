@@ -28,6 +28,7 @@ Features
 
 **Yet to be done**
 
+- check if it's possible to monkey patch the cms's plugin fetch algo, to allow untranslated placeholders.
 - djangocms_misc.apphook_templates
   - somehow link app_hook and template together (make apphook selectable via template -> magic [signals])
   - needs proofe of concept
