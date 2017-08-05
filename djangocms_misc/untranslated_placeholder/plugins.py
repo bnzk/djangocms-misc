@@ -17,7 +17,6 @@ def assign_plugins(request, placeholders, template, lang=None, is_fallback=False
     cast them down to the concrete instances in one query
     per type.
     """
-    print "---------------------------"
     if not placeholders:
         return
     placeholders = tuple(placeholders)
@@ -27,7 +26,6 @@ def assign_plugins(request, placeholders, template, lang=None, is_fallback=False
     for placeholder in placeholders:
         if get_placeholder_conf("untranslated", placeholder.slot, template, False):
             untranslated_placeholders.append(placeholder)
-            print "untranslated!"
         else:
             translated_placeholders.append(placeholder)
     _assign_plugins(request, translated_placeholders, template, lang, is_fallback)
