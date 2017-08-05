@@ -41,6 +41,13 @@ STATICFILES_DIRS = (
     os.path.join(APP_ROOT, 'static'),
 )
 
+CMS_PLACEHOLDER_CONF = {
+	'untranslated_placeholder':{
+		'language_fallback': False,
+        'untranslated': True,
+	},
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -104,6 +111,7 @@ EXTERNAL_APPS = (
 INTERNAL_APPS = (
     'djangocms_misc.basic',
     'djangocms_misc.admin_style',
+    'djangocms_misc.untranslated_placeholder',
     'djangocms_misc.tests.test_app',
     # 'djangocms_misc.apphook_templates',
 )
