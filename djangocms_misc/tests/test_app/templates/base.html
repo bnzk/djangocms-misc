@@ -1,4 +1,4 @@
-{% load cms_tags djangocms_misc_tags sekizai_tags %}
+{% load cms_tags menu_tags djangocms_misc_tags sekizai_tags %}
 <html>
 <head>
 
@@ -11,13 +11,31 @@
 
 {% cms_toolbar %}
 
-page_link to home: {% djangocms_misc_page_link "home" %}<br>
-page_link to home, link text "link text HOME":
-{% djangocms_misc_page_link "home" "" "link text HOME" %}<br>
-page_link to home, custom class "button": {% djangocms_misc_page_link "home" "button" %}<br>
+<div>
+    <h2>Language</h2>
+    {% language_chooser %}
+</div>
 
-{% placeholder 'testing_test_yea' %}
-{% placeholder 'untranslated_placeholder' %}
+<div>
+    <h2>Menu</h2>
+    {% show_menu 0 5 5 5 %}
+</div>
+
+<div>
+    <h2>Templatetags</h2>
+    page_link to home: {% djangocms_misc_page_link "home" %}<br>
+    page_link to home, link text "link text HOME":
+    {% djangocms_misc_page_link "home" "" "link text HOME" %}<br>
+    page_link to home, custom class "button": {% djangocms_misc_page_link "home" "button" %}<br>
+</div>
+
+<div>
+    <h2>Placeholders</h2>
+    <h3>Translated</h3>
+    {% placeholder 'testing_test_yea' %}
+    <h3>Untranslated</h3>
+    {% placeholder 'untranslated_placeholder' %}
+</div>
 
 {% render_block 'js' %}
 

@@ -112,6 +112,7 @@ INTERNAL_APPS = (
     'djangocms_misc.basic',
     'djangocms_misc.admin_style',
     'djangocms_misc.untranslated_placeholder',
+    'djangocms_misc.autopublisher',
     'djangocms_misc.tests.test_app',
     # 'djangocms_misc.apphook_templates',
 )
