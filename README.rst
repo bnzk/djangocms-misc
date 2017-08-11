@@ -19,12 +19,18 @@ Features
 - djangocms_misc.admin_style
   - better change view styles for djangocms-admin-style (visible fieldsets/inlines/etc)
   - other minor admin enhancements for djangocms-admin-style
-- djangocms_misc.usability
+- djangocms_misc.basic
   - hide "create" button in toolbar, with css
   - other opiniated things, that you might not want
-- djangocms_misc.tags
   - convenience page_link tag: {% page_link "reverse_id_or_the_like" "css_class_name" "custom_link_text" %}
   - helper tag for getting images from image fields in plugins/placeholders. useful for fb:og tags and the like
+- djangocms_misc.untranslated_placeholder
+  - monkey patch `cms.utils.plugins.assign_plugins` to get untranslated placeholders (heavily experimental!)
+- djangocms_misc.autopublisher
+  - cheat the cms, so that you'll never have a difference between draft und published version, as every change is
+    always published automatically (experimental, for plugins and pages for now, but probably all we need).
+
+
 
 **Yet to be done**
 
