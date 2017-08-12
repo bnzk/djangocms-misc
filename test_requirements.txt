@@ -9,3 +9,9 @@ selenium
 django-cms==3.4.3
 djangocms-admin-style==1.2.7
 django-filer==1.2.7
+
+# for running cms tests
+iptools
+djangocms-link
+djangocms-text-ckeditor
+django-hvad

@@ -24,7 +24,6 @@ DATABASES = {
     }
 }
 
-
 LANGUAGE_CODE = 'en'
 LANGUAGES = (
     ('en', 'English', ),
@@ -97,13 +96,16 @@ EXTERNAL_APPS = (
     'sekizai',
     'treebeard',
     'cms',
+    'djangocms_link',
+    'djangocms_text_ckeditor',
     'djangocms_admin_style',
     'menus',
     'filer',
     'mptt',
-    'easy_thumbnails',
+    'hvad',
     # 'ckeditor',
 
+    'easy_thumbnails',
     'django.contrib.admin',
 
 )
@@ -112,7 +114,8 @@ INTERNAL_APPS = (
     'djangocms_misc.basic',
     'djangocms_misc.admin_style',
     'djangocms_misc.untranslated_placeholder',
-    'djangocms_misc.autopublisher',
+    # 'djangocms_misc.autopublisher',
+
     'djangocms_misc.tests.test_app',
     # 'djangocms_misc.apphook_templates',
 )

@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
-
-from formfieldstash.tests.utils.django_utils import create_superuser
-from formfieldstash.tests.utils.selenium_utils import SeleniumTestCase, CustomWebDriver
-from formfieldstash.tests.test_app.models import TestModelSingle, TestModelAdvanced
+from django.test import TestCase
 
 
-class FormFieldStashAdminTests(SeleniumTestCase):
+class DoesItStillRunTests(TestCase):
     def setUp(self):
         pass
 
@@ -14,5 +11,5 @@ class FormFieldStashAdminTests(SeleniumTestCase):
         pass
 
     def test_app_index_get(self):
-        self.login()
+        # self.login()
         self.open(reverse('admin:index'))
