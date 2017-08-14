@@ -44,6 +44,10 @@ CMS_PLACEHOLDER_CONF = {
 		'language_fallback': False,
         'untranslated': True,
 	},
+	'editmode_fallback_placeholder':{
+		'language_fallback': True,
+        'editmode_language_fallback': True,
+	},
 }
 
 TEMPLATES = [
@@ -112,7 +116,8 @@ EXTERNAL_APPS = (
 INTERNAL_APPS = (
     'djangocms_misc.basic',
     'djangocms_misc.admin_style',
-    'djangocms_misc.untranslated_placeholder',
+    # 'djangocms_misc.untranslated_placeholder',
+    'djangocms_misc.editmode_fallback_placeholder',
     # 'djangocms_misc.autopublisher',
 
     'djangocms_misc.tests.test_app',

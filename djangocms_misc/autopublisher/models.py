@@ -20,8 +20,9 @@ def check_publish(title_obj):
 def check_publish_plugin(sender, instance, **kwargs):
     if issubclass(sender, CMSPlugin):
         page = instance.placeholder.page
-        title = page.get_title_obj(instance.language)
-        check_publish(title)
+        if page:
+            title = page.get_title_obj(instance.language)
+            check_publish(title)
 
 
 @receiver(

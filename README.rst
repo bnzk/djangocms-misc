@@ -8,7 +8,7 @@ djangocms-misc
 .. image:: https://img.shields.io/pypi/l/djangocms-misc.svg
     :target: https://pypi.python.org/pypi/djangocms-misc/
 
-customizing django / django-cms, as a set of diferent apps, that can be installed individually
+customizing [django-cms](https://github.com/divio/django-cms), as a set of diferent apps, that can be installed individually
 
 
 Features
