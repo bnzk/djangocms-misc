@@ -1,12 +1,8 @@
 # djangocms-misc
 
-
-.. image:: https://travis-ci.org/bnzk/djangocms-misc.svg
-    :target: https://travis-ci.org/bnzk/djangocms-misc/
-.. image:: https://img.shields.io/pypi/v/djangocms-misc.svg
-    :target: https://pypi.python.org/pypi/djangocms-misc/
-.. image:: https://img.shields.io/pypi/l/djangocms-misc.svg
-    :target: https://pypi.python.org/pypi/djangocms-misc/
+[![Build Status](https://travis-ci.org/bnzk/djangocms-misc.svg "Build Status")](https://travis-ci.org/bnzk/djangocms-misc/)
+[![PyPi Version](https://img.shields.io/pypi/v/djangocms-misc.svg "PyPi Version")](https://pypi.python.org/pypi/djangocms-misc/)
+[![Licence](https://img.shields.io/pypi/l/djangocms-misc.svg "Licence")](https://pypi.python.org/pypi/djangocms-misc/)
 
 customizing [django-cms](https://github.com/divio/django-cms), as a set of diferent apps, that can be installed individually
 
