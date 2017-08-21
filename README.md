@@ -9,8 +9,6 @@ customizing [django-cms](https://github.com/divio/django-cms), as a set of difer
 
 ## Features
 
-**Implemented**
-
 - [djangocms_misc.basic](#basic)
   - hide "create" button in toolbar, with css
   - other opiniated things, that you might not want (make structure mode lightly transparent,
@@ -31,15 +29,12 @@ customizing [django-cms](https://github.com/divio/django-cms), as a set of difer
   always published automatically (experimental, for plugins and pages for now, but probably all we need).
 
 
+**Yet to be done/explored**
 
-**Yet to be done**
-
-- check if it's possible to monkey patch the cms's plugin fetch algo, to allow untranslated placeholders.
 - djangocms_misc.apphook_templates
   - somehow link app_hook and template together (make apphook selectable via template -> magic [signals])
   - needs proofe of concept
-- management commands
-  - other?
+- management commands (?!)
 
 
 ## Installation & Usage
@@ -56,6 +51,7 @@ Add needed ``djangocms-misc`` subapps to your ``INSTALLED_APPS``
         'djangocms_misc.admin_style',  # djangocms-admin-style enhanced
         'djangocms_misc.apphook_templates',  # experimental, not implemented
     )
+
 
 ### Basic
 
@@ -75,10 +71,6 @@ the following stylesheet in your main html template.
 Add `djangocms_misc.admin_style` to `INSTALLED_APPS` to have a slightly optimized/opiniated djangocms-admin-style version. No further action needed.
 
 
-### Apphook Templates
-
-Experimental, not developed yet.
-
 ### Untranslated Placeholders
 
 WARNING: very experimental. Get real untranslated placeholders, that have the same plugins,
@@ -89,30 +81,38 @@ fallbacks) or `djangocms_misc.untranslated_placeholder` (kind a "real" untransla
 
 usage: add on of the mentioned apps to `INSTALLED_APPS`.
 
+Yet implemented on `develop` branch only!
+
+
 ### Autopublisher
 
-WARNING: very experimental. Goal: Make the "Publish Page changes" non existent, as draft and live version are always the same. With every change made in content or pages, publish the page(s) automagically. Using cms signals, this is more or less implemented, but still heavily experimental.
+WARNING: very experimental. Goal: Make the "Publish Page changes" non existent, so draft and live
+ version are always the same. With every change made in content or pages, publish the page(s)
+ automagically. Using cms signals, this is more or less implemented, but still heavily experimental.
 
 usage: add `djangocms_misc.autopublisher` to `INSTALLED_APPS`. Due to when exactly some singals are
 called, you must add the following stylesheet, to hide the publish button with css:
 
     <link rel="stylesheet" href="{{ STATIC_URL }}autopublisher/css/autopublisher.css">
 
+Yet implemented on `develop` branch only!
+
 
 ## Development
 
-No testsuite yet!
+
+### Getting started
+
+WARNING: No testsuite yet!
 
 - there is test app, available with `./manage.py runserver`.
 - to run tests: ./manage.py test
 - to run tests with django 1.8 / 1.9 / 1.10 / 1.11: `tox`
 
 
-## Contributions
+### Contributions
 
 If you want to contribute to this project, please perform the following steps
-
-.. code-block:: bash
 
     # Fork this repository
     # Clone your fork
