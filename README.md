@@ -1,5 +1,5 @@
-djangocms-misc
-==============
+# djangocms-misc
+
 
 .. image:: https://travis-ci.org/bnzk/djangocms-misc.svg
     :target: https://travis-ci.org/bnzk/djangocms-misc/
@@ -11,8 +11,7 @@ djangocms-misc
 customizing [django-cms](https://github.com/divio/django-cms), as a set of diferent apps, that can be installed individually
 
 
-Features
---------
+## Features
 
 **Implemented**
 
@@ -24,11 +23,14 @@ Features
   - other opiniated things, that you might not want
   - convenience page_link tag: {% page_link "reverse_id_or_the_like" "css_class_name" "custom_link_text" %}
   - helper tag for getting images from image fields in plugins/placeholders. useful for fb:og tags and the like
-- djangocms_misc.untranslated_placeholder
-  - monkey patch `cms.utils.plugins.assign_plugins` to get untranslated placeholders (heavily experimental!)
+- djangocms_misc.editmode_fallback_placeholder / djangocms_misc.untranslated_placeholder
+  - WARNING: very experimental
+  - monkey patch `cms.utils.plugins.assign_plugins` to get untranslated placeholders
+  - due to "different trees", other monkey patches may be needed (sorting/copy pasting!)
 - djangocms_misc.autopublisher
+  WARNING: very experimental
   - cheat the cms, so that you'll never have a difference between draft und published version, as every change is
-    always published automatically (experimental, for plugins and pages for now, but probably all we need).
+  always published automatically (experimental, for plugins and pages for now, but probably all we need).
 
 
 
@@ -42,18 +44,13 @@ Features
   - other?
 
 
-Installation & Usage
---------------------
+## Installation & Usage
 
 To get the latest stable release from PyPi
-
-.. code-block:: bash
 
     pip install djangocms-misc
 
 Add needed ``djangocms-misc`` subapps to your ``INSTALLED_APPS``
-
-.. code-block:: python
 
     INSTALLED_APPS = (
         ...,
@@ -62,12 +59,9 @@ Add needed ``djangocms-misc`` subapps to your ``INSTALLED_APPS``
         'djangocms_misc.apphook_templates',  # experimental, not implemented
     )
 
-Basic
-*****
+### Basic
 
 **Pagelink tag**, looks for page, displays nothing if nothing found.
-
-.. code-block:: django
 
     {% load djangocms_misc_tags %}
     {% djangocms_misc_page_link 'contact' %}
@@ -75,25 +69,39 @@ Basic
 **CMS Frontend style**, very small adaptions, plus removing the "create" button in the toolbar. You must include
 the following stylesheet in your main html template.
 
-.. code-block:: django
-
     <link rel="stylesheet" href="{{ STATIC_URL }}djangocms_misc/css/cms_frontend_adjust.css">
 
 
-Admin Style
-***********
+### Admin Style
 
 Install this subapp to have a slightly optimized/opiniated djangocms-admin-style version. No further action needed.
 
 
-Apphook Templates
-*****************
+### Apphook Templates
 
 Experimental, not developed yet.
 
+### Untranslated Placeholders
 
-Development
------------
+WARNING: very experimental. Get real untranslated placeholders, that have the same plugins,
+for all languages. monkey patch `cms.utils.plugins.assign_plugins`, and due to "different trees",
+other monkey patches may be needed (sorting/structure mode!). Currently trying different
+approaches, that can be tried: `djangocms_misc.editmode_fallback_placeholder` (always displaying
+fallbacks) or `djangocms_misc.untranslated_placeholder` (kind a "real" untranslated placeholder).
+
+usage: add on of the mentioned apps to `INSTALLED_APPS`.
+
+### Autopublisher
+
+WARNING: very experimental. Goal: Make the "Publish Page changes" non existent, as draft and live version are always the same. With every change made in content or pages, publish the page(s) automagically. Using cms signals, this is more or less implemented, but still heavily experimental.
+
+usage: add `djangocms_misc.autopublisher` to `INSTALLED_APPS`. Due to when exactly some singals are
+called, you must add the following stylesheet, to hide the publish button with css:
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}autopublisher/css/autopublisher.css">
+
+
+## Development
 
 No testsuite yet!
 
@@ -102,8 +110,7 @@ No testsuite yet!
 - to run tests with django 1.8 / 1.9 / 1.10 / 1.11: `tox`
 
 
-Contributions
--------------
+## Contributions
 
 If you want to contribute to this project, please perform the following steps
 
