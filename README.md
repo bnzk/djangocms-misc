@@ -24,7 +24,7 @@ customizing [django-cms](https://github.com/divio/django-cms), as a set of difer
   - monkey patch `cms.utils.plugins.assign_plugins` to get untranslated placeholders
   - due to "different trees", other monkey patches may be needed (sorting/copy pasting!)
 - djangocms_misc.autopublisher
-  WARNING: very experimental
+  - WARNING: very experimental
   - cheat the cms, so that you'll never have a difference between draft und published version, as every change is
   always published automatically (experimental, for plugins and pages for now, but probably all we need).
 
