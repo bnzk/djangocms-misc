@@ -11,19 +11,21 @@ customizing [django-cms](https://github.com/divio/django-cms), as a set of difer
 
 **Implemented**
 
-- djangocms_misc.admin_style
+- [djangocms_misc.basic](#basic)
+  - hide "create" button in toolbar, with css
+  - other opiniated things, that you might not want (make structure mode lightly transparent,
+  for now)
+  - convenience page_link tag: {% page_link "reverse_id_or_the_like" "css_class_name" "custom_link_text" %}
+  - NOT IMPLEMENTED: helper tag for getting images from image fields in plugins/placeholders.
+  useful for fb:og tags and the like.
+- [djangocms_misc.admin_style](#admin-style)
   - better change view styles for djangocms-admin-style (visible fieldsets/inlines/etc)
   - other minor admin enhancements for djangocms-admin-style
-- djangocms_misc.basic
-  - hide "create" button in toolbar, with css
-  - other opiniated things, that you might not want
-  - convenience page_link tag: {% page_link "reverse_id_or_the_like" "css_class_name" "custom_link_text" %}
-  - helper tag for getting images from image fields in plugins/placeholders. useful for fb:og tags and the like
-- djangocms_misc.editmode_fallback_placeholder / djangocms_misc.untranslated_placeholder
+- [djangocms_misc.editmode_fallback_placeholder / djangocms_misc.untranslated_placeholder](#untranslated-placeholders)
   - WARNING: very experimental
   - monkey patch `cms.utils.plugins.assign_plugins` to get untranslated placeholders
   - due to "different trees", other monkey patches may be needed (sorting/copy pasting!)
-- djangocms_misc.autopublisher
+- [djangocms_misc.autopublisher](#autopublisher)
   - WARNING: very experimental
   - cheat the cms, so that you'll never have a difference between draft und published version, as every change is
   always published automatically (experimental, for plugins and pages for now, but probably all we need).
@@ -70,7 +72,7 @@ the following stylesheet in your main html template.
 
 ### Admin Style
 
-Install this subapp to have a slightly optimized/opiniated djangocms-admin-style version. No further action needed.
+Add `djangocms_misc.admin_style` to `INSTALLED_APPS` to have a slightly optimized/opiniated djangocms-admin-style version. No further action needed.
 
 
 ### Apphook Templates
