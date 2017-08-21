@@ -79,7 +79,9 @@ other monkey patches may be needed (sorting/structure mode!). Currently trying d
 approaches, that can be tried: `djangocms_misc.editmode_fallback_placeholder` (always displaying
 fallbacks) or `djangocms_misc.untranslated_placeholder` (kind a "real" untranslated placeholder).
 
-usage: add on of the mentioned apps to `INSTALLED_APPS`.
+usage: add on of the mentioned apps to `INSTALLED_APPS`. In your placeholder settings, either add
+`editmode_language_fallback: True` or `untranslated: True`, depending which version you have
+installed. There you go.
 
 Yet implemented on `develop` branch only!
 
