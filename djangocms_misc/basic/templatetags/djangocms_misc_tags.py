@@ -14,10 +14,10 @@ def djangocms_misc_page_link(context, lookup, css_class='', link_text=''):
 
 
 DJANGCMS_MISC_GET_FROM_PAGE = {
-    'video_instance': {
+    'video_id': {
         'placeholders': ('Inhalt',),
         'plugins': {
-            'YoutubeVideoPlugin': [],
+            'YoutubeVideoPlugin': ['video_id'],
         }
     },
     'image': {
