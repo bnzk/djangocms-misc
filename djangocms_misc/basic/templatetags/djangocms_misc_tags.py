@@ -13,6 +13,7 @@ def djangocms_misc_page_link(context, lookup, css_class='', link_text=''):
     return context
 
 
+# TODO: clean up!
 DJANGCMS_MISC_GET_FROM_PAGE = {
     'video_id': {
         'placeholders': ('Inhalt',),

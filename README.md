@@ -10,12 +10,12 @@ customizing [django-cms](https://github.com/divio/django-cms), as a set of difer
 ## Features
 
 - [djangocms_misc.basic](#basic)
-  - hide "create" button in toolbar, with css
-  - other opiniated things, that you might not want (make structure mode lightly transparent,
-  for now)
-  - convenience page_link tag: {% page_link "reverse_id_or_the_like" "css_class_name" "custom_link_text" %}
-  - NOT IMPLEMENTED: helper tag for getting images from image fields in plugins/placeholders.
+  - Frontend: Hide CMS's "create" button in toolbar, make structure mode lightly transparent
+  - page_link tag: {% page_link "reverse_id_or_the_like" "css_class_name" "custom_link_text" %}
+  - helper tag for getting images from image fields in plugins/placeholders.
   useful for fb:og tags and the like.
+  - Bot404Middleware, to keep away bots from staging systems
+  - get_env context processor, to always have env (stage/live) and current SITE_ID
 - [djangocms_misc.admin_style](#admin-style)
   - better change view styles for djangocms-admin-style (visible fieldsets/inlines/etc)
   - other minor admin enhancements for djangocms-admin-style
