@@ -74,13 +74,14 @@ Add
 to your `settings.MIDDLEWARE` (old style `MIDDLEWARE_CLASSES` should still work). To really enable
 it, you need to explicitly set `settings.DJANGOCMS_MISC_BOT404 = True`.
 
-**get_env contect processor**, add SITE_ID and if available, is_live/stage/dev to the context.
+**get_env contect processor**, add SITE_ID and if available, is_live/stage/dev/whatever to the context.
 
 Add
 
     'djangocms_misc.basic.context_processors.get_env'
 
-to your `settings.TEMPLATES`s context processors.
+to your `settings.TEMPLATES`s context processors. If `settings.ENV = 'live'`, your context will
+have `is_live` set to true.
 
 ### Admin Style
 
