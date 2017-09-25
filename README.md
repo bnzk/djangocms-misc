@@ -69,7 +69,7 @@ the following stylesheet in your main html template.
 
 Add
 
-   'djangocms_misc.basic.middleware.Bot404Middleware'
+    'djangocms_misc.basic.middleware.Bot404Middleware'
 
 to your `settings.MIDDLEWARE` (old style `MIDDLEWARE_CLASSES` should still work). To really enable
 it, you need to explicitly set `settings.DJANGOCMS_MISC_BOT404 = True`.
