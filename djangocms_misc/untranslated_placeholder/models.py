@@ -1,4 +1,5 @@
 
+from cms.models import Placeholder
 from cms.plugin_rendering import ContentRenderer, RenderedPlaceholder
 
 
@@ -14,7 +15,7 @@ ContentRenderer.__init__ = content_renderer__init__
 def render_placeholder(self, placeholder, context, language=None, page=None,
                        editable=False, use_cache=False, nodelist=None, width=None):
     language = 'en'
-    self.__old_render_placeholder(placeholder, context, language, page,
+    return self.__old_render_placeholder(placeholder, context, language, page,
                        editable, use_cache, nodelist, width)
 
 
@@ -25,7 +26,10 @@ ContentRenderer.render_placeholder = render_placeholder
 def rendered_placeholder__init__(self, placeholder, language, site_id, cached=False,
                  editable=False, has_content=False):
     language = 'en'
-    self.__old_init__(placeholder, language, site_id, cached, editable, has_content)
+    # 3.4.4
+    self.__old_init__(placeholder, language, site_id, cached, editable)
+    # develop!
+    # self.__old_init__(placeholder, language, site_id, cached, editable, has_content)
 
 
 RenderedPlaceholder.__old_init__ = RenderedPlaceholder.__init__
