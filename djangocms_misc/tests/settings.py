@@ -42,7 +42,8 @@ STATICFILES_DIRS = (
 CMS_PLACEHOLDER_CONF = {
 	'untranslated_placeholder':{
 		'language_fallback': False,
-        'untranslated': True,
+        # 'untranslated': True,  # legacy version
+        'untranslated': 'en',
 	},
 	'editmode_fallback_placeholder':{
 		'language_fallback': True,
@@ -116,8 +117,8 @@ EXTERNAL_APPS = (
 INTERNAL_APPS = (
     'djangocms_misc.basic',
     'djangocms_misc.admin_style',
-    # 'djangocms_misc.untranslated_placeholder',
-    'djangocms_misc.editmode_fallback_placeholder',
+    'djangocms_misc.untranslated_placeholder',
+    # 'djangocms_misc.editmode_fallback_placeholder',
     'djangocms_misc.autopublisher',
 
     'djangocms_misc.tests.test_app',
