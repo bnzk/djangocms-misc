@@ -5,6 +5,9 @@ from cms.plugin_rendering import ContentRenderer, RenderedPlaceholder
 from cms.utils.placeholder import get_placeholder_conf
 
 
+from .signals import *  # noqa
+
+
 def content_renderer__init__(self, request):
     self.__old_init__(request)
     global_untranslated = getattr(settings, 'DJANGOCMS_MISC_UNTRANSLATED_PLACEHOLDERS', None)

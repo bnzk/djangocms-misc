@@ -9,7 +9,7 @@ from django.dispatch import receiver
 def check_publish(title_obj, force_non_dirty=False):
     page = title_obj.page
     if title_obj.published and page.publisher_is_draft:
-        print "published and draft!"
+        # print "published and draft!"
         if title_obj.is_dirty() or force_non_dirty:
             print "NEEEEEDs publishing!"
             page.publish(title_obj.language)
@@ -18,7 +18,6 @@ def check_publish(title_obj, force_non_dirty=False):
             print "done publishing!"
     else:
         pass
-    print "---"
 
 
 @receiver(
@@ -26,8 +25,8 @@ def check_publish(title_obj, force_non_dirty=False):
     dispatch_uid="cms_autopublisher_publish_check_save_plugin_instance",
 )
 def cms_plugin_instance_post_save(sender, instance, **kwargs):
-    print "post save whatever"
-    print sender
+    # print "post save whatever"
+    # print sender
     created = kwargs.get('created')
     if created and issubclass(sender, CMSPlugin):
         page = instance.placeholder.page
@@ -49,7 +48,7 @@ def cms_plugin_instance_post_save(sender, instance, **kwargs):
 
 
 # ATTENTION ! ***** is called BEFORE page is marked dirty!!!
-# works well for move operations, but not perfectfor copy paste! (order is not taken)
+# works well for move operations, but not perfect for copy paste! (order is not taken)
 @receiver(
     post_placeholder_operation,
     dispatch_uid="cms_autopublisher_post_placeholder_operation",
