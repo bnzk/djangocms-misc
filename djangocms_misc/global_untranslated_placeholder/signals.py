@@ -32,12 +32,16 @@ def post_publish_handler(**kwargs):
     dispatch_uid="cms_global_untranslated_placeholder_post_placeholder_operation",
 )
 def post_placeholder_operation_handler(sender, operation, request, language, token, origin, **kwargs):
+    plugin = None
     if operation == 'change_plugin':
         plugin = kwargs.get('new_plugin', None)
     if not plugin:
         plugin = kwargs.get('plugin', None)
     if not plugin:
         plugin = kwargs.get('plugins', [None, ])[0]
+    print operation
+    print plugin
+    print kwargs
     if plugin:
         placeholder = plugin.placeholder
         if not plugin.language == language:
