@@ -40,9 +40,8 @@ def post_placeholder_operation_handler(sender, operation, request, language, tok
         plugin = kwargs.get('plugins', [None, ])[0]
     if plugin:
         placeholder = plugin.placeholder
-        print plugin.language
         if not plugin.language == language:
-            # mark plugin.language Title as dirty!
+            # mark current language Title as dirty as well!
             if placeholder.page:
                 title = placeholder.page.get_title_obj(language)
                 title.publisher_state = PUBLISHER_STATE_DIRTY
