@@ -9,6 +9,26 @@ from cms.utils.moderator import get_cmsplugin_queryset
 from cms.utils.placeholder import get_placeholder_conf
 from cms.utils.plugins import create_default_plugins, build_plugin_tree
 from cms.utils.plugins import downcast_plugins
+from django.db import transaction
+from django.utils.decorators import method_decorator
+from django.views.decorators.clickjacking import xframe_options_sameorigin
+from django.views.decorators.http import require_POST
+
+
+@method_decorator(require_POST)
+@xframe_options_sameorigin
+@transaction.atomic
+def move_plugin(self, request):
+    from cms.admin.placeholderadmin import get_int
+    try:
+        plugin_id = get_int(request.POST.get('plugin_id'))
+    except TypeError:
+        raise RuntimeError("'plugin_id' is a required parameter.")
+    plugin = self._get_plugin_from_id(plugin_id)
+    print plugin.placeholder.slot
+    print self
+    # request.POST['plugin_language'] = plugin.language
+    self.original_move_plugin(request)
 
 
 def assign_plugins(request, placeholders, template, lang=None, is_fallback=False):

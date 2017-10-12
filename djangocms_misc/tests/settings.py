@@ -29,6 +29,13 @@ LANGUAGES = (
     ('de', 'Deutsch', ),
 )
 
+# enable this if you think cache might screw something up.
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+#     }
+# }
+
 ROOT_URLCONF = 'djangocms_misc.tests.urls'
 
 MEDIA_ROOT = os.path.join(APP_ROOT, 'tests/test_app_media')
@@ -39,7 +46,12 @@ STATICFILES_DIRS = (
     os.path.join(APP_ROOT, 'static'),
 )
 
+DJANGOCMS_MISC_UNTRANSLATED_PLACEHOLDERS = 'en'
+
 CMS_PLACEHOLDER_CONF = {
+	'translated_placeholder':{
+		'language_fallback': False,
+	},
 	'untranslated_placeholder':{
 		'language_fallback': False,
         # 'untranslated': True,  # legacy version
@@ -117,9 +129,10 @@ EXTERNAL_APPS = (
 INTERNAL_APPS = (
     'djangocms_misc.basic',
     'djangocms_misc.admin_style',
-    'djangocms_misc.untranslated_placeholder',
+    # 'djangocms_misc.untranslated_placeholder',
+    'djangocms_misc.global_untranslated_placeholder',
     # 'djangocms_misc.editmode_fallback_placeholder',
-    'djangocms_misc.autopublisher',
+    # 'djangocms_misc.autopublisher',
 
     'djangocms_misc.tests.test_app',
     # 'djangocms_misc.apphook_templates',
@@ -141,7 +154,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
 )
 
-INSTALLED_APPS = INTERNAL_APPS + EXTERNAL_APPS
+INSTALLED_APPS = EXTERNAL_APPS + INTERNAL_APPS
 COVERAGE_MODULE_EXCLUDES += EXTERNAL_APPS
 
 SECRET_KEY = 'foobarXXXxxsvXY'
