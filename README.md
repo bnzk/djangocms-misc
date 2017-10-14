@@ -19,14 +19,20 @@ customizing [django-cms](https://github.com/divio/django-cms), as a set of difer
 - [djangocms_misc.admin_style](#admin-style)
   - better change view styles for djangocms-admin-style (visible fieldsets/inlines/etc)
   - other minor admin enhancements for djangocms-admin-style
-- [djangocms_misc.editmode_fallback_placeholder / djangocms_misc.untranslated_placeholder](#untranslated-placeholders)
-  - WARNING: very experimental
-  - monkey patch `cms.utils.plugins.assign_plugins` to get untranslated placeholders
-  - due to "different trees", other monkey patches may be needed (sorting/copy pasting!)
+- [djangocms_misc.global_untranslated_placeholder](#untranslated-placeholder)
+  - WARNING: experimental
+  - monkey patch the cms's `cms.plugin_rendering.ContentRenderer` to one language only, always.
+  - simple monkey patch, but side effects still need to be checked out (haystack / aldryn_search?!)
 - [djangocms_misc.autopublisher](#autopublisher)
-  - WARNING: very experimental
+  - WARNING: experimental
   - cheat the cms, so that you'll never have a difference between draft und published version, as every change is
   always published automatically (experimental, for plugins and pages for now, but probably all we need).
+- djangocms_misc.editmode_fallback_placeholder / djangocms_misc.untranslated_placeholder
+  - WARNING: only testing, currently following the `global_untranslated_placeholder` approach.
+  - WARNING: very experimental
+  - would allow mixed translated / untranslated placeholders
+  - monkey patch `cms.utils.plugins.assign_plugins` to get untranslated placeholders
+  - due to "different trees", other monkey patches may be needed (sorting/copy pasting!)
 
 
 **Yet to be done/explored**
@@ -88,7 +94,21 @@ have `is_live` set to true.
 Add `djangocms_misc.admin_style` to `INSTALLED_APPS` to have a slightly optimized/opiniated djangocms-admin-style version. No further action needed.
 
 
-### Untranslated Placeholders
+### Global Untranslated Placeholder
+
+WARNING: experimental. Get real untranslated placeholders, that have the same plugins,
+for all languages. monkey patch `cms.plugin_rendering.ContentRenderer`, to one language only,
+always. Very simple patch.
+
+usage: add `djangocms_misc.gloabl_untranslated_placeholder` to `INSTALLED_APPS`. In your settings,
+ add `DJANGOCMS_MISC_UNTRANSLATED_PLACEHOLDERS = True` or ` = 'lang_code'`, `True` would default
+ to your settings `LANGUAGE_CODE`. This is then the language your plugins will be filled in and
+ rendered.
+
+Yet implemented on `develop` branch only!
+
+
+### Untranslated Placeholder
 
 WARNING: very experimental. Get real untranslated placeholders, that have the same plugins,
 for all languages. monkey patch `cms.utils.plugins.assign_plugins`, and due to "different trees",

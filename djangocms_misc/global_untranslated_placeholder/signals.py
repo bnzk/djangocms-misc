@@ -13,6 +13,7 @@ from djangocms_misc.global_untranslated_placeholder.utils import get_untranslate
 if not 'djangocms_misc.autopublisher' in settings.INSTALLED_APPS:
 
     # published. if not default language, publish default as well
+    # if DJANGOCMS_MISC_UNTRANSLATED_MARK_ALL = True, publish all langs (usability thing, mostly)
     @receiver(
         post_publish,
         dispatch_uid="cms_global_untranslated_placeholder_post_publish",
@@ -28,6 +29,7 @@ if not 'djangocms_misc.autopublisher' in settings.INSTALLED_APPS:
 
 
     # something has changed, if we are not on the default lang, mark current lang/title as dirty as well
+    # if DJANGOCMS_MISC_UNTRANSLATED_MARK_ALL = True, mark all languages as dirty!
     @receiver(
         post_placeholder_operation,
         dispatch_uid="cms_global_untranslated_placeholder_post_placeholder_operation",
