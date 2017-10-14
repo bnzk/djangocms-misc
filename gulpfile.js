@@ -11,9 +11,11 @@ require('es6-promise').polyfill();
 
 
 sass_paths = [
+    'djangocms_misc/basic/static/admin/djangocms_misc/sass/*.sass',
+    'djangocms_misc/basic/static/djangocms_misc/sass/*.sass',
     'djangocms_misc/autopublisher/static/autopublisher/sass/*.sass',
-    'djangocms_misc/admin_style/static/djangocms_misc/admin/sass/*.sass',
-    'djangocms_misc/static/djangocms_misc/sass/*.sass'
+    'djangocms_misc/admin_style/static/admin/djangocms_misc/sass/*.sass',
+    // 'djangocms_misc/static/djangocms_misc/sass/*.sass'
 ]
 
 

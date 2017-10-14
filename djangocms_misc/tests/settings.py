@@ -119,6 +119,7 @@ EXTERNAL_APPS = (
     'filer',
     'mptt',
     'hvad',
+    'modeltranslation',
     # 'ckeditor',
 
     'easy_thumbnails',

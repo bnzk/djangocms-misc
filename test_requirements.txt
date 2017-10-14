@@ -6,9 +6,10 @@ flake8
 # mock
 selenium
 
-django-cms==3.4.3
+django-cms==3.4.4
 djangocms-admin-style==1.2.7
 django-filer==1.2.7
+django-modeltranslation==0.12
 
 # for running cms tests
 iptools

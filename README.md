@@ -108,21 +108,6 @@ usage: add `djangocms_misc.gloabl_untranslated_placeholder` to `INSTALLED_APPS`.
 Yet implemented on `develop` branch only!
 
 
-### Untranslated Placeholder (no under development currently!)
-
-WARNING: very experimental. Would allow mixed translated/untranslated placeholders. Get real untranslated placeholders, that have the same plugins,
-for all languages. monkey patch `cms.utils.plugins.assign_plugins`, and due to "different trees",
-other monkey patches may be needed (sorting/structure mode!). Currently trying different
-approaches, that can be tried: `djangocms_misc.editmode_fallback_placeholder` (always displaying
-fallbacks) or `djangocms_misc.untranslated_placeholder` (kind a "real" untranslated placeholder).
-
-usage: add on of the mentioned apps to `INSTALLED_APPS`. In your placeholder settings, either add
-`editmode_language_fallback: True` or `untranslated: True`, depending which version you have
-installed. There you go.
-
-Yet implemented on `develop` branch only!
-
-
 ### Autopublisher
 
 WARNING: very experimental. Goal: Make the "Publish Page changes" non existent, so draft and live
@@ -133,6 +118,21 @@ usage: add `djangocms_misc.autopublisher` to `INSTALLED_APPS`. Due to when exact
 called, you must add the following stylesheet, to hide the publish button with css:
 
     <link rel="stylesheet" href="{{ STATIC_URL }}autopublisher/css/autopublisher.css">
+
+Yet implemented on `develop` branch only!
+
+
+### Untranslated Placeholder (not under development currently!)
+
+WARNING: very experimental. Would allow mixed translated/untranslated placeholders. Get real untranslated placeholders, that have the same plugins,
+for all languages. monkey patch `cms.utils.plugins.assign_plugins`, and due to "different trees",
+other monkey patches may be needed (sorting/structure mode!). Currently trying different
+approaches, that can be tried: `djangocms_misc.editmode_fallback_placeholder` (always displaying
+fallbacks) or `djangocms_misc.untranslated_placeholder` (kind a "real" untranslated placeholder).
+
+usage: add on of the mentioned apps to `INSTALLED_APPS`. In your placeholder settings, either add
+`editmode_language_fallback: True` or `untranslated: True`, depending which version you have
+installed. There you go.
 
 Yet implemented on `develop` branch only!
 
