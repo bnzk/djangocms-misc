@@ -19,7 +19,7 @@ customizing [django-cms](https://github.com/divio/django-cms), as a set of difer
 - [djangocms_misc.admin_style](#admin-style)
   - better change view styles for djangocms-admin-style (visible fieldsets/inlines/etc)
   - other minor admin enhancements for djangocms-admin-style
-- [djangocms_misc.global_untranslated_placeholder](#untranslated-placeholder)
+- [djangocms_misc.global_untranslated_placeholder](#global-untranslated-placeholder)
   - WARNING: experimental
   - monkey patch the cms's `cms.plugin_rendering.ContentRenderer` to one language only, always.
   - simple monkey patch, but side effects still need to be checked out (haystack / aldryn_search?!)
@@ -108,9 +108,9 @@ usage: add `djangocms_misc.gloabl_untranslated_placeholder` to `INSTALLED_APPS`.
 Yet implemented on `develop` branch only!
 
 
-### Untranslated Placeholder
+### Untranslated Placeholder (no under development currently!)
 
-WARNING: very experimental. Get real untranslated placeholders, that have the same plugins,
+WARNING: very experimental. Would allow mixed translated/untranslated placeholders. Get real untranslated placeholders, that have the same plugins,
 for all languages. monkey patch `cms.utils.plugins.assign_plugins`, and due to "different trees",
 other monkey patches may be needed (sorting/structure mode!). Currently trying different
 approaches, that can be tried: `djangocms_misc.editmode_fallback_placeholder` (always displaying
