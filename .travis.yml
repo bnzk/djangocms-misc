@@ -4,8 +4,6 @@ python:
   - 3.4
 
 env:
-  - DJANGO="django<1.7" DJANGO_CMS="django-cms==3.4.4"
-  - DJANGO="django<1.8" DJANGO_CMS="django-cms==3.4.4"
   - DJANGO="django<1.9" DJANGO_CMS="django-cms==3.4.4"
   - DJANGO="django<1.10" DJANGO_CMS="django-cms==3.4.4"
   - DJANGO="django<1.11" DJANGO_CMS="django-cms==3.4.2"
