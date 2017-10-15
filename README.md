@@ -91,7 +91,8 @@ have `is_live` set to true.
 
 ### Admin Style
 
-Add `djangocms_misc.admin_style` to `INSTALLED_APPS` to have a slightly optimized/opiniated djangocms-admin-style version. No further action needed.
+Add `djangocms_misc.admin_style` to `INSTALLED_APPS`, before `djangocms_admin_style`, to have a slightly optimized/opiniated djangocms-admin-style
+version. No further action needed.
 
 
 ### Global Untranslated Placeholder

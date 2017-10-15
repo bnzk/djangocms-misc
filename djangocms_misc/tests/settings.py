@@ -78,6 +78,8 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'sekizai.context_processors.sekizai',
                 'cms.context_processors.cms_settings',
+
+                'djangocms_misc.basic.context_processors.get_env',
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -155,7 +157,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
 )
 
-INSTALLED_APPS = EXTERNAL_APPS + INTERNAL_APPS
+INSTALLED_APPS = INTERNAL_APPS + EXTERNAL_APPS
 COVERAGE_MODULE_EXCLUDES += EXTERNAL_APPS
 
 SECRET_KEY = 'foobarXXXxxsvXY'

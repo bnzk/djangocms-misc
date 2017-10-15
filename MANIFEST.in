@@ -1,7 +1,10 @@
 include LICENSE
-include README.rst
+include README.md
+include PYPI.rst
 global-exclude *.orig *.pyc *.log *.swp
 
 recursive-include djangocms_misc/basic *
+recursive-include djangocms_misc/autopublisher *
+recursive-include djangocms_misc/global_untranslated_placeholder *
 recursive-include djangocms_misc/admin_style *
 recursive-include djangocms_misc/apphook_templates *
