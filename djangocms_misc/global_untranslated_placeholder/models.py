@@ -1,12 +1,14 @@
 # coding: utf-8
 from django.conf import settings
-from cms.plugin_rendering import ContentRenderer  # RenderedPlaceholder
+from cms.models import Placeholder  # noqa - needed, circular import otherwise
+from cms.plugin_rendering import ContentRenderer  # , RenderedPlaceholder
+
 
 from .signals import *  # noqa
 
 
 def content_renderer__init__(self, request):
-    self.__old_init__(request)
+    self.__original_init__(request)
     global_untranslated = getattr(settings, 'DJANGOCMS_MISC_UNTRANSLATED_PLACEHOLDERS', None)
     if global_untranslated:
         if global_untranslated in settings.LANGUAGES:
@@ -15,6 +17,6 @@ def content_renderer__init__(self, request):
             self.request_language = settings.LANGUAGE_CODE
 
 
-# hope this is the way to do it!
-ContentRenderer.__old_init__ = ContentRenderer.__init__
+# hop this is the way to do it!
+ContentRenderer.__original_init__ = ContentRenderer.__init__
 ContentRenderer.__init__ = content_renderer__init__
