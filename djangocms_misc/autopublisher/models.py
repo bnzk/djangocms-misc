@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
 
 from cms.models import CMSPlugin
-from cms.signals import post_placeholder_operation, post_obj_operation
-from django.db.models.signals import post_save, post_delete
+from cms.signals import post_placeholder_operation  # post_obj_operation
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
@@ -69,7 +69,7 @@ def check_post_placeholder_operation(sender, operation, request, language, token
         plugin = kwargs.get('new_plugin', None)
     if operation == 'cut_plugin':
         placeholder = kwargs.get('source_placeholder', None)
-        the_plugin =  kwargs.get('plugin', None)
+        the_plugin = kwargs.get('plugin', None)
         language = the_plugin.language
     if operation == 'paste_placeholder':
         plugin = kwargs.get('plugins', [None, ])[0]
@@ -84,10 +84,10 @@ def check_post_placeholder_operation(sender, operation, request, language, token
             title = page.get_title_obj(language)
             check_publish(title, force_non_dirty=True)
         return
-    print "post placeholder operation!"
-    print operation
-    print sender
-    print kwargs
+    # print "post placeholder operation!"
+    # print operation
+    # print sender
+    # print kwargs
 
 
 # # TODO: can Title instances still be deleted? or just be unpublished, what would be covered here?
@@ -110,4 +110,3 @@ def check_title_post_save(sender, instance, **kwargs):
 #     print "cms Page check. marking as dirty is done on TItle object!"
 #     for title in instance.title_set.all():
 #         check_publish(title)
-

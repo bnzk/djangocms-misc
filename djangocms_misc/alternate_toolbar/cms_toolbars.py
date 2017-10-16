@@ -74,7 +74,6 @@ class AlternateBasicToolbar(BasicToolbar):
                     position=position
                 )
 
-
     def add_clipboard_menu(self):
         # menu
         self.clipboard_menu = self.toolbar.get_or_create_menu(CLIPBOARD_MENU_IDENTIFIER, 'Clipboard', position=-1)
@@ -89,7 +88,3 @@ class AlternateBasicToolbar(BasicToolbar):
             self.clipboard_menu.add_link_item(_('Clear clipboard'), url='#',
                                            extra_classes=['cms-clipboard-empty'],
                                            disabled=not clipboard_is_bound)
-
-
-
-

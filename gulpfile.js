@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     jshint= require('gulp-jshint'),
     path = require('path'),
+    shell = require('gulp-shell'),
     rename = require('gulp-rename'),
     dummy = 'last';
 
@@ -30,17 +31,24 @@ gulp.task('sass', function () {
 });
 
 
+gulp.task('flake8', shell.task(
+        ['flake8 --ignore=errors']
+    )
+);
+
+
 gulp.task('jshint', function () {
     gulp.src(['gulpfile.js', 'djangocms_misc/**.js'])
         .pipe(jshint());
 });
 
 
-gulp.task('default', ['sass', 'jshint']);
+gulp.task('default', ['sass', 'flake8', 'jshint']);
 
 
 gulp.task('watch', function () {
     gulp.watch('djangocms_misc/**/**.sass', ['sass']);
     gulp.watch(['gulpfile.js', 'djangocms_misc/**.js'], ['jshint']);
+    gulp.watch('**/**.py', ['flake8']);
 });
 
