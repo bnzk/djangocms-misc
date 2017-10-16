@@ -33,10 +33,10 @@ class UntranslatedPlaceholderTestCase(TestCase):
 
         ## English page should have the text plugin
         content_en = self.client.get(page.get_absolute_url())
-        self.assertRegexpMatches(content_en.content, "en field1")
+        self.assertRegexpMatches(str(content_en.content), "en field1")
         ## Deutsch page have text due to untranslated
         content_de = self.client.get(page.get_absolute_url('de'))
-        self.assertRegexpMatches(content_de.content, "en field1")
+        self.assertRegexpMatches(str(content_de.content), "en field1")
 
     def test_publish_non_default_language(self):
         """ Tests untranslated placeholder configuration """
