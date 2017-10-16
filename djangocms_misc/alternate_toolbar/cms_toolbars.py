@@ -31,15 +31,29 @@ class AlternateBasicToolbar(BasicToolbar):
 
     def add_user_menu(self):
         # menu
-        self.user_menu = self.toolbar.get_or_create_menu(USER_MENU_IDENTIFIER, 'User', position=0)
+        self.user_menu = self.toolbar.get_or_create_menu(
+            USER_MENU_IDENTIFIER,
+            _('User'),
+            position=0,
+        )
         # buttons / items
-        self.user_menu.add_sideframe_item(_("Change Password"), url=admin_reverse('password_change'))
-        self.user_menu.add_sideframe_item(_('User settings'), url=admin_reverse('cms_usersettings_change'))
+        self.user_menu.add_sideframe_item(
+            _("Change Password"),
+            url=admin_reverse('password_change'),
+        )
+        self.user_menu.add_sideframe_item(
+            _('User settings'),
+            url=admin_reverse('cms_usersettings_change'),
+        )
         self.add_logout_button(self.user_menu)
 
     def add_admin_menu(self):
         # menu
-        self.admin_menu = self.toolbar.get_or_create_menu(ADMIN_MENU_IDENTIFIER, 'Administration', position=1)
+        self.admin_menu = self.toolbar.get_or_create_menu(
+            ADMIN_MENU_IDENTIFIER,
+            _('Administration'),
+            position=1,
+        )
         # buttons / items (pages are added automagically, in PageToolbar!)
         self.admin_menu.add_sideframe_item(
             _('Files'),
@@ -76,15 +90,24 @@ class AlternateBasicToolbar(BasicToolbar):
 
     def add_clipboard_menu(self):
         # menu
-        self.clipboard_menu = self.toolbar.get_or_create_menu(CLIPBOARD_MENU_IDENTIFIER, 'Clipboard', position=-1)
+        self.clipboard_menu = self.toolbar.get_or_create_menu(
+            CLIPBOARD_MENU_IDENTIFIER,
+            _('Clipboard'),
+            position=-1,
+        )
         # buttons / items
         if self.toolbar.edit_mode or self.toolbar.build_mode:
             # True if the clipboard exists and there's plugins in it.
             clipboard_is_bound = self.get_clipboard_plugins().exists()
-
-            self.clipboard_menu.add_link_item(_('Clipboard...'), url='#',
-                                           extra_classes=['cms-clipboard-trigger'],
-                                           disabled=not clipboard_is_bound)
-            self.clipboard_menu.add_link_item(_('Clear clipboard'), url='#',
-                                           extra_classes=['cms-clipboard-empty'],
-                                           disabled=not clipboard_is_bound)
+            self.clipboard_menu.add_link_item(
+                _('Clipboard...'),
+                url='#',
+                extra_classes=['cms-clipboard-trigger'],
+                disabled=not clipboard_is_bound,
+            )
+            self.clipboard_menu.add_link_item(
+                _('Clear clipboard'),
+                url='#',
+                extra_classes=['cms-clipboard-empty'],
+                disabled=not clipboard_is_bound,
+            )

@@ -1,5 +1,5 @@
 """Settings that need to be set in order to run the tests."""
-import os, sys
+import os
 import logging
 
 
@@ -49,24 +49,24 @@ STATICFILES_DIRS = (
 DJANGOCMS_MISC_UNTRANSLATED_PLACEHOLDERS = 'en'
 
 CMS_PLACEHOLDER_CONF = {
-	'translated_placeholder':{
-		'language_fallback': False,
-	},
-	'untranslated_placeholder':{
-		'language_fallback': False,
+    'translated_placeholder': {
+        'language_fallback': False,
+    },
+    'untranslated_placeholder': {
+        'language_fallback': False,
         # 'untranslated': True,  # legacy version
         'untranslated': 'en',
-	},
-	'editmode_fallback_placeholder':{
-		'language_fallback': True,
+    },
+    'editmode_fallback_placeholder': {
+        'language_fallback': True,
         'editmode_language_fallback': True,
-	},
+    },
 }
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        #'DIRS': [],
+        # 'DIRS': [],
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

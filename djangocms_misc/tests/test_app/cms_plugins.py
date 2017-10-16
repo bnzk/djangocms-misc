@@ -10,4 +10,5 @@ class TestPlugin(LanguageTabsMixin, TranslationAdmin, CMSPluginBase):
     model = TestPluginModel
     render_template = 'test_app/testplugin.html'
 
+
 plugin_pool.register_plugin(TestPlugin)

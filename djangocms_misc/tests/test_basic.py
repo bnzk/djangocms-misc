@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from cms.api import create_page
-from django.core.urlresolvers import reverse
 from django.test import TestCase, Client
 
 

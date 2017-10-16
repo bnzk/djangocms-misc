@@ -49,6 +49,6 @@ gulp.task('default', ['sass', 'flake8', 'jshint']);
 gulp.task('watch', function () {
     gulp.watch('djangocms_misc/**/**.sass', ['sass']);
     gulp.watch(['gulpfile.js', 'djangocms_misc/**.js'], ['jshint']);
-    gulp.watch('**/**.py', ['flake8']);
+    gulp.watch('**/*.py', ['flake8']);
 });
 

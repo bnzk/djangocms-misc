@@ -5,12 +5,12 @@ from django.conf import settings
 from django.dispatch import receiver
 # from cms.models import Title
 from cms.constants import PUBLISHER_STATE_DIRTY
-from cms.signals import post_placeholder_operation, post_obj_operation, post_publish
+from cms.signals import post_placeholder_operation, post_publish  # , post_obj_operation
 
 from djangocms_misc.global_untranslated_placeholder.utils import get_untranslated_default_language
 
 
-if not 'djangocms_misc.autopublisher' in settings.INSTALLED_APPS:
+if 'djangocms_misc.autopublisher' not in settings.INSTALLED_APPS:
 
     # published. if not default language, publish default as well
     # if DJANGOCMS_MISC_UNTRANSLATED_MARK_ALL = True, publish all langs (usability thing, mostly)
@@ -27,14 +27,13 @@ if not 'djangocms_misc.autopublisher' in settings.INSTALLED_APPS:
         if not published_language == default_language:
             page_instance.publish(default_language)
 
-
-    # something has changed, if we are not on the default lang, mark current lang/title as dirty as well
+    # something has changed, if we are not on the default lang, mark current lang/title as as well
     # if DJANGOCMS_MISC_UNTRANSLATED_MARK_ALL = True, mark all languages as dirty!
     @receiver(
         post_placeholder_operation,
         dispatch_uid="cms_global_untranslated_placeholder_post_placeholder_operation",
     )
-    def post_placeholder_operation_handler(sender, operation, request, language, token, origin, **kwargs):
+    def post_ph_operation_handler(sender, operation, request, language, token, origin, **kwargs):
         plugin = None
         if operation == 'change_plugin':
             plugin = kwargs.get('new_plugin', None)

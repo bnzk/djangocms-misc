@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
 from cms.api import create_page, create_title, add_plugin
-# from cms.tests.test_placeholder import _render_placeholder
-from django.core import cache
 from django.test import Client
 from django.test.testcases import TestCase
-from sekizai.context import SekizaiContext
 
 from djangocms_misc.tests.test_app.cms_plugins import TestPlugin
 
 
 class UntranslatedPlaceholderTestCase(TestCase):
-
 
     def setUp(self):
         self.client = Client()
@@ -25,23 +21,23 @@ class UntranslatedPlaceholderTestCase(TestCase):
     def test_basic(self):
         """ Tests untranslated placeholder configuration """
         page = create_page('page_en', 'base.html', 'en')
-        title_de = create_title("de", "page_de", page)
+        create_title("de", "page_de", page)
         placeholder_en = page.placeholders.get(slot='untranslated_placeholder')
         add_plugin(placeholder_en, TestPlugin, 'en', field1='en field1')
         page.publish('en')
         page.publish('de')
 
-        ## English page should have the text plugin
+        # English page should have the text plugin
         content_en = self.client.get(page.get_absolute_url())
         self.assertRegexpMatches(str(content_en.content), "en field1")
-        ## Deutsch page have text due to untranslated
+        # Deutsch page have text due to untranslated
         content_de = self.client.get(page.get_absolute_url('de'))
         self.assertRegexpMatches(str(content_de.content), "en field1")
 
     def test_publish_non_default_language(self):
         """ Tests untranslated placeholder configuration """
         page = create_page('page_en', 'base.html', 'en')
-        title_de = create_title("de", "page_de", page)
+        create_title("de", "page_de", page)
         placeholder_en = page.placeholders.get(slot='untranslated_placeholder')
         plugin = add_plugin(placeholder_en, TestPlugin, 'en', field1='starting different')
         page.publish('en')
@@ -50,9 +46,9 @@ class UntranslatedPlaceholderTestCase(TestCase):
         plugin.save()
         page.publish('de')
 
-        ## English page should have the text plugin
+        # English page should have the text plugin
         content_en = self.client.get(page.get_absolute_url())
         self.assertRegexpMatches(str(content_en.content), "en field1")
-        ## Deutsch page have text due to untranslated
+        # Deutsch page have text due to untranslated
         content_de = self.client.get(page.get_absolute_url('de'))
         self.assertRegexpMatches(str(content_de.content), "en field1")
