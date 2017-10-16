@@ -42,9 +42,6 @@ if not 'djangocms_misc.autopublisher' in settings.INSTALLED_APPS:
             plugin = kwargs.get('plugin', None)
         if not plugin:
             plugin = kwargs.get('plugins', [None, ])[0]
-        print operation
-        print plugin
-        print kwargs
         if plugin:
             placeholder = plugin.placeholder
             if not plugin.language == language:
