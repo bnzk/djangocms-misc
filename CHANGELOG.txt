@@ -1,7 +1,9 @@
 
-==== (ongoing) ===
+==== ongoing (2017-10-20) ===
 
-- add a f**** testsuite!
+- added a testsuite with some basic tests
+- added djangocms_misc_get_from_page_content tag (needs docs badly!)
+- added global_untranslated_placeholder app, that works somewhat reliable on django-cms=>3.4.2 (lets see :|)
 
 
 ==== 0.0.4 ===
