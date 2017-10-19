@@ -46,7 +46,29 @@ STATICFILES_DIRS = (
     os.path.join(APP_ROOT, 'static'),
 )
 
+# own settings!
 DJANGOCMS_MISC_UNTRANSLATED_PLACEHOLDERS = 'en'
+DJANGOCMS_MISC_GET_FROM_PAGE_CONTENT = {
+    'video_id': {
+        'placeholders': ('Inhalt',),
+        'plugins': {
+            'YoutubeVideoPlugin': ['video_id'],
+        }
+    },
+    'image': {
+        'placeholders': ('Inhalt',),
+        'plugins': {
+            'ImagePlugin': ('image', 'preview_image'),
+            'HeaderPlugin': ('image',),
+        }
+    },
+    'text': {
+        'placeholders': ('translated_placeholder', 'untranslated_placeholder'),
+        'plugins': {
+            'TestPlugin': ('field1', ),
+        }
+    },
+}
 
 CMS_PLACEHOLDER_CONF = {
     'translated_placeholder': {
@@ -132,10 +154,11 @@ EXTERNAL_APPS = (
 INTERNAL_APPS = (
     'djangocms_misc.basic',
     'djangocms_misc.admin_style',
-    # 'djangocms_misc.untranslated_placeholder',
+    'djangocms_misc.alternate_toolbar',
     'djangocms_misc.global_untranslated_placeholder',
-    # 'djangocms_misc.editmode_fallback_placeholder',
     # 'djangocms_misc.autopublisher',
+    # 'djangocms_misc.untranslated_placeholder',
+    # 'djangocms_misc.editmode_fallback_placeholder',
 
     'djangocms_misc.tests.test_app',
     # 'djangocms_misc.apphook_templates',

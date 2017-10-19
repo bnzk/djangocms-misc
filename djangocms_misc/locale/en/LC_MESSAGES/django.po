@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-19 14:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: alternate_toolbar/cms_toolbars.py:36
+msgid "User"
+msgstr ""
+
+#: alternate_toolbar/cms_toolbars.py:41
+msgid "Change Password"
+msgstr ""
+
+#: alternate_toolbar/cms_toolbars.py:45
+msgid "User settings"
+msgstr ""
+
+#: alternate_toolbar/cms_toolbars.py:54 alternate_toolbar/cms_toolbars.py:68
+msgid "Administration"
+msgstr ""
+
+#: alternate_toolbar/cms_toolbars.py:59
+msgid "Files"
+msgstr ""
+
+#: alternate_toolbar/cms_toolbars.py:86
+msgid "Users & Groups"
+msgstr ""
+
+#: alternate_toolbar/cms_toolbars.py:95
+msgid "Clipboard"
+msgstr ""
+
+#: alternate_toolbar/cms_toolbars.py:103
+msgid "Clipboard..."
+msgstr ""
+
+#: alternate_toolbar/cms_toolbars.py:109
+msgid "Clear clipboard"
+msgstr ""

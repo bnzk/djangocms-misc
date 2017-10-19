@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-from cms.api import create_page
+from cms.api import create_page, create_title, add_plugin
 from django.test import TestCase, Client
+
+from djangocms_misc.tests.test_app.cms_plugins import TestPlugin
 
 
 class BasicAppTests(TestCase):
@@ -22,5 +24,19 @@ class BasicAppTests(TestCase):
         self.assertContains(response, '/home/">link text HOME')
         self.assertContains(response, 'class="button" href="/en/home/">')
 
-    def get_from_page_content_tag(self):
-        pass
+    def test_get_from_page_content_tag(self):
+        """
+        Tests if content is fetched
+        """
+        page = create_page('page_en', 'base.html', 'en')
+        create_title("de", "page_de", page)
+        placeholder_en = page.placeholders.get(slot='untranslated_placeholder')
+        add_plugin(placeholder_en, TestPlugin, 'en', field1='en field1')
+        page.publish('en')
+        page.publish('de')
+
+        # untranslated placeholder is enabled, so the content shoudl appear de/en 2x each
+        response = self.client.get(page.get_absolute_url('en'))
+        self.assertContains(response, 'en field1', 2)
+        response = self.client.get(page.get_absolute_url('de'))
+        self.assertContains(response, 'en field1', 2)

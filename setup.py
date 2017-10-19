@@ -25,7 +25,8 @@ setup(
     packages=find_packages(),
     install_requires=(
         # 'Django>=1.3,<1.5',  # no need to limit while in development
-        'Django>=1.8',
+        'django>=1.8',
+        'django-appconf>=1.0'
     ),
     include_package_data=True,
     zip_safe=False,
@@ -38,8 +39,4 @@ setup(
         'Programming Language :: Python',
         'Topic :: Internet :: WWW/HTTP',
     ],
-    test_suite='runtests.main',
-    tests_require=(
-        'argparse',  # needed on python 2.6
-    ),
 )

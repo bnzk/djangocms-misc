@@ -3,8 +3,10 @@ from django.conf import settings
 from cms.models import Placeholder  # noqa - needed, circular import otherwise
 from cms.plugin_rendering import ContentRenderer  # , RenderedPlaceholder
 
-
-from .signals import *  # noqa
+# load conf at startup
+from .conf import UntranslatedPlaceholderConf  # noqa
+# import signals at startup
+from .signals import *  # noqa (will forget to update otherwise!)
 
 
 def content_renderer__init__(self, request):
@@ -17,6 +19,6 @@ def content_renderer__init__(self, request):
             self.request_language = settings.LANGUAGE_CODE
 
 
-# hop this is the way to do it!
+# hope this is the way to do it!
 ContentRenderer.__original_init__ = ContentRenderer.__init__
 ContentRenderer.__init__ = content_renderer__init__

@@ -24,10 +24,14 @@
 
 <div>
     <h2>Templatetags</h2>
-    page_link to home: {% djangocms_misc_page_link "home" %}<br>
-    page_link to home, link text "link text HOME":
-    {% djangocms_misc_page_link "home" "" "link text HOME" %}<br>
-    page_link to home, custom class "button": {% djangocms_misc_page_link "home" "button" %}<br>
+    <p>
+        page_link to home: {% djangocms_misc_page_link "home" %}<br>
+        page_link to home, link text "link text HOME":
+        {% djangocms_misc_page_link "home" "" "link text HOME" %}<br>
+        page_link to home, custom class "button": {% djangocms_misc_page_link "home" "button" %}<br>
+        <br>
+        get from page content (untranslated placeholder > text > testplugin > field1): {% djangocms_misc_get_from_page_content request.current_page 'text' %}
+    </p>
 </div>
 
 <div>
