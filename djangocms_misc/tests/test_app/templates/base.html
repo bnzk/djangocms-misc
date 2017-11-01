@@ -1,4 +1,4 @@
-{% load cms_tags djangocms_misc_tags sekizai_tags %}
+{% load cms_tags menu_tags djangocms_misc_tags sekizai_tags %}
 <html>
 <head>
 
@@ -7,16 +7,42 @@
 </head>
 <body>
 
+<link rel="stylesheet" media="screen" href="{{ STATIC_URL }}autopublisher/css/autopublisher.css">
 <link rel="stylesheet" media="screen" href="{{ STATIC_URL }}djangocms_misc/css/cms_frontend_adjust.css">
 
 {% cms_toolbar %}
 
-page_link to home: {% djangocms_misc_page_link "home" %}<br>
-page_link to home, link text "link text HOME":
-{% djangocms_misc_page_link "home" "" "link text HOME" %}<br>
-page_link to home, custom class "button": {% djangocms_misc_page_link "home" "button" %}<br>
+<div>
+    <h2>Language</h2>
+    {% language_chooser %}
+</div>
 
-{% placeholder 'testing_test_yea' %}
+<div>
+    <h2>Menu</h2>
+    {% show_menu 0 5 5 5 %}
+</div>
+
+<div>
+    <h2>Templatetags</h2>
+    <p>
+        page_link to home: {% djangocms_misc_page_link "home" %}<br>
+        page_link to home, link text "link text HOME":
+        {% djangocms_misc_page_link "home" "" "link text HOME" %}<br>
+        page_link to home, custom class "button": {% djangocms_misc_page_link "home" "button" %}<br>
+        <br>
+        get from page content (untranslated placeholder > text > testplugin > field1): {% djangocms_misc_get_from_page_content request.current_page 'text' %}
+    </p>
+</div>
+
+<div>
+    <h2>Placeholders</h2>
+    <h3>Translated (default)</h3>
+    {% placeholder 'translated_placeholder' %}
+    <h3>Untranslated</h3>
+    {% placeholder 'untranslated_placeholder' %}
+    <h3>Editmode Fallback</h3>
+    {% placeholder 'editmode_fallback_placeholder' %}
+</div>
 
 {% render_block 'js' %}
 

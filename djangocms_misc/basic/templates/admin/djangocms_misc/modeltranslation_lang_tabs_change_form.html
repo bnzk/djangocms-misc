@@ -1,0 +1,16 @@
+{% extends 'admin/change_form.html' %}
+{% load i18n admin_static admin_modify cms_admin %}
+{% block extrahead %}{{ block.super }}
+<script src="{% static 'admin/djangocms_misc/js/language_tabs.js' %}" type="text/javascript"></script>
+<link href="{% static 'admin/djangocms_misc/css/language_tabs.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block field_sets %}
+<div id="page_form_lang_tabs" class="languagetabs_mixin">
+    {% for lang_code, lang_name in tab_languages %}
+        <input type="submit" class="language_button{% if forloop.first %} selected{% endif %}" value="{{ lang_name }}" data-language="{{ lang_code }}">
+    {% endfor %}
+    <div class="lang_tabs_line"></div>
+</div>
+{{ block.super }}
+{% endblock %}

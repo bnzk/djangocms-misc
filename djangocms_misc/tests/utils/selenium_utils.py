@@ -5,7 +5,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-#determine the WebDriver module. default to Firefox
+# determine the WebDriver module. default to Firefox
 try:
     webdriver_module = settings.SELENIUM_WEBDRIVER
 except AttributeError:
@@ -27,8 +27,7 @@ class CustomWebDriver(webdriver_module.WebDriver):
 
     def wait_for_css(self, css_selector, timeout=7):
         """ Shortcut for WebDriverWait"""
-        return WebDriverWait(self, timeout).until(lambda driver : driver.find_css(css_selector))
-
+        return WebDriverWait(self, timeout).until(lambda driver: driver.find_css(css_selector))
 
 
 class SeleniumTestCase(StaticLiveServerTestCase):

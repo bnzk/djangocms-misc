@@ -1,6 +1,5 @@
 """Settings that need to be set in order to run the tests."""
-import os, sys
-import tempfile
+import os
 import logging
 
 
@@ -24,12 +23,18 @@ DATABASES = {
     }
 }
 
-
 LANGUAGE_CODE = 'en'
 LANGUAGES = (
     ('en', 'English', ),
     ('de', 'Deutsch', ),
 )
+
+# enable this if you think cache might screw something up.
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+#     }
+# }
 
 ROOT_URLCONF = 'djangocms_misc.tests.urls'
 
@@ -41,10 +46,49 @@ STATICFILES_DIRS = (
     os.path.join(APP_ROOT, 'static'),
 )
 
+# own settings!
+DJANGOCMS_MISC_UNTRANSLATED_PLACEHOLDERS = 'en'
+DJANGOCMS_MISC_GET_FROM_PAGE_CONTENT = {
+    'video_id': {
+        'placeholders': ('Inhalt',),
+        'plugins': {
+            'YoutubeVideoPlugin': ['video_id'],
+        }
+    },
+    'image': {
+        'placeholders': ('Inhalt',),
+        'plugins': {
+            'ImagePlugin': ('image', 'preview_image'),
+            'HeaderPlugin': ('image',),
+        }
+    },
+    'text': {
+        'placeholders': ('translated_placeholder', 'untranslated_placeholder'),
+        'plugins': {
+            'TestPlugin': ('field1', ),
+        }
+    },
+}
+
+CMS_PLACEHOLDER_CONF = {
+    'translated_placeholder': {
+        'language_fallback': False,
+    },
+    'untranslated_placeholder': {
+        'language_fallback': False,
+        # 'untranslated': True,  # legacy version
+        'untranslated': 'en',
+    },
+    'editmode_fallback_placeholder': {
+        'language_fallback': True,
+        'editmode_language_fallback': True,
+    },
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        #'DIRS': [],
+        # 'DIRS': [],
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -56,6 +100,8 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'sekizai.context_processors.sekizai',
                 'cms.context_processors.cms_settings',
+
+                'djangocms_misc.basic.context_processors.get_env',
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -90,13 +136,17 @@ EXTERNAL_APPS = (
     'sekizai',
     'treebeard',
     'cms',
+    'djangocms_link',
+    'djangocms_text_ckeditor',
     'djangocms_admin_style',
     'menus',
     'filer',
     'mptt',
-    'easy_thumbnails',
+    'hvad',
+    'modeltranslation',
     # 'ckeditor',
 
+    'easy_thumbnails',
     'django.contrib.admin',
 
 )
@@ -104,6 +154,12 @@ EXTERNAL_APPS = (
 INTERNAL_APPS = (
     'djangocms_misc.basic',
     'djangocms_misc.admin_style',
+    'djangocms_misc.alternate_toolbar',
+    'djangocms_misc.global_untranslated_placeholder',
+    # 'djangocms_misc.autopublisher',
+    # 'djangocms_misc.untranslated_placeholder',
+    # 'djangocms_misc.editmode_fallback_placeholder',
+
     'djangocms_misc.tests.test_app',
     # 'djangocms_misc.apphook_templates',
 )
@@ -114,6 +170,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',

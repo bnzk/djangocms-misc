@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from .models import TestModel, TestInlineModel
 
+
 class TestInlineModelInline(admin.StackedInline):
     model = TestInlineModel
     extra = 2

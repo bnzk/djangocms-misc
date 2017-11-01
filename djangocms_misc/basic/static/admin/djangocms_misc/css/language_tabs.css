@@ -1,0 +1,5 @@
+/* assumes djangocms-admin-style is installed */
+.pseudo-hidden {
+  position: absolute;
+  left: -9000000px;
+  top: 0; }

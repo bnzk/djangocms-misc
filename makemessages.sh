@@ -1,5 +1,6 @@
 
 
-cd cms_tools
-django-admin.py makemessages -l en
+cd djangocms_misc
+django-admin.py makemessages -l en -l de
+django-admin.py compilemessages
 cd ..

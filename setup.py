@@ -2,6 +2,7 @@
 from setuptools import setup, find_packages
 import os
 
+
 # not so bad: http://joebergantine.com/blog/2015/jul/17/releasing-package-pypi/
 version = __import__('djangocms_misc').__version__
 
@@ -9,6 +10,7 @@ version = __import__('djangocms_misc').__version__
 def read(fname):
     # read the contents of a text file
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
+
 
 setup(
     name="djangocms-misc",
@@ -23,7 +25,8 @@ setup(
     packages=find_packages(),
     install_requires=(
         # 'Django>=1.3,<1.5',  # no need to limit while in development
-        'Django>=1.8',
+        'django>=1.8',
+        'django-appconf>=1.0'
     ),
     include_package_data=True,
     zip_safe=False,
@@ -36,8 +39,4 @@ setup(
         'Programming Language :: Python',
         'Topic :: Internet :: WWW/HTTP',
     ],
-    test_suite='runtests.main',
-    tests_require=(
-        'argparse',  # needed on python 2.6
-    ),
 )
