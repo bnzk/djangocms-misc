@@ -2,9 +2,12 @@
 
 git flow release start 0.xxx
 version bump in djangocms_misc/__init__.py
+CHANGELOG.txt
 git flow release finish 0.xxx
 git push --all; git push --tags
 git push upstream --all; git push upstream --tags
 python setup.py sdist && python setup.py bdist_wheel --universal
 python setup.py register -r pypitest && twine upload dist/* -r pypitest
 python setup.py register -r pypi && twine upload dist/*
+
+version bump to 0.x.nextDEV! in djangocms_misc/__init__.py
