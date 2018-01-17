@@ -101,15 +101,15 @@ version. No further action needed.
 Other structure for the main CMS toolbar.
 
 - User
+  - Change password, user settings, logout
 - Administration
-  - Pages
-  - Files
-  - Whatever
-  - ...
+  - Pages, Files, Whatever, ...
 - Page
   - you know this one
 - Language
+  - as is
 - Clipboard
+  - more visible
 
 Add `djangocms_misc.alternate_toolbar` to `INSTALLED_APPS`, and you'll have it as is.
 If you want custom items in your administration menu, create your own `cms_toolbars.py`, as follows:
