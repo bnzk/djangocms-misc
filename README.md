@@ -11,6 +11,7 @@ customizing [django-cms](https://github.com/divio/django-cms), as a set of difer
 
 - [djangocms_misc.basic](#basic)
 - [djangocms_misc.admin_style](#admin-style)
+- [djangocms_misc.alternate_toolbar](#alternate-toolbar)
 - [djangocms_misc.global_untranslated_placeholder](#global-untranslated-placeholder)
 - [djangocms_misc.autopublisher](#autopublisher)
 - djangocms_misc.editmode_fallback_placeholder / djangocms_misc.untranslated_placeholder
