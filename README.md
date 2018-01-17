@@ -9,11 +9,11 @@ customizing [django-cms](https://github.com/divio/django-cms), as a set of difer
 
 ## Features
 
-- [djangocms_misc.basic](#basic)
-- [djangocms_misc.admin_style](#admin-style)
-- [djangocms_misc.alternate_toolbar](#alternate-toolbar)
-- [djangocms_misc.global_untranslated_placeholder](#global-untranslated-placeholder)
-- [djangocms_misc.autopublisher](#autopublisher)
+- [djangocms_misc.basic](#basic) (various tools and helpers)
+- [djangocms_misc.admin_style](#admin-style) (enhancements for djangocms-admin-style)
+- [djangocms_misc.alternate_toolbar](#alternate-toolbar) (alternate djangocms toolbar)
+- [djangocms_misc.global_untranslated_placeholder](#global-untranslated-placeholder) (as it says)
+- [djangocms_misc.autopublisher](#autopublisher) (draft and live always in sync)
 - djangocms_misc.editmode_fallback_placeholder / djangocms_misc.untranslated_placeholder
   - WARNING: only testing, currently following the `global_untranslated_placeholder` approach.
   - WARNING: very experimental
