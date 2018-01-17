@@ -10,23 +10,9 @@ customizing [django-cms](https://github.com/divio/django-cms), as a set of difer
 ## Features
 
 - [djangocms_misc.basic](#basic)
-  - Frontend: Hide CMS's "create" button in toolbar, make structure mode lightly transparent
-  - page_link tag: {% page_link "reverse_id_or_the_like" "css_class_name" "custom_link_text" %}
-  - helper tag for getting images from image fields in plugins/placeholders.
-  useful for fb:og tags and the like.
-  - Bot404Middleware, to keep away bots from staging systems
-  - get_env context processor, to always have env (stage/live) and current SITE_ID
 - [djangocms_misc.admin_style](#admin-style)
-  - better change view styles for djangocms-admin-style (visible fieldsets/inlines/etc)
-  - other minor admin enhancements for djangocms-admin-style
 - [djangocms_misc.global_untranslated_placeholder](#global-untranslated-placeholder)
-  - WARNING: experimental
-  - monkey patch the cms's `cms.plugin_rendering.ContentRenderer` to one language only, always.
-  - simple monkey patch, but side effects still need to be checked out (haystack / aldryn_search?!)
 - [djangocms_misc.autopublisher](#autopublisher)
-  - WARNING: experimental
-  - cheat the cms, so that you'll never have a difference between draft und published version, as every change is
-  always published automatically (experimental, for plugins and pages for now, but probably all we need).
 - djangocms_misc.editmode_fallback_placeholder / djangocms_misc.untranslated_placeholder
   - WARNING: only testing, currently following the `global_untranslated_placeholder` approach.
   - WARNING: very experimental
@@ -59,7 +45,15 @@ Add needed ``djangocms-misc`` subapps to your ``INSTALLED_APPS``
     )
 
 
+
 ### Basic
+
+- Frontend: Hide CMS's "create" button in toolbar, make structure mode lightly transparent
+- page_link tag: {% page_link "reverse_id_or_the_like" "css_class_name" "custom_link_text" %}
+- helper tag for getting images from image fields in plugins/placeholders.
+useful for fb:og tags and the like.
+- Bot404Middleware, to keep away bots from staging systems
+- get_env context processor, to always have env (stage/live) and current SITE_ID
 
 **Pagelink tag**, looks for page, displays nothing if nothing found.
 
@@ -89,15 +83,71 @@ Add
 to your `settings.TEMPLATES`s context processors. If `settings.ENV = 'live'`, your context will
 have `is_live` set to true.
 
+
+
 ### Admin Style
+
+- better change view styles for djangocms-admin-style (visible fieldsets/inlines/etc)
+- other minor admin enhancements/bugfixes for djangocms-admin-style
 
 Add `djangocms_misc.admin_style` to `INSTALLED_APPS`, before `djangocms_admin_style`, to have a slightly optimized/opiniated djangocms-admin-style
 version. No further action needed.
 
 
+
+### Alternate Toolbar
+
+Other structure for the main CMS toolbar.
+
+- User
+- Administration
+  - Pages
+  - Files
+  - Whatever
+  - ...
+- Page
+  - you know this one
+- Language
+- Clipboard
+
+Add `djangocms_misc.alternate_toolbar` to `INSTALLED_APPS`, and you'll have it as is.
+If you want custom items in your administration menu, create your own `cms_toolbars.py`, as follows:
+
+    from django.utils.translation import ugettext_lazy as _
+    from cms.toolbar_pool import toolbar_pool
+    from cms.utils.urlutils import admin_reverse
+    from djangocms_misc.alternate_toolbar.cms_toolbars import AlternateBasicToolbar
+
+
+    toolbar_pool.unregister(AlternateBasicToolbar)
+
+    @toolbar_pool.register
+    class CustomToolbar(AlternateBasicToolbar):
+
+        def add_more_admin_menu_items(self):
+            self.admin_menu.add_sideframe_item(
+                _('Aktuelles'),
+                url=admin_reverse('esb_site_aktuellesartikelmodel_changelist')
+            )
+            self.admin_menu.add_sideframe_item(
+                _('Medienartikel'),
+                url=admin_reverse('esb_site_medienbacklinkmodel_changelist')
+            )
+            advanced_menu = self.admin_menu.get_or_create_menu("advanced", "Erweitert")
+            advanced_menu.add_sideframe_item(
+                _('Metanavigation'),
+                url=admin_reverse('esb_site_metanavigationlinkmodel_changelist')
+            )
+
+
+
 ### Global Untranslated Placeholder
 
-WARNING: experimental. Get real untranslated placeholders, that have the same plugins,
+- WARNING: experimental
+- monkey patch the cms's `cms.plugin_rendering.ContentRenderer` to one language only, always.
+- simple monkey patch, but side effects still need to be checked out (haystack / aldryn_search?!)
+
+Get real untranslated placeholders, that have the same plugins,
 for all languages. monkey patch `cms.plugin_rendering.ContentRenderer`, to one language only,
 always. Very simple patch.
 
@@ -109,9 +159,14 @@ usage: add `djangocms_misc.gloabl_untranslated_placeholder` to `INSTALLED_APPS`.
 Yet implemented on `develop` branch only!
 
 
+
 ### Autopublisher
 
-WARNING: very experimental. Goal: Make the "Publish Page changes" non existent, so draft and live
+- WARNING: experimental
+- cheat the cms, so that you'll never have a difference between draft und published version, as every change is
+always published automatically (experimental, for plugins and pages for now, but probably all we need).
+
+Goal: Make the "Publish Page changes" non existent, so draft and live
  version are always the same. With every change made in content or pages, publish the page(s)
  automagically. Using cms signals, this is more or less implemented, but still heavily experimental.
 
