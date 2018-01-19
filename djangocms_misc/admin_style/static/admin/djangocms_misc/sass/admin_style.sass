@@ -39,6 +39,7 @@ $color_grey: #d3d3d3
                 > h2
                     // fieldset title, make visible
                     padding: 1em 0 0.75em 0
+                    box-sizing: border-box
                     margin-bottom: 0.75em
                     font-size: $title_font_size !important
                     font-weight: bold
@@ -53,9 +54,10 @@ $color_grey: #d3d3d3
                             font-weight: bold
                 .form-row
                     // the row
+                    // width: 100%
                     padding: 0 0 $after_field_padding
-                    input
-                        // width: 100% !important
+                    input[type="text"]
+                        width: 100% !important
                 .add-row
                     padding: 0.8em
                     padding-left: 8px
