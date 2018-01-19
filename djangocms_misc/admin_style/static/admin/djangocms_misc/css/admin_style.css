@@ -17,8 +17,6 @@
   font-size: 14px !important; }
 
 .djangocms-admin-style #content form fieldset, .djangocms-admin-style #content form .inline-group {
-  width: 100%;
-  max-width: 920px;
   padding-bottom: 0.3em; }
   .djangocms-admin-style #content form fieldset > h2, .djangocms-admin-style #content form .inline-group > h2 {
     padding: 1em 0 0.75em 0;
@@ -35,8 +33,6 @@
 
 .djangocms-admin-style #content form .inline-group .form-row {
   padding: 0 0 1.2em; }
-  .djangocms-admin-style #content form .inline-group .form-row input {
-    width: 100% !important; }
 
 .djangocms-admin-style #content form .inline-group .add-row {
   padding: 0.8em;
@@ -47,6 +43,8 @@
 
 .djangocms-admin-style #content form .tabular table tbody td {
   padding: 0.8em !important; }
+  .djangocms-admin-style #content form .tabular table tbody td.original p {
+    display: none; }
 
 .djangocms-admin-style #content form .tabular table tbody tr.add-row td {
   padding-left: 0 !important; }
