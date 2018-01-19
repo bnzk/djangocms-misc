@@ -3,6 +3,12 @@
 - more tests
 
 
+==== 0.0.7 (not yet) ===
+
+- hide tabular inlines title (td.original > p)
+- fiddling and fine tuning .form-row input { width: 100% } (removing it :)
+
+
 ==== 0.0.6 (2018-01-17) ===
 
 - filer 1.3 and django 1.11 tested
