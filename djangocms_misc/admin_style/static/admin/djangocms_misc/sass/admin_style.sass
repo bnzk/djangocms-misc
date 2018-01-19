@@ -32,8 +32,8 @@ $color_grey: #d3d3d3
             .field-type label, .sortedm2m label, .vCheckboxLabel
                 font-size: $normal_font_size !important
             fieldset, .inline-group
-                width: 100%
-                max-width: 920px
+                // width: 100%
+                // max-width: 920px
                 // after fieldset?
                 padding-bottom: $after_fieldset_padding
                 > h2
@@ -55,7 +55,7 @@ $color_grey: #d3d3d3
                     // the row
                     padding: 0 0 $after_field_padding
                     input
-                        width: 100% !important
+                        // width: 100% !important
                 .add-row
                     padding: 0.8em
                     padding-left: 8px
@@ -66,8 +66,11 @@ $color_grey: #d3d3d3
                 table
                     tbody
                         td
-                            // tabular inline padding top
+                            // tabular inline padding top:
+                            // not showing the title line in td.original!
                             padding: 0.8em !important
+                            &.original p
+                                display: none
                         tr.add-row td
                             padding-left: 0 !important
     // no margin in popup ?
