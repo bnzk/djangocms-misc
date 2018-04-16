@@ -3,10 +3,12 @@
 - more tests
 
 
-==== 0.0.7 (not yet) ===
+==== 0.0.7 ===
 
+- targeting django > 1.11. django 2 support not tested yet!
 - hide tabular inlines title (td.original > p)
 - fiddling and fine tuning .form-row input { width: 100% } (removing it :)
+- alternate toolbar for django-cms 3.5 (tested with 3.5.1 and 3.5.2)
 
 
 ==== 0.0.6 (2018-01-17) ===
