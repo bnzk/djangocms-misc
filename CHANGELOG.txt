@@ -7,6 +7,7 @@
 
 -
 
+
 ==== 0.0.6 (2018-04-16) ===
 
 - targeting django > 1.11. django 2 support not tested yet (cms doesnt support it)!
