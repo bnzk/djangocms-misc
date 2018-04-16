@@ -96,9 +96,13 @@ class AlternateBasicToolbar(BasicToolbar):
             position=-1,
         )
         # buttons / items
-        if self.toolbar.edit_mode or self.toolbar.build_mode:
+        if self.toolbar.edit_mode or getattr(self.toolbar, 'build_mode', None):
             # True if the clipboard exists and there's plugins in it.
-            clipboard_is_bound = self.get_clipboard_plugins().exists()
+            if getattr(self, 'get_clipboard_plugins', None):
+                # cms up to 4.4.6
+                clipboard_is_bound = self.get_clipboard_plugins().exists()
+            else:
+                clipboard_is_bound = self.toolbar.clipboard_plugin
             self.clipboard_menu.add_link_item(
                 _('Clipboard...'),
                 url='#',
