@@ -1,6 +1,6 @@
 {% load cms_tags %}{% spaceless %}
 {% page_url lookup as my_url %}
 {% if my_url %}
-    <a class="{{ css_class }}" href="{{ my_url }}">{% if link_text %}{{ link_text }}{% else %}{% page_attribute 'title' lookup %}{% endif %}</a>
+    <a class="{{ css_class }}" href="{{ my_url }}">{% if link_text %}{{ link_text }}{% else %}{% page_attribute link_text_attr lookup %}{% endif %}</a>
 {% endif %}
 {% endspaceless %}
