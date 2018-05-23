@@ -100,7 +100,12 @@ class AlternateBasicToolbar(BasicToolbar):
             # True if the clipboard exists and there's plugins in it.
             if getattr(self, 'get_clipboard_plugins', None):
                 # cms up to 4.4.6
-                clipboard_is_bound = self.get_clipboard_plugins().exists()
+                if self.prevent_runtime_error:
+                    # recursive loop, when empty clipboard?!
+                    pass
+                else:
+                    self.prevent_runtime_error = True
+                    clipboard_is_bound = self.get_clipboard_plugins().exists()
             else:
                 clipboard_is_bound = self.toolbar.clipboard_plugin
             self.clipboard_menu.add_link_item(
