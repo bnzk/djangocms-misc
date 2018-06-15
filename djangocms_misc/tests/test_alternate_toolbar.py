@@ -32,6 +32,8 @@ class AlternateToolbarTests(TestCase):
         self.assertEqual(response.status_code, 200)
         response = self.client.get('/en/?edit')
         self.assertEqual(response.status_code, 200)
+        response = self.client.get('/en/not-existing-at-all/')
+        self.assertEqual(response.status_code, 404)
 
     def test_toolbar_renders_has_links(self):
         """
