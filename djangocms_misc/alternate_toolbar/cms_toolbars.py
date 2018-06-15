@@ -96,7 +96,12 @@ class AlternateBasicToolbar(BasicToolbar):
             position=-1,
         )
         # buttons / items
-        if self.toolbar.edit_mode or getattr(self.toolbar, 'build_mode', None):
+        # if self.toolbar.edit_mode or getattr(self.toolbar, 'build_mode', None):
+        # new, testing for preventing a recursion error!
+        if (
+            (self.toolbar.edit_mode or getattr(self.toolbar, 'build_mode', None)) and
+            getattr(self.request, 'current_page', None)
+        ):
             # True if the clipboard exists and there's plugins in it.
             if getattr(self, 'get_clipboard_plugins', None):
                 # cms up to 4.4.6
