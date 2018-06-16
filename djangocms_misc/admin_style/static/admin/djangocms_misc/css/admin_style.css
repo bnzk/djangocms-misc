@@ -34,7 +34,7 @@
 
 .djangocms-admin-style #content form .inline-group .form-row {
   padding: 0 0 1.2em; }
-  .djangocms-admin-style #content form .inline-group .form-row input[type="text"] {
+  .djangocms-admin-style #content form .inline-group .form-row input[type="text"]:not(.vDateField):not(.vTimeField) {
     width: 100% !important; }
 
 .djangocms-admin-style #content form .inline-group .add-row {

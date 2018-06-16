@@ -96,11 +96,21 @@ class AlternateBasicToolbar(BasicToolbar):
             position=-1,
         )
         # buttons / items
-        if self.toolbar.edit_mode or getattr(self.toolbar, 'build_mode', None):
+        # if self.toolbar.edit_mode or getattr(self.toolbar, 'build_mode', None):
+        # new, testing for preventing a recursion error!
+        if (
+            (self.toolbar.edit_mode or getattr(self.toolbar, 'build_mode', None)) and
+            getattr(self.request, 'current_page', None)
+        ):
             # True if the clipboard exists and there's plugins in it.
             if getattr(self, 'get_clipboard_plugins', None):
                 # cms up to 4.4.6
-                clipboard_is_bound = self.get_clipboard_plugins().exists()
+                if getattr(self, 'clipboard_plugin_prevent_recursion', None):
+                    # recursive loop, when empty clipboard?!
+                    clipboard_is_bound = False
+                else:
+                    self.clipboard_plugin_prevent_recursion = True
+                    clipboard_is_bound = self.get_clipboard_plugins().exists()
             else:
                 clipboard_is_bound = self.toolbar.clipboard_plugin
             self.clipboard_menu.add_link_item(

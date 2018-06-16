@@ -27,6 +27,7 @@ LANGUAGE_CODE = 'en'
 LANGUAGES = (
     ('en', 'English', ),
     ('de', 'Deutsch', ),
+    ('fr', 'Frentsch', ),
 )
 
 # enable this if you think cache might screw something up.
