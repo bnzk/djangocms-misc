@@ -40,3 +40,7 @@ class BasicAppTests(TestCase):
         self.assertContains(response, 'en field1', 2)
         response = self.client.get(page.get_absolute_url('de'))
         self.assertContains(response, 'en field1', 2)
+
+    def test_language_tabs_admin_mixin(self):
+        # TODO: language tabs tests
+        pass
