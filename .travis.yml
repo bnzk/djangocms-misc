@@ -5,6 +5,8 @@ python:
   - 3.5
 #  - 3.6
 
+cache: pip
+
 env:
   - DJANGO="django<1.9" DJANGO_CMS="django-cms==3.4.4"
   - DJANGO="django<1.10" DJANGO_CMS="django-cms==3.4.4"
