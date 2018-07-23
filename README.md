@@ -66,15 +66,6 @@ the following stylesheet in your main html template.
 
     <link rel="stylesheet" href="{{ STATIC_URL }}djangocms_misc/css/cms_frontend_adjust.css">
 
-**Bot404Middleware**, raises a 404 for bots, if enabled. Requires django-user_agents.
-
-Add
-
-    'djangocms_misc.basic.middleware.Bot404Middleware'
-
-to your `settings.MIDDLEWARE` (old style `MIDDLEWARE_CLASSES` should still work). To really enable
-it, you need to explicitly set `settings.DJANGOCMS_MISC_BOT404 = True`.
-
 **get_env contect processor**, add SITE_ID and if available, is_live/stage/dev/whatever to the context.
 
 Add
@@ -83,6 +74,26 @@ Add
 
 to your `settings.TEMPLATES`s context processors. If `settings.ENV = 'live'`, your context will
 have `is_live` set to true.
+
+**PasswordProtectedMiddleware**, only allows authenticated users to access your site - you'll first need to enter valid
+credentials at the django admin login screen (normally /admin/login/ )
+
+Add
+
+    'djangocms_misc.basic.middleware.PasswordProtectedMiddleware'
+
+to your `settings.MIDDLEWARE` (old style `MIDDLEWARE_CLASSES` should still work). To really enable
+it, you need to explicitly set `settings.DJANGOCMS_MISC_BOT404 = True`.
+
+**Bot404Middleware**, raises a 404 for bots, if enabled. Requires django-user_agents. No more recommended, better 
+use password protected middleware.
+
+Add
+
+    'djangocms_misc.basic.middleware.Bot404Middleware'
+
+to your `settings.MIDDLEWARE` (old style `MIDDLEWARE_CLASSES` should still work). To really enable
+it, you need to explicitly set `settings.DJANGOCMS_MISC_BOT404 = True`.
 
 
 
