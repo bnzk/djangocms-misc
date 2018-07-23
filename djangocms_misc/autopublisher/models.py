@@ -11,11 +11,11 @@ def check_publish(title_obj, force_non_dirty=False):
     if title_obj.published and page.publisher_is_draft:
         # print "published and draft!"
         if title_obj.is_dirty() or force_non_dirty:
-            print "NEEEEEDs publishing!"
+            # print("NEEEEEDs publishing!")
             page.publish(title_obj.language)
             # from cms.api import publish_page
             # publish_page(page, user, title_obj.language)
-            print "done publishing!"
+            # print("done publishing!")
     else:
         pass
 
