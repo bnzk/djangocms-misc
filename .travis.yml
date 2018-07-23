@@ -15,6 +15,7 @@ env:
   - DJANGO="django<2.1" DJANGO_CMS="django-cms==3.5.2"
 
 install:
+  - pip -U pip
   - pip install -r test_requirements.txt
   - pip install -q $DJANGO $DJANGO_CMS
   - python setup.py -q install
