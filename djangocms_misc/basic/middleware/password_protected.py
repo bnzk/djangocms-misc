@@ -1,6 +1,12 @@
 # try to be old and new style middleware compatible
 from django.shortcuts import redirect
-from django.urls import reverse
+
+# compat
+import django
+if django.VERSION[:2] < (1, 10):
+    from django.core.urlresolvers import reverse
+else:
+    from django.urls import reverse
 
 
 class PasswordProtectedMiddleware(object):

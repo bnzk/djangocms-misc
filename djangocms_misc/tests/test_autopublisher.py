@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
-from django.core.urlresolvers import reverse
 from django.test import TestCase, Client, modify_settings
+
+# compat
+import django
+if django.VERSION[:2] < (1, 10):
+    from django.core.urlresolvers import reverse
+else:
+    from django.urls import reverse
 
 
 @modify_settings(INSTALLED_APPS={
