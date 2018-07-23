@@ -82,8 +82,7 @@ Add
 
     'djangocms_misc.basic.middleware.PasswordProtectedMiddleware'
 
-to your `settings.MIDDLEWARE` (old style `MIDDLEWARE_CLASSES` should still work). To really enable
-it, you need to explicitly set `settings.DJANGOCMS_MISC_BOT404 = True`.
+to your `settings.MIDDLEWARE` (old style `MIDDLEWARE_CLASSES` should still work).
 
 **Bot404Middleware**, raises a 404 for bots, if enabled. Requires django-user_agents. No more recommended, better 
 use password protected middleware.
