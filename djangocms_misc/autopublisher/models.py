@@ -97,7 +97,7 @@ def check_post_placeholder_operation(sender, operation, request, language, token
     dispatch_uid="cms_autopublisher_publish_check_save_title",
 )
 def check_title_post_save(sender, instance, **kwargs):
-    print "cms Title check."
+    # print "cms Title check."
     check_publish(instance)
 
 

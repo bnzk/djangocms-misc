@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
-from django.test import TestCase, Client
+from django.test import TestCase, Client, modify_settings
 
 
+@modify_settings(INSTALLED_APPS={
+    'append': 'djangocms_misc.autopublisher',
+})
 class AutoPublisherTestCase(TestCase):
     def setUp(self):
         self.client = Client()

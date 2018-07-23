@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from cms.api import create_page, create_title, add_plugin
-from django.test import TestCase, Client
+from django.test import TestCase, Client, modify_settings
 
 from djangocms_misc.tests.test_app.cms_plugins import TestPlugin
 
@@ -43,4 +43,20 @@ class BasicAppTests(TestCase):
 
     def test_language_tabs_admin_mixin(self):
         # TODO: language tabs tests
+        pass
+
+    @modify_settings(MIDDLEWARE_CLASSES={
+        'append': 'djangocms_misc.basic.middleware.PasswordProtectedMiddleware',
+    })
+    def test_password_protected_middleware(self):
+        page_home = create_page('home', 'base.html', 'en')
+        page_home.reverse_id = 'home'
+        page_home.save()
+        page_home.publish('en')
+        response = self.client.get(page_home.get_absolute_url('en'))
+        self.assertEqual(response.status_code, 302)
+        pass
+
+    def test_bot404_middleware(self):
+        # TODO: tests
         pass

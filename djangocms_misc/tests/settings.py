@@ -179,7 +179,6 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the next line for simple clickjacking protection:
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'djangocms_misc.basic.middleware.password_protected.PasswordProtectedMiddleware',
 )
 
 INSTALLED_APPS = INTERNAL_APPS + EXTERNAL_APPS
