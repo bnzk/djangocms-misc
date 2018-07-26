@@ -54,6 +54,7 @@ Add needed ``djangocms-misc`` subapps to your ``INSTALLED_APPS``
 - helper tag for getting images from image fields in plugins/placeholders.
 useful for fb:og tags and the like.
 - RedirectFirstSubpageMiddleware, convenient redirect to first subpages.
+- PasswordProtectedMiddleware, to keep away bots from staging systems
 - Bot404Middleware, to keep away bots from staging systems
 - get_env context processor, to always have env (stage/live) and current SITE_ID
 
