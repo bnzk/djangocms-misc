@@ -32,9 +32,8 @@ class AutoPublisherTestCase(TestCase):
         title_obj.title = 'dummy'
         print("1")
         title_obj.save()
-        print("2")
+        print("maybe get page_test fresh from db!?")
         public_obj = page_test.get_public_object()
-        print (public_obj.__dict__)
         self.assertEqual(page_test.publisher_is_draft, True)
         self.assertEqual(page_test.get_public_object().reverse_id, 'lucky')
         pass
