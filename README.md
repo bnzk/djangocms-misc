@@ -53,6 +53,7 @@ Add needed ``djangocms-misc`` subapps to your ``INSTALLED_APPS``
 - page_link tag: {% page_link "reverse_id_or_the_like" "css_class_name" "custom_link_text" %}
 - helper tag for getting images from image fields in plugins/placeholders.
 useful for fb:og tags and the like.
+- RedirectFirstSubpageMiddleware, convenient redirect to first subpages.
 - Bot404Middleware, to keep away bots from staging systems
 - get_env context processor, to always have env (stage/live) and current SITE_ID
 
@@ -74,6 +75,20 @@ Add
 
 to your `settings.TEMPLATES`s context processors. If `settings.ENV = 'live'`, your context will
 have `is_live` set to true.
+
+
+**RedirectFirstSubpageMiddleware**, allows to automagically redirect to a pages first subpage, only if and when, the
+redirect field is filled with `/firstchild`.
+
+Add
+
+    'djangocms_misc.basic.middleware.RedirectFirstSubpageMiddleware'
+
+to your `settings.MIDDLEWARE`. A small change to the `menu/menu.html` template is needed, check 
+https://github.com/bnzk/djangocms-misc/tree/develop/djangocms_misc/basic/templates/menu/menu.html
+(in fact, only check if the redirect is actually `/firstchild`). To make this work, `djangocms_misc.basic` must be 
+before `cms`, in `INSTALLED_APPS`. Also, check your own menu templates, if you have.
+
 
 **PasswordProtectedMiddleware**, only allows authenticated users to access your site - you'll first need to enter valid
 credentials at the django admin login screen (normally /admin/login/ )

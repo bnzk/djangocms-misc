@@ -1,4 +1,3 @@
-# try to be old and new style middleware compatible
 from django.shortcuts import redirect
 
 # compat
@@ -10,6 +9,7 @@ else:
 
 
 class PasswordProtectedMiddleware(object):
+
     def __init__(self, get_response=None):
         if get_response:
             self.get_response = get_response
@@ -18,7 +18,9 @@ class PasswordProtectedMiddleware(object):
     def __call__(self, request):
         # Code to be executed for each request before
         # the view (and later middleware) are called.
-        self.process_request(request)
+        a_possible_redirect = self.process_request(request)
+        if a_possible_redirect:
+            return a_possible_redirect
         response = self.get_response(request)
         # Code to be executed for each request/response after
         # the view is called.
@@ -28,7 +30,7 @@ class PasswordProtectedMiddleware(object):
         # raise a 404 if bot and enabled.
         login_url = reverse('admin:login')
         logout_url = reverse('admin:logout')
-        if request.path in (login_url, logout_url):
+        if request.path in (login_url, logout_url,):
             return
         if not request.user.is_authenticated():
             redirect_url = '{}?next={}'.format(login_url, request.path)

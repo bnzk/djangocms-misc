@@ -45,7 +45,7 @@ class BasicAppTests(TestCase):
         # TODO: language tabs tests
         pass
 
-    @modify_settings(MIDDLEWARE_CLASSES={
+    @modify_settings(MIDDLEWARE={
         'append': 'djangocms_misc.basic.middleware.PasswordProtectedMiddleware',
     })
     def test_password_protected_middleware(self):
