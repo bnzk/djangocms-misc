@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from cms.models import Page
 from django.test import TestCase, Client, modify_settings
 
 # compat
@@ -21,6 +22,32 @@ class AutoPublisherTestCase(TestCase):
 
     # TODO: many autopublisher tests
     def test_save_page(self):
+        from cms import api as cms_api
+        print("hhhhhh")
+        page_test = cms_api.create_page('test', 'base.html', 'en', reverse_id='what')
+        page_test.publish('en')
+        page_test.reverse_id = 'lucky'
+        print("0")
+        title_obj = page_test.get_title_obj('en')
+        title_obj.title = 'dummy'
+        print("1")
+        title_obj.save()
+        print("2")
+        public_obj = page_test.get_public_object()
+        print (public_obj.__dict__)
+        self.assertEqual(page_test.publisher_is_draft, True)
+        self.assertEqual(page_test.get_public_object().reverse_id, 'lucky')
+        pass
+
+    def test_save_title(self):
+        from cms import api as cms_api
+        page_test = cms_api.create_page('test', 'base.html', 'en')
+        page_test.publish('en')
+        title_en = page_test.get_title_obj('en')
+        title_en.title = 'another'
+        title_en.save()
+        self.assertEqual(page_test.publisher_is_draft, True)
+        self.assertEqual(page_test.get_public_object().get_title_obj('en').title, 'another')
         pass
 
     def test_save_plugin(self):

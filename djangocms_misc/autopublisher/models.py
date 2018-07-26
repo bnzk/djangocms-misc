@@ -9,9 +9,10 @@ from django.dispatch import receiver
 def check_publish(title_obj, force_non_dirty=False):
     page = title_obj.page
     if title_obj.published and page.publisher_is_draft:
-        # print "published and draft!"
+        print("published and draft!")
+        print(title_obj.is_dirty())
         if title_obj.is_dirty() or force_non_dirty:
-            # print("NEEEEEDs publishing")
+            print("NEEEEEDs publishing")
             page.publish(title_obj.language)
             # from cms.api import publish_page
             # publish_page(page, user, title_obj.language)
@@ -25,7 +26,7 @@ def check_publish(title_obj, force_non_dirty=False):
     dispatch_uid="cms_autopublisher_publish_check_save_plugin_instance",
 )
 def cms_plugin_instance_post_save(sender, instance, **kwargs):
-    # print "post save whatever"
+    # print("post save whatever")
     # print sender
     created = kwargs.get('created')
     if created and issubclass(sender, CMSPlugin):
@@ -97,7 +98,7 @@ def check_post_placeholder_operation(sender, operation, request, language, token
     dispatch_uid="cms_autopublisher_publish_check_save_title",
 )
 def check_title_post_save(sender, instance, **kwargs):
-    # print "cms Title check."
+    print "cms Title check."
     check_publish(instance)
 
 
