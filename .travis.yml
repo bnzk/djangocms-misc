@@ -8,14 +8,15 @@ python:
 cache: pip
 
 env:
-  - DJANGO="django<1.9" DJANGO_CMS="django-cms==3.4.4"
-  - DJANGO="django<1.10" DJANGO_CMS="django-cms==3.4.4"
+  # - DJANGO="django<1.9" DJANGO_CMS="django-cms==3.4.4"
+  # - DJANGO="django<1.10" DJANGO_CMS="django-cms==3.4.4"
   - DJANGO="django<1.11" DJANGO_CMS="django-cms==3.4.2"
   - DJANGO="django<1.11" DJANGO_CMS="django-cms==3.4.3"
   - DJANGO="django<1.11" DJANGO_CMS="django-cms==3.4.4"
   - DJANGO="django<1.11" DJANGO_CMS="django-cms==3.4.5"
   - DJANGO="django<2.0" DJANGO_CMS="django-cms==3.5.2"
   - DJANGO="django<2.1" DJANGO_CMS="django-cms==3.4.5"
+  - DJANGO="django<2.1" DJANGO_CMS="django-cms==3.4.6"
   - DJANGO="django<2.1" DJANGO_CMS="django-cms==3.5.2"
 
 install:

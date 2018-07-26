@@ -1,6 +1,11 @@
-==== ongoing ===
 
+
+
+==== 0.0.8 (unreleased) ===
+
+- officially dropping django 1.8 / 1.9 / 1.10 support
 - more and more tests
+- adding RedirectSubpageMiddleware
 
 
 ==== 0.0.7 (2018-06-16) ===
