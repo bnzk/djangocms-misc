@@ -21,8 +21,10 @@ class RedirectFirstSubpageMiddleware(object):
             the_redirect = the_page.get_redirect()
             # some more checks if in a cms view!
             if view_func.__name__ == 'details' and "slug" in view_kwargs and the_redirect == "/firstchild":
-                subpages = request.current_page.children.all()[:1]
-                if len(subpages)>0:
-                    # can redirect! must make uri!
+                if getattr(request.current_page, 'get_child_page', None):
+                    subpages = request.current_page.get_child_pages()
+                else:
+                    subpages = request.current_page.children.all()
+                if len(subpages):
                     return redirect(subpages[0].get_absolute_url(), permanent=True)
         return None
