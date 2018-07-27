@@ -1,11 +1,16 @@
 
 
+==== 0.0.9 (unreleased) ===
 
-==== 0.0.8 (unreleased) ===
+- even more tests
+
+
+==== 0.0.8 (2018-07-27) ===
 
 - officially dropping django 1.8 / 1.9 / 1.10 support
 - more and more tests
 - adding RedirectSubpageMiddleware
+- enhanced autopublisher, namely for static placeholders
 
 
 ==== 0.0.7 (2018-06-16) ===
