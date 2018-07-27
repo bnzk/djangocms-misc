@@ -81,7 +81,7 @@ class AutoPublisherTestCase(CMSTestCase, TestCase):
         )
         data = {
             'plugin_id': plugin1.id,
-            # 'target_language': 'en',
+            'target_language': 'en',
             'placeholder_id': placeholder.id,
             'plugin_order': [plugin2.id, plugin1.id, ],
         }
