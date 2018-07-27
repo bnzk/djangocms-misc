@@ -53,6 +53,8 @@ Add needed ``djangocms-misc`` subapps to your ``INSTALLED_APPS``
 - page_link tag: {% page_link "reverse_id_or_the_like" "css_class_name" "custom_link_text" %}
 - helper tag for getting images from image fields in plugins/placeholders.
 useful for fb:og tags and the like.
+- RedirectFirstSubpageMiddleware, convenient redirect to first subpages.
+- PasswordProtectedMiddleware, to keep away bots from staging systems
 - Bot404Middleware, to keep away bots from staging systems
 - get_env context processor, to always have env (stage/live) and current SITE_ID
 
@@ -66,15 +68,6 @@ the following stylesheet in your main html template.
 
     <link rel="stylesheet" href="{{ STATIC_URL }}djangocms_misc/css/cms_frontend_adjust.css">
 
-**Bot404Middleware**, raises a 404 for bots, if enabled. Requires django-user_agents.
-
-Add
-
-    'djangocms_misc.basic.middleware.Bot404Middleware'
-
-to your `settings.MIDDLEWARE` (old style `MIDDLEWARE_CLASSES` should still work). To really enable
-it, you need to explicitly set `settings.DJANGOCMS_MISC_BOT404 = True`.
-
 **get_env contect processor**, add SITE_ID and if available, is_live/stage/dev/whatever to the context.
 
 Add
@@ -83,6 +76,39 @@ Add
 
 to your `settings.TEMPLATES`s context processors. If `settings.ENV = 'live'`, your context will
 have `is_live` set to true.
+
+
+**RedirectFirstSubpageMiddleware**, allows to automagically redirect to a pages first subpage, only if and when, the
+redirect field is filled with `/firstchild`.
+
+Add
+
+    'djangocms_misc.basic.middleware.RedirectFirstSubpageMiddleware'
+
+to your `settings.MIDDLEWARE`. A small change to the `menu/menu.html` template is needed, check 
+https://github.com/bnzk/djangocms-misc/tree/develop/djangocms_misc/basic/templates/menu/menu.html
+(in fact, only check if the redirect is actually `/firstchild`). To make this work, `djangocms_misc.basic` must be 
+before `cms`, in `INSTALLED_APPS`. Also, check your own menu templates, if you have.
+
+
+**PasswordProtectedMiddleware**, only allows authenticated users to access your site - you'll first need to enter valid
+credentials at the django admin login screen (normally /admin/login/ )
+
+Add
+
+    'djangocms_misc.basic.middleware.PasswordProtectedMiddleware'
+
+to your `settings.MIDDLEWARE` (old style `MIDDLEWARE_CLASSES` should still work).
+
+**Bot404Middleware**, raises a 404 for bots, if enabled. Requires django-user_agents. No more recommended, better 
+use password protected middleware.
+
+Add
+
+    'djangocms_misc.basic.middleware.Bot404Middleware'
+
+to your `settings.MIDDLEWARE` (old style `MIDDLEWARE_CLASSES` should still work). To really enable
+it, you need to explicitly set `settings.DJANGOCMS_MISC_BOT404 = True`.
 
 
 
@@ -145,29 +171,22 @@ If you want custom items in your administration menu, create your own `cms_toolb
 ### Global Untranslated Placeholder
 
 - WARNING: experimental
-- monkey patch the cms's `cms.plugin_rendering.ContentRenderer` to one language only, always.
-- simple monkey patch, but side effects still need to be checked out (haystack / aldryn_search?!)
 
 Get real untranslated placeholders, that have the same plugins,
 for all languages. monkey patch `cms.plugin_rendering.ContentRenderer`, to one language only,
-always. Very simple patch.
+always. Very simple patch, but side effects still need to be checked out (haystack / aldryn_search seems ok?!)
 
 usage: add `djangocms_misc.gloabl_untranslated_placeholder` to `INSTALLED_APPS`. In your settings,
  add `DJANGOCMS_MISC_UNTRANSLATED_PLACEHOLDERS = True` or ` = 'lang_code'`, `True` would default
  to your settings `LANGUAGE_CODE`. This is then the language your plugins will be filled in and
  rendered.
 
-Yet implemented on `develop` branch only!
-
-
 
 ### Autopublisher
 
 - WARNING: experimental
-- cheat the cms, so that you'll never have a difference between draft und published version, as every change is
-always published automatically (experimental, for plugins and pages for now, but probably all we need).
 
-Goal: Make the "Publish Page changes" non existent, so draft and live
+Goal: Make the "Publish Page changes" button non existent, so draft and live
  version are always the same. With every change made in content or pages, publish the page(s)
  automagically. Using cms signals, this is more or less implemented, but still heavily experimental.
 
@@ -175,8 +194,6 @@ usage: add `djangocms_misc.autopublisher` to `INSTALLED_APPS`. Due to when exact
 called, you must add the following stylesheet, to hide the publish button with css:
 
     <link rel="stylesheet" href="{{ STATIC_URL }}autopublisher/css/autopublisher.css">
-
-Yet implemented on `develop` branch only!
 
 
 ### Untranslated Placeholder (not under development currently!)
@@ -190,8 +207,6 @@ fallbacks) or `djangocms_misc.untranslated_placeholder` (kind a "real" untransla
 usage: add on of the mentioned apps to `INSTALLED_APPS`. In your placeholder settings, either add
 `editmode_language_fallback: True` or `untranslated: True`, depending which version you have
 installed. There you go.
-
-Yet implemented on `develop` branch only!
 
 
 ## Development

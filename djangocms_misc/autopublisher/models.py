@@ -1,21 +1,25 @@
 from __future__ import unicode_literals
 
-from cms.models import CMSPlugin
+from cms.admin.static_placeholder import StaticPlaceholderAdmin
+from cms.models import CMSPlugin, Page, StaticPlaceholder
 from cms.signals import post_placeholder_operation  # post_obj_operation
+from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.urls import resolve
 
 
 def check_publish(title_obj, force_non_dirty=False):
     page = title_obj.page
     if title_obj.published and page.publisher_is_draft:
-        # print "published and draft!"
+        # print("published and draft!")
+        # print(title_obj.is_dirty())
         if title_obj.is_dirty() or force_non_dirty:
-            print "NEEEEEDs publishing!"
+            # print("NEEEEEDs publishing")
             page.publish(title_obj.language)
             # from cms.api import publish_page
             # publish_page(page, user, title_obj.language)
-            print "done publishing!"
+            # print("done publishing")
     else:
         pass
 
@@ -25,11 +29,11 @@ def check_publish(title_obj, force_non_dirty=False):
     dispatch_uid="cms_autopublisher_publish_check_save_plugin_instance",
 )
 def cms_plugin_instance_post_save(sender, instance, **kwargs):
-    # print "post save whatever"
+    # print("post save whatever")
     # print sender
     created = kwargs.get('created')
     if created and issubclass(sender, CMSPlugin):
-        page = instance.placeholder.page
+        page = getattr(instance.placeholder, 'page', None)
         if page:
             title = page.get_title_obj(instance.language)
             check_publish(title)
@@ -49,16 +53,25 @@ def cms_plugin_instance_post_save(sender, instance, **kwargs):
 
 # ATTENTION ! ***** is called BEFORE page is marked dirty!!!
 # works well for move operations, but not perfect for copy paste! (order is not taken)
+# source of signals:
 @receiver(
     post_placeholder_operation,
     dispatch_uid="cms_autopublisher_post_placeholder_operation",
 )
 def check_post_placeholder_operation(sender, operation, request, language, token, origin, **kwargs):
+    # print("post placeholder operation!")
+    # print(sender)
+    # print(operation)
+    # print(request)
+    # print(language)
+    # print(kwargs)
+    # print(origin)
     plugin = None
     placeholder = None
     language = None
     if operation == 'move_plugin':
         plugin = kwargs.get('plugin', None)
+    # solved with above post_save signal
     # if operation == 'add_plugin':
     #     plugin = kwargs.get('plugin', None)
     if operation == 'delete_plugin':
@@ -75,19 +88,22 @@ def check_post_placeholder_operation(sender, operation, request, language, token
         plugin = kwargs.get('plugins', [None, ])[0]
     if operation == 'clear_placeholder':
         plugin = kwargs.get('plugins', [None, ])[0]
+
     if plugin:
         placeholder = plugin.placeholder
         language = plugin.language
     if placeholder:
-        page = placeholder.page
+        page = getattr(placeholder, 'page', None)
         if page:
             title = page.get_title_obj(language)
             check_publish(title, force_non_dirty=True)
+        else:
+            if placeholder._get_attached_model() == StaticPlaceholder:
+                # print("static placeholder!")
+                attached_objs = placeholder._get_attached_objects()
+                if len(attached_objs) == 1:
+                    attached_objs[0].publish(None, language, force=True)
         return
-    # print "post placeholder operation!"
-    # print operation
-    # print sender
-    # print kwargs
 
 
 # # TODO: can Title instances still be deleted? or just be unpublished, what would be covered here?
@@ -97,7 +113,7 @@ def check_post_placeholder_operation(sender, operation, request, language, token
     dispatch_uid="cms_autopublisher_publish_check_save_title",
 )
 def check_title_post_save(sender, instance, **kwargs):
-    print "cms Title check."
+    # print("cms Title check")
     check_publish(instance)
 
 

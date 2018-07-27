@@ -35,7 +35,9 @@ class UntranslatedPlaceholderTestCase(TestCase):
         self.assertRegexpMatches(str(content_de.content), "en field1")
 
     def test_publish_non_default_language(self):
-        """ Tests untranslated placeholder configuration """
+        """
+        test if a publish in a no default language also works
+        """
         page = create_page('page_en', 'base.html', 'en')
         create_title("de", "page_de", page)
         placeholder_en = page.placeholders.get(slot='untranslated_placeholder')

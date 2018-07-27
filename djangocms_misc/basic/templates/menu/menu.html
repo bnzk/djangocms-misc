@@ -1,0 +1,14 @@
+{% load menu_tags %}
+
+
+{# only change to original django cms menu template: only differnce is checking if redirect_url is /firstchild #}
+{% for child in children %}
+<li class="child{% if child.selected %} selected{% endif %}{% if child.ancestor %} ancestor{% endif %}{% if child.sibling %} sibling{% endif %}{% if child.descendant %} descendant{% endif %}">
+	<a href="{% if child.attr.redirect_url and not child.attr.redirect_url == '/firstchild' %}{{ child.attr.redirect_url }}{% else %}{{ child.get_absolute_url }}{% endif %}">{{ child.get_menu_title }}</a>
+	{% if child.children %}
+	<ul>
+		{% show_menu from_level to_level extra_inactive extra_active template "" "" child %}
+	</ul>
+	{% endif %}
+</li>
+{% endfor %}
