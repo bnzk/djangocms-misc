@@ -124,7 +124,7 @@ COVERAGE_MODULE_EXCLUDES = [
     'migrations', 'fixtures', 'admin$', 'django_extensions',
 ]
 
-EXTERNAL_APPS = (
+EXTERNAL_APPS = [
     # 'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -149,10 +149,9 @@ EXTERNAL_APPS = (
 
     'easy_thumbnails',
     'django.contrib.admin',
+]
 
-)
-
-INTERNAL_APPS = (
+INTERNAL_APPS = [
     'djangocms_misc.basic',
     'djangocms_misc.admin_style',
     'djangocms_misc.alternate_toolbar',
@@ -163,9 +162,9 @@ INTERNAL_APPS = (
 
     'djangocms_misc.tests.test_app',
     # 'djangocms_misc.apphook_templates',
-)
+]
 
-MIDDLEWARE = (
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -180,7 +179,7 @@ MIDDLEWARE = (
     'djangocms_misc.basic.middleware.RedirectFirstSubpageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-)
+]
 
 INSTALLED_APPS = INTERNAL_APPS + EXTERNAL_APPS
 COVERAGE_MODULE_EXCLUDES += EXTERNAL_APPS

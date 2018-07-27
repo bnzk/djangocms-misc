@@ -11,5 +11,8 @@ def get_env(request):
     }
     env = getattr(settings, 'ENV', None)
     if env:
-        context['is_' + str(env)] = True
+        context.update({
+            'ENV': settings.ENV,
+            'is_' + str(env): True,
+        })
     return context
