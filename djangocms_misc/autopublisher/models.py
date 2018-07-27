@@ -15,7 +15,7 @@ def check_publish(title_obj, force_non_dirty=False):
         # print("published and draft!")
         # print(title_obj.is_dirty())
         if title_obj.is_dirty() or force_non_dirty:
-            print("NEEEEEDs publishing")
+            # print("NEEEEEDs publishing")
             page.publish(title_obj.language)
             # from cms.api import publish_page
             # publish_page(page, user, title_obj.language)
@@ -99,7 +99,7 @@ def check_post_placeholder_operation(sender, operation, request, language, token
             check_publish(title, force_non_dirty=True)
         else:
             if placeholder._get_attached_model() == StaticPlaceholder:
-                print "static placeholder!"
+                # print("static placeholder!")
                 attached_objs = placeholder._get_attached_objects()
                 if len(attached_objs) == 1:
                     attached_objs[0].publish(None, language, force=True)
@@ -113,7 +113,7 @@ def check_post_placeholder_operation(sender, operation, request, language, token
     dispatch_uid="cms_autopublisher_publish_check_save_title",
 )
 def check_title_post_save(sender, instance, **kwargs):
-    print("cms Title check")
+    # print("cms Title check")
     check_publish(instance)
 
 
