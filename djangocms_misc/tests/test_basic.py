@@ -34,7 +34,6 @@ class BasicAppTests(TestCase):
         add_plugin(placeholder_en, TestPlugin, 'en', field1='en field1')
         page.publish('en')
         page.publish('de')
-
         # untranslated placeholder is enabled, so the content shoudl appear de/en 2x each
         response = self.client.get(page.get_absolute_url('en'))
         self.assertContains(response, 'en field1', 2)
