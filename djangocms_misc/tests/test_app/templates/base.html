@@ -25,13 +25,26 @@
 <div>
     <h2>Templatetags</h2>
     <p>
-        page_link to home: {% djangocms_misc_page_link "home" %}<br>
-        page_link to home, link text "link text HOME":
-        {% djangocms_misc_page_link "home" "" "link text HOME" %}<br>
-        page_link to home, custom class "button": {% djangocms_misc_page_link "home" "button" %}<br>
-        page_link to home, using link_text_attr='menu_title' (not yet working): {% djangocms_misc_page_link "home" link_text_attr='menu_title' %}<br>
+        page_link to home:
+        {% djangocms_misc_page_link "home" %}
         <br>
-        get from page content (untranslated placeholder > text > testplugin > field1): {% djangocms_misc_get_from_page_content request.current_page 'text' %}
+        page_link to home, link text "link text HOME":
+        {% djangocms_misc_page_link "home" "" "link text HOME" %}
+        <br>
+        page_link to home, custom class "button":
+        {% djangocms_misc_page_link "home" "button" %}
+        <br>
+        page_link to home, using link_text_attr='menu_title' (not yet working):
+        {% djangocms_misc_page_link "home" link_text_attr='menu_title' %}<br>
+        <br>
+        get from page content (untranslated placeholder > text > testplugin > field1):
+        no page: {% djangocms_misc_get_from_page_content 'text' %}
+        <br>
+        request.current_page{% djangocms_misc_get_from_page_content 'text' request.current_page %}
+        <br>
+        current_page.id: {% djangocms_misc_get_from_page_content 'text' request.current_page.id %}
+        <br>
+        current_page.reverse_id: {% djangocms_misc_get_from_page_content 'text' request.current_page.reverse_id %}
     </p>
 </div>
 
