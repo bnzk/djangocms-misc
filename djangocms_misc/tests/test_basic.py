@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from cms.api import create_page, create_title, add_plugin
 from django.test import TestCase, Client, modify_settings
 
@@ -31,7 +33,10 @@ class BasicAppTests(TestCase):
         page = create_page('page_en', 'base.html', 'en')
         create_title("de", "page_de", page)
         placeholder_en = page.placeholders.get(slot='untranslated_placeholder')
-        add_plugin(placeholder_en, TestPlugin, 'en', field1='en field1')
+        plugin = add_plugin(placeholder_en, TestPlugin, 'en', )
+        # plugin.field1 = 'en field1'
+        plugin.field1_en = 'en field1'
+        plugin.save()
         page.publish('en')
         page.publish('de')
         # untranslated placeholder is enabled, so the content shoudl appear de/en 2x each
