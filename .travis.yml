@@ -33,7 +33,7 @@ matrix:
   allow_failures:
     - env: DJANGO="django<2.1" DJANGO_CMS="django-cms==3.4.6"
     - env: DJANGO="django<2.1" DJANGO_CMS="django-cms==3.5.2"
-    - env: DJANGO="django<2.2" DJANGO_CMS="django-cms==3.5.2"
+    - env: DJANGO="django<2.2" DJANGO_CMS="django-cms==3.4.6"
     - env: DJANGO="django<2.2" DJANGO_CMS="django-cms==3.5.2"
   exclude:
     - python: '2.7'
