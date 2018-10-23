@@ -36,6 +36,7 @@ class BasicAppTests(TestCase):
         page.publish('de')
         # untranslated placeholder is enabled, so the content shoudl appear de/en 2x each
         response = self.client.get(page.get_absolute_url('en'))
+        print(response.content)
         self.assertContains(response, 'en field1', 2)
         response = self.client.get(page.get_absolute_url('de'))
         self.assertContains(response, 'en field1', 2)
