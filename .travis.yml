@@ -15,9 +15,10 @@ env:
   - DJANGO="django<1.11" DJANGO_CMS="django-cms==3.4.4"
   - DJANGO="django<1.11" DJANGO_CMS="django-cms==3.4.5"
   - DJANGO="django<2.0" DJANGO_CMS="django-cms==3.5.2"
-  - DJANGO="django<2.1" DJANGO_CMS="django-cms==3.4.5"
   - DJANGO="django<2.1" DJANGO_CMS="django-cms==3.4.6"
   - DJANGO="django<2.1" DJANGO_CMS="django-cms==3.5.2"
+  - DJANGO="django<2.2" DJANGO_CMS="django-cms==3.4.6"
+  - DJANGO="django<2.2" DJANGO_CMS="django-cms==3.5.2"
 
 install:
   - pip install -U pip
@@ -30,10 +31,16 @@ script:
 
 matrix:
   allow_failures:
-    - env: DJANGO="django<2.1" DJANGO_CMS="django-cms==3.4.5"
+    - env: DJANGO="django<2.1" DJANGO_CMS="django-cms==3.4.6"
     - env: DJANGO="django<2.1" DJANGO_CMS="django-cms==3.5.2"
+    - env: DJANGO="django<2.2" DJANGO_CMS="django-cms==3.5.2"
+    - env: DJANGO="django<2.2" DJANGO_CMS="django-cms==3.5.2"
   exclude:
     - python: '2.7'
       env: DJANGO="django<2.1" DJANGO_CMS="django-cms==3.4.5
     - python: '2.7'
       env: DJANGO="django<2.1" DJANGO_CMS="django-cms==3.5.2
+    - python: '2.7'
+      env: DJANGO="django<2.2" DJANGO_CMS="django-cms==3.4.5
+    - python: '2.7'
+      env: DJANGO="django<2.2" DJANGO_CMS="django-cms==3.5.2
