@@ -1,11 +1,11 @@
 
 
-==== 0.1.1 (unreleased) ===
+==== 0.1.10 (unreleased) ===
 
 - even more tests
 
 
-==== 0.1.0 (2018-10-23) ===
+==== 0.1.9 (2018-10-23) sorry, typo, should have been 0.1.0! ===
 
 - djangocms_misc_get_content_from_page tag backwards incompatible: argument order switched, page is optional!
 - page_lookup for get_content_from_page templatetag: reverse_id, page_id or a page object supported
