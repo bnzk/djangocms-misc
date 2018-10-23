@@ -31,6 +31,7 @@ class BasicAppTests(TestCase):
         Tests if content is fetched
         """
         page = create_page('page_en', 'base.html', 'en')
+        page.reverse_id = 'test'
         create_title("de", "page_de", page)
         placeholder_en = page.placeholders.get(slot='untranslated_placeholder')
         plugin = add_plugin(placeholder_en, TestPlugin, 'en', )
@@ -42,9 +43,9 @@ class BasicAppTests(TestCase):
         # untranslated placeholder is enabled, so the content shoudl appear de/en 2x each
         response = self.client.get(page.get_absolute_url('en'))
         print(response.content)
-        self.assertContains(response, 'en field1', 2)
+        self.assertContains(response, 'en field1', 5)
         response = self.client.get(page.get_absolute_url('de'))
-        self.assertContains(response, 'en field1', 2)
+        self.assertContains(response, 'en field1', 5)
 
     def test_language_tabs_admin_mixin(self):
         # TODO: language tabs tests

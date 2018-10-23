@@ -26,7 +26,7 @@ def djangocms_misc_page_link(context, lookup, css_class='', link_text='', link_t
 
 
 @register.simple_tag(takes_context=True)
-def djangocms_misc_get_from_page_content(context, page_lookup, config_name='image'):
+def djangocms_misc_get_from_page_content(context, config_name, page_lookup=None):
     config = settings.DJANGOCMS_MISC_GET_FROM_PAGE_CONTENT.get(config_name, None)
     request = context['request']
     page = None
@@ -36,22 +36,27 @@ def djangocms_misc_get_from_page_content(context, page_lookup, config_name='imag
         try:
             page_id = int(page_lookup)
             page = Page.objects.get(pk=page_id)
-        except (ValueError, Page.DoesNotExist) as e:
+        except (TypeError, ValueError, Page.DoesNotExist) as e:
             pass
         try:
             page_reverse_id = str(page_lookup)
-            page = Page.objects.get(reverse_id=page_reverse_id)
+            qs = Page.objects.all()
+            if request.toolbar.edit_mode:
+                qs = qs.draft()
+            else:
+                qs = qs.public()
+            page = qs.get(reverse_id=page_reverse_id)
         except (ValueError, Page.DoesNotExist) as e:
             pass
         if not page:
             page = getattr(request, 'current_page', None)
     if page and config:
-        content = get_from_page_content(request, page_lookup, config)
+        content = get_from_page_content(request, config, page)
         return content
     return ''
 
 
-def get_from_page_content(request, page, config):
+def get_from_page_content(request, config, page):
     placeholders = page.get_placeholders()
     to_scan_placeholders = config.get('placeholders')
     to_scan_plugins = config.get('plugins')
