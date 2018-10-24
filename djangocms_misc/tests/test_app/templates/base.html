@@ -40,7 +40,7 @@
         get from page content (untranslated placeholder > text > testplugin > field1):
         no page: {% djangocms_misc_get_from_page_content 'text' %}
         <br>
-        request.current_page{% djangocms_misc_get_from_page_content 'text' request.current_page %}
+        request.current_page: {% djangocms_misc_get_from_page_content 'text' request.current_page %}
         <br>
         current_page.id: {% djangocms_misc_get_from_page_content 'text' request.current_page.id %}
         <br>
