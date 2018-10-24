@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from cms.api import create_page, create_title, add_plugin
+from django.contrib.auth.models import User
 from django.test import TestCase, Client, modify_settings
 
 from djangocms_misc.tests.test_app.cms_plugins import TestPlugin
@@ -10,6 +11,11 @@ from djangocms_misc.tests.test_app.cms_plugins import TestPlugin
 class BasicAppTests(TestCase):
     def setUp(self):
         self.client = Client()
+        self.user = User.objects.create_superuser(
+            username='fred',
+            password='test',
+            email='test@test.fred',
+        )
 
     def tearDown(self):
         pass
@@ -45,6 +51,11 @@ class BasicAppTests(TestCase):
         self.assertContains(response, 'en field1', 5)
         response = self.client.get(page.get_absolute_url('de'))
         self.assertContains(response, 'en field1', 5)
+        # also, draft mode!
+        self.client.login(username='fred', password='test')
+        response = self.client.get(page.get_absolute_url('en') + '?edit')
+        # one more, in the structure mode/plugin representation
+        self.assertContains(response, 'en field1', 6)
 
     def test_language_tabs_admin_mixin(self):
         # TODO: language tabs tests

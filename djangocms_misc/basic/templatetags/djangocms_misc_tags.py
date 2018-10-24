@@ -42,7 +42,7 @@ def djangocms_misc_get_from_page_content(context, config_name, page_lookup=None)
             page_reverse_id = str(page_lookup)
             qs = Page.objects.all()
             if request.toolbar.edit_mode:
-                qs = qs.draft()
+                qs = qs.drafts()
             else:
                 qs = qs.public()
             page = qs.get(reverse_id=page_reverse_id)
