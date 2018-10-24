@@ -55,7 +55,7 @@ class BasicAppTests(TestCase):
         self.client.login(username='fred', password='test')
         response = self.client.get(page.get_absolute_url('en') + '?edit')
         # one more, in the structure mode/plugin representation
-        self.assertContains(response, 'en field1', 6)
+        self.assertContains(response, ': en field1', 5)
 
     def test_language_tabs_admin_mixin(self):
         # TODO: language tabs tests
