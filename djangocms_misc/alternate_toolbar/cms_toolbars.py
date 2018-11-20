@@ -1,10 +1,11 @@
 # coding: utf-8
 from __future__ import unicode_literals
 
-from cms.utils.urlutils import admin_reverse
+from django.conf import settings
 from django.contrib.auth import get_user_model, get_permission_codename
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
+from cms.utils.urlutils import admin_reverse
 from cms.toolbar_pool import toolbar_pool
 from cms.cms_toolbars import BasicToolbar, ADMIN_MENU_IDENTIFIER, ADMINISTRATION_BREAK
 
@@ -55,10 +56,11 @@ class AlternateBasicToolbar(BasicToolbar):
             position=1,
         )
         # buttons / items (pages are added automagically, in PageToolbar!)
-        self.admin_menu.add_sideframe_item(
-            _('Files'),
-            url=admin_reverse('filer_folder_changelist')
-        )
+        if 'filer' in settings.INSTALLED_APPS:
+            self.admin_menu.add_sideframe_item(
+                _('Files'),
+                url=admin_reverse('filer_folder_changelist')
+            )
         # in between
         self.add_more_admin_menu_items()
         # end
