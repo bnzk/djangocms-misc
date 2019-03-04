@@ -9,6 +9,7 @@ from cms.utils.urlutils import admin_reverse
 from cms.toolbar_pool import toolbar_pool
 from cms.cms_toolbars import BasicToolbar, ADMIN_MENU_IDENTIFIER, ADMINISTRATION_BREAK
 
+from djangocms_misc.utils.edit_mode import is_edit_or_build_mode
 
 USER_MENU_IDENTIFIER = 'user-menu'
 CLIPBOARD_MENU_IDENTIFIER = 'clipboard-menu'
@@ -100,11 +101,7 @@ class AlternateBasicToolbar(BasicToolbar):
         # buttons / items
         # if self.toolbar.edit_mode or getattr(self.toolbar, 'build_mode', None):
         # new, testing for preventing a recursion error!
-        if (
-            (getattr(self.toolbar, 'edit_mode', None) or  # cms pre 3.6
-                getattr(self.toolbar, 'edit_mode_active', None) or  # cms 3.6+
-                getattr(self.toolbar, 'build_mode_active', None) or  # cms 3.6+
-                getattr(self.toolbar, 'build_mode', None)) and
+        if (is_edit_or_build_mode(self) and
             getattr(self.request, 'current_page', None)
         ):
             # True if the clipboard exists and there's plugins in it.

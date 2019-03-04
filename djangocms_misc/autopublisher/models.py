@@ -8,13 +8,18 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.urls import resolve
 
+# ugly
+from cms import __version__ as cms_version
+CMS_VERSION_36 = cms_version.startswith('3.6.')
+
 
 def check_publish(title_obj, force_non_dirty=False):
     page = title_obj.page
     if title_obj.published and page.publisher_is_draft:
         # print("published and draft!")
         # print(title_obj.is_dirty())
-        if title_obj.is_dirty() or force_non_dirty:
+        # not dirty, after plugin add, in cms 3.6!
+        if title_obj.is_dirty() or force_non_dirty or CMS_VERSION_36:
             # print("NEEEEEDs publishing")
             page.publish(title_obj.language)
             # from cms.api import publish_page
@@ -30,8 +35,9 @@ def check_publish(title_obj, force_non_dirty=False):
 )
 def cms_plugin_instance_post_save(sender, instance, **kwargs):
     # print("post save whatever")
-    # print sender
+    # print(sender)
     created = kwargs.get('created')
+    # print(created)
     if created and issubclass(sender, CMSPlugin):
         page = getattr(instance.placeholder, 'page', None)
         if page:
@@ -59,7 +65,7 @@ def cms_plugin_instance_post_save(sender, instance, **kwargs):
     dispatch_uid="cms_autopublisher_post_placeholder_operation",
 )
 def check_post_placeholder_operation(sender, operation, request, language, token, origin, **kwargs):
-    # print("post placeholder operation!")
+    print("post placeholder operation!")
     # print(sender)
     # print(operation)
     # print(request)

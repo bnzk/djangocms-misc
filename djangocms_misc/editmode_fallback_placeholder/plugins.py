@@ -14,6 +14,8 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.http import require_POST
 
+from djangocms_misc.utils.edit_mode import is_edit_mode
+
 
 @method_decorator(require_POST)
 @xframe_options_sameorigin
@@ -66,7 +68,7 @@ def assign_plugins(request, placeholders, template, lang=None, is_fallback=False
                 False
             )
             # monkey patch: check if we should display fallbacks in edit mode!
-            if language_fallback and (not request.toolbar.edit_mode or editmode_language_fallback):
+            if language_fallback and (not is_edit_mode(request.toolbar) or editmode_language_fallback):
                 for fallback_language in get_fallback_languages(lang):
                     assign_plugins(
                         request,
