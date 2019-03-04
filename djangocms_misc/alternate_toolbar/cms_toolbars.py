@@ -101,7 +101,10 @@ class AlternateBasicToolbar(BasicToolbar):
         # if self.toolbar.edit_mode or getattr(self.toolbar, 'build_mode', None):
         # new, testing for preventing a recursion error!
         if (
-            (self.toolbar.edit_mode or getattr(self.toolbar, 'build_mode', None)) and
+            (getattr(self.toolbar, 'edit_mode', None) or  # cms pre 3.6
+                getattr(self.toolbar, 'edit_mode_active', None) or  # cms 3.6+
+                getattr(self.toolbar, 'build_mode_active', None) or  # cms 3.6+
+                getattr(self.toolbar, 'build_mode', None)) and
             getattr(self.request, 'current_page', None)
         ):
             # True if the clipboard exists and there's plugins in it.
