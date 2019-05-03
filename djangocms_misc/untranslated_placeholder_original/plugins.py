@@ -10,6 +10,8 @@ from cms.utils.placeholder import get_placeholder_conf
 from cms.utils.plugins import create_default_plugins, build_plugin_tree
 from cms.utils.plugins import downcast_plugins
 
+from djangocms_misc.utils.edit_mode import is_edit_mode
+
 
 def assign_plugins(request, placeholders, template, lang=None, is_fallback=False):
     """
@@ -44,7 +46,7 @@ def _assign_plugins(request, placeholders, template, lang=None, is_fallback=Fals
     # If no plugin is present in the current placeholder we loop in the fallback languages
     # and get the first available set of plugins
     if not (is_fallback or untranslated) \
-            and not (hasattr(request, 'toolbar') and request.toolbar.edit_mode):
+            and not (hasattr(request, 'toolbar') and is_edit_mode(request.toolbar)):
         disjoint_placeholders = (ph for ph in placeholders
                                  if all(ph.pk != p.placeholder_id for p in plugins))
         for placeholder in disjoint_placeholders:

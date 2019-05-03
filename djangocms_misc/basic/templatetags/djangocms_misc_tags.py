@@ -5,6 +5,7 @@ from cms.models import Page
 from django.conf import settings
 from django import template
 
+from djangocms_misc.utils.edit_mode import is_edit_mode
 
 register = template.Library()
 
@@ -41,7 +42,7 @@ def djangocms_misc_get_from_page_content(context, config_name, page_lookup=None)
         try:
             page_reverse_id = str(page_lookup)
             qs = Page.objects.all()
-            if request.toolbar.edit_mode:
+            if is_edit_mode(request.toolbar):
                 qs = qs.drafts()
             else:
                 qs = qs.public()
