@@ -1,9 +1,14 @@
 
 
 
-==== 0.1.13 (ongoing) ===
+==== 0.1.14 (ongoing) ===
 
 - autopublisher tests! TBD!
+
+
+==== 0.1.13 (ongoing) ===
+
+- fix for django-cms 3.6: toolbar.edit_mode_active instead of toolbar.edit_mode (supporting both)
 
 
 ==== 0.1.12 (2018-10-24) ===
