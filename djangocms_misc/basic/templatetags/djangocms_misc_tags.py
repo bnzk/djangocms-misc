@@ -37,7 +37,7 @@ def djangocms_misc_get_from_page_content(context, config_name, page_lookup=None)
         try:
             page_id = int(page_lookup)
             page = Page.objects.get(pk=page_id)
-        except (TypeError, ValueError, Page.DoesNotExist) as e:
+        except (TypeError, ValueError, Page.DoesNotExist):
             pass
         try:
             page_reverse_id = str(page_lookup)
@@ -47,7 +47,7 @@ def djangocms_misc_get_from_page_content(context, config_name, page_lookup=None)
             else:
                 qs = qs.public()
             page = qs.get(reverse_id=page_reverse_id)
-        except (ValueError, Page.DoesNotExist) as e:
+        except (ValueError, Page.DoesNotExist):
             pass
         if not page:
             page = getattr(request, 'current_page', None)

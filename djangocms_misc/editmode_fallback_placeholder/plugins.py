@@ -27,8 +27,8 @@ def move_plugin(self, request):
     except TypeError:
         raise RuntimeError("'plugin_id' is a required parameter.")
     plugin = self._get_plugin_from_id(plugin_id)
-    print plugin.placeholder.slot
-    print self
+    print(plugin.placeholder.slot)
+    # print self
     # request.POST['plugin_language'] = plugin.language
     self.original_move_plugin(request)
 

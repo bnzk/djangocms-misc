@@ -101,8 +101,8 @@ class AlternateBasicToolbar(BasicToolbar):
         # buttons / items
         # if self.toolbar.edit_mode or getattr(self.toolbar, 'build_mode', None):
         # new, testing for preventing a recursion error!
-        if (is_edit_or_build_mode(self) and
-            getattr(self.request, 'current_page', None)
+        if (is_edit_or_build_mode(self)
+            and getattr(self.request, 'current_page', None)
         ):
             # True if the clipboard exists and there's plugins in it.
             if getattr(self, 'get_clipboard_plugins', None):
