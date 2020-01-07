@@ -30,7 +30,7 @@
   margin: 0;
   box-shadow: none; }
   .djangocms-admin-style #content form .inline-group .inline-related fieldset {
-    padding: 0 !important; }
+    padding: 0 0 0 10px !important; }
   .djangocms-admin-style #content form .inline-group .inline-related h3 {
     background-color: transparent;
     border-top: 1px solid #d3d3d3;
