@@ -25,7 +25,7 @@ class TestModel(models.Model):
 
 @python_2_unicode_compatible
 class TestInlineModel(models.Model):
-    testmodel = models.ForeignKey(TestModel)
+    testmodel = models.ForeignKey(TestModel, on_delete=models.CASCADE)
     field1 = models.CharField(max_length=64, default='', blank=False)
     field2 = models.CharField(max_length=64, default='', blank=True)
 

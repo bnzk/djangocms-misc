@@ -15,6 +15,6 @@ django-modeltranslation==0.12
 
 # for running cms tests
 iptools
-djangocms-link<2
+djangocms-link<2.5
 djangocms-text-ckeditor<3.6
 django-hvad
