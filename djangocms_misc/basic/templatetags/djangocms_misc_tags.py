@@ -1,13 +1,40 @@
 # coding: utf-8
 from __future__ import unicode_literals
 
-from cms.models import Page
+from cms.models import Page, Placeholder
 from django.conf import settings
 from django import template
 
 from djangocms_misc.utils.edit_mode import is_edit_mode
 
 register = template.Library()
+
+
+@register.filter()
+def djangocms_misc_placeholder_empty(page_placeholder, slot=None):
+    """
+    for page/slot, pass a page object, and a slot name:
+    {% if request.current_page|djangocms_misc_placeholder_empty:"content" %}
+
+    for a outside page placeholder, just the placeholder object:
+    {% if object.placeholderfield|djangocms_misc_placeholder_empty %}
+
+    also, with:
+    {% with ph_empty=object.placeholderfield|djangocms_misc_placeholder_empty %}
+    """
+    placeholder = None
+    if isinstance(page_placeholder, Placeholder):
+        placeholder = page_placeholder
+    elif isinstance(page_placeholder, Page):
+        page = page_placeholder
+        try:
+            placeholder = page.placeholders.get(slot=slot)
+        except Placeholder.DoesNotExist:
+            pass
+    if placeholder:
+        # // return not placeholder.cmsplugin_set.filter(language=get_language()).exists()
+        return not placeholder.cmsplugin_set.exists()
+    return False
 
 
 @register.inclusion_tag('djangocms_misc/tags/page_link.html', takes_context=True)

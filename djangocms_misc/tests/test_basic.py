@@ -5,6 +5,7 @@ from cms.api import create_page, create_title, add_plugin
 from django.contrib.auth.models import User
 from django.test import TestCase, Client, modify_settings
 
+from djangocms_misc.basic.templatetags.djangocms_misc_tags import djangocms_misc_placeholder_empty
 from djangocms_misc.tests.test_app.cms_plugins import TestPlugin
 
 
@@ -31,6 +32,20 @@ class BasicAppTests(TestCase):
         self.assertContains(response, '/en/home/')
         self.assertContains(response, '/home/">link text HOME')
         self.assertContains(response, 'class="button" href="/en/home/">')
+
+    def test_placeholder_empty_tag(self):
+        page = create_page('page_en', 'base.html', 'en')
+        page.reverse_id = 'test'
+        create_title("de", "page_de", page)
+        placeholder_en = page.placeholders.get(slot='untranslated_placeholder')
+        self.assertEqual(djangocms_misc_placeholder_empty(placeholder_en), True)
+        self.assertEqual(djangocms_misc_placeholder_empty(page, 'untranslated_placeholder'), True)
+        plugin = add_plugin(placeholder_en, TestPlugin, 'en', )
+        # plugin.field1 = 'en field1'
+        plugin.field1_en = 'en field1'
+        plugin.save()
+        self.assertEqual(djangocms_misc_placeholder_empty(placeholder_en), False)
+        self.assertEqual(djangocms_misc_placeholder_empty(page, 'untranslated_placeholder'), False)
 
     def test_get_from_page_content_tag(self):
         """

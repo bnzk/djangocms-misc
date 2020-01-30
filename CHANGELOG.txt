@@ -9,7 +9,7 @@
 ==== 0.1.13 (ongoing) ===
 
 - fix for django-cms 3.6: toolbar.edit_mode_active instead of toolbar.edit_mode (supporting both)
-
+- djangocms_misc_placeholder_empty filter
 
 ==== 0.1.12 (2018-10-24) ===
 
