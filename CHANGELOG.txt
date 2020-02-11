@@ -1,9 +1,14 @@
 
 
 
-==== 0.1.15 (ongoing) ===
+==== 0.1.16 (ongoing) ===
 
 - autopublisher tests! TBD!
+
+
+==== 0.1.15 (2020-02-11) ===
+
+- fix jquery issue!
 
 
 ==== 0.1.14 (2020-02-11) ===

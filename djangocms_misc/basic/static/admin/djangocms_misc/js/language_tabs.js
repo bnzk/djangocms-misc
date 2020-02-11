@@ -35,7 +35,7 @@ var ModelTranslation = (function( $ ) {
             if (pieces.length > 2) {
                 var new_lang = pieces[1];
                 var $new_selected = $buttons.filter("[data-language='" + new_lang + "']");
-                if ($new_selected.size()) {
+                if ($new_selected.length) {
                     $buttons.removeClass('selected');
                     $new_selected.addClass('selected');
                 }
