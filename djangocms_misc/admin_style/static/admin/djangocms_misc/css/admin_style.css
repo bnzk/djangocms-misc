@@ -2,6 +2,14 @@
   margin-left: -247px;
   margin-top: -1px; }
 
+.djangocms-admin-style div.clockbox {
+  margin-left: -147px;
+  margin-top: -7px; }
+
+.djangocms-admin-style form input.vDateField, .djangocms-admin-style form input.vTimeField {
+  width: calc(100% - 222px) !important;
+  max-width: 200px !important; }
+
 .djangocms-admin-style #content h1 {
   font-size: 21px !important; }
   .djangocms-admin-style #content h1 select {
@@ -24,13 +32,24 @@
     margin-bottom: 0.75em;
     font-size: 21px !important;
     font-weight: bold;
-    border-bottom: 2px solid #d3d3d3; }
+    border-bottom: 3px solid #d3d3d3; }
 
-.djangocms-admin-style #content form .inline-group .inline-related h3 {
-  padding-top: 0.5em;
-  margin-bottom: 0.5em; }
-  .djangocms-admin-style #content form .inline-group .inline-related h3 b {
-    font-weight: bold; }
+.djangocms-admin-style #content form .inline-group .inline-related {
+  margin: 0;
+  box-shadow: none; }
+  .djangocms-admin-style #content form .inline-group .inline-related fieldset {
+    padding: 0 0 0 10px !important; }
+  .djangocms-admin-style #content form .inline-group .inline-related h3 {
+    background-color: transparent;
+    border-top: 1px solid #d3d3d3;
+    margin: 0;
+    padding: 0;
+    padding-top: 10px; }
+    .djangocms-admin-style #content form .inline-group .inline-related h3 b {
+      display: none;
+      font-weight: bold; }
+    .djangocms-admin-style #content form .inline-group .inline-related h3 .inline_label {
+      display: none; }
 
 .djangocms-admin-style #content form .inline-group .form-row {
   padding: 0 0 1.2em; }

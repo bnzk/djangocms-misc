@@ -9,10 +9,20 @@ $normal_font_size: 14px
 $color_grey: #d3d3d3
 
 // ugly fix for calendar widget in modals
-.djangocms-admin-style div.calendarbox
-    margin-left: -247px
-    margin-top: -1px
+.djangocms-admin-style
+    div.calendarbox
+        margin-left: -247px
+        margin-top: -1px
+    div.clockbox
+        margin-left: -147px
+        margin-top: -7px
 
+
+// another ugly fix: it gets too wide otherwise, on smaller screens
+.djangocms-admin-style
+    form input.vDateField, form input.vTimeField
+        width: calc(100% - 222px) !important
+        max-width: 200px !important
 
 .djangocms-admin-style
     #content
@@ -43,15 +53,26 @@ $color_grey: #d3d3d3
                     margin-bottom: 0.75em
                     font-size: $title_font_size !important
                     font-weight: bold
-                    border-bottom: 2px solid #d3d3d3
+                    border-bottom: 3px solid #d3d3d3
             .inline-group
                 .inline-related
+                    margin: 0
+                    box-shadow: none
+                    fieldset
+                        padding: 0 0 0 10px !important
+                        // padding-left: 30px !important
                     h3
+                        background-color: transparent
                         // inline title (has border!)
-                        padding-top: 0.5em
-                        margin-bottom: 0.5em
+                        border-top: 1px solid $color_grey
+                        margin: 0
+                        padding: 0
+                        padding-top: 10px
                         b
+                            display: none
                             font-weight: bold
+                        .inline_label
+                            display: none
                 .form-row
                     // the row
                     // width: 100%

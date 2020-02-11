@@ -1,12 +1,12 @@
 from __future__ import unicode_literals
 
-from cms.admin.static_placeholder import StaticPlaceholderAdmin
-from cms.models import CMSPlugin, Page, StaticPlaceholder
+# from cms.admin.static_placeholder import StaticPlaceholderAdmin
+# from django.conf import settings
+# from django.urls import resolve
+from cms.models import CMSPlugin, StaticPlaceholder
 from cms.signals import post_placeholder_operation  # post_obj_operation
-from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.urls import resolve
 
 # ugly
 from cms import __version__ as cms_version
