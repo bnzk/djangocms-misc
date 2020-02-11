@@ -13,6 +13,9 @@ $color_grey: #d3d3d3
     margin-left: -247px
     margin-top: -1px
 
+// another ugly fix: it gets too wide otherwise, on smaller screens
+form input.vDateField, form input.vTimeField
+    width: calc(100% - 222px)!important
 
 .djangocms-admin-style
     #content

@@ -2,6 +2,9 @@
   margin-left: -247px;
   margin-top: -1px; }
 
+form input.vDateField, form input.vTimeField {
+  width: calc(100% - 222px) !important; }
+
 .djangocms-admin-style #content h1 {
   font-size: 21px !important; }
   .djangocms-admin-style #content h1 select {
