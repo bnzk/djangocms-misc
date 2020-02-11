@@ -8,6 +8,9 @@ from django.utils.encoding import python_2_unicode_compatible
 @python_2_unicode_compatible
 class TestPluginModel(CMSPlugin):
     field1 = models.CharField(max_length=64, default='', blank=False)
+    field_date = models.DateField(max_length=64, default='', blank=False)
+    field_datetime = models.DateTimeField(max_length=64, default='', blank=False)
+    field_time = models.TimeField(max_length=64, default='', blank=False)
 
     def __str__(self):
         return self.field1

@@ -9,7 +9,8 @@ selenium
 django<2
 django-appconf
 django-cms==3.4.5
-djangocms-admin-style==1.3.0
+# djangocms-admin-style==1.3.0
+djangocms-admin-style==1.5.0
 django-filer==1.3
 django-modeltranslation==0.12
 
