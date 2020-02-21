@@ -130,4 +130,3 @@ class AlternateBasicToolbar(BasicToolbar):
                 extra_classes=['cms-clipboard-empty'],
                 disabled=not clipboard_is_bound,
             )
-
