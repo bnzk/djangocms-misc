@@ -92,16 +92,19 @@ class AlternateBasicToolbar(BasicToolbar):
                 )
 
     def add_clipboard_menu(self):
+
+        edit_build = is_edit_or_build_mode(self.toolbar)
         # menu
         self.clipboard_menu = self.toolbar.get_or_create_menu(
             CLIPBOARD_MENU_IDENTIFIER,
             _('Clipboard'),
             position=-1,
+            disabled=not edit_build,
         )
         # buttons / items
         # if self.toolbar.edit_mode or getattr(self.toolbar, 'build_mode', None):
         # new, testing for preventing a recursion error!
-        if (is_edit_or_build_mode(self) and
+        if (edit_build and
             getattr(self.request, 'current_page', None)
         ):
             # True if the clipboard exists and there's plugins in it.
@@ -127,3 +130,4 @@ class AlternateBasicToolbar(BasicToolbar):
                 extra_classes=['cms-clipboard-empty'],
                 disabled=not clipboard_is_bound,
             )
+

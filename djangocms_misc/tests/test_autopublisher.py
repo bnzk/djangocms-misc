@@ -1,17 +1,8 @@
 # -*- coding: utf-8 -*-
-from cms.models import Page
 from cms.test_utils.testcases import CMSTestCase
 from django.test import TestCase, Client, modify_settings
 
-# compat
-import django
-
 from djangocms_misc.tests.test_app.cms_plugins import TestPlugin
-
-if django.VERSION[:2] < (1, 10):
-    from django.core.urlresolvers import reverse
-else:
-    from django.urls import reverse
 
 
 @modify_settings(INSTALLED_APPS={
@@ -33,8 +24,8 @@ class AutoPublisherTestCase(CMSTestCase, TestCase):
         title_obj = page.get_title_obj('en')
         title_obj.title = 'dummy'
         title_obj.save()
-        public_obj = page.get_public_object()
         self.assertEqual(page.publisher_is_draft, True)
+        # public_obj = page.get_public_object()
         # TODO: this isnt working yet!? normaly, a page is saved with a title. works via frontend, though!?
         # so when using the cms via frontend it works.
         # self.assertEqual(public_obj.reverse_id, 'lucky')

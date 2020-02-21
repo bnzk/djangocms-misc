@@ -32,6 +32,6 @@ class PasswordProtectedMiddleware(object):
         logout_url = reverse('admin:logout')
         if request.path in (login_url, logout_url,):
             return
-        if not request.user.is_authenticated():
+        if not request.user.is_authenticated:
             redirect_url = '{}?next={}'.format(login_url, request.path)
             return redirect(redirect_url)
