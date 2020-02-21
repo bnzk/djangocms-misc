@@ -1,15 +1,26 @@
 
 
 
-==== 0.1.14 (ongoing) ===
+==== 0.1.16 (ongoing) ===
 
 - autopublisher tests! TBD!
 
 
-==== 0.1.13 (ongoing) ===
+==== 0.1.15 (2020-02-11) ===
+
+- fix jquery issue!
+
+
+==== 0.1.14 (2020-02-11) ===
+
+- fix date/time/datetime field picker position issues
+
+
+==== 0.1.13 (2019-05-03) ===
 
 - fix for django-cms 3.6: toolbar.edit_mode_active instead of toolbar.edit_mode (supporting both)
 - djangocms_misc_placeholder_empty filter
+
 
 ==== 0.1.12 (2018-10-24) ===
 
