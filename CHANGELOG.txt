@@ -1,9 +1,14 @@
 
 
 
-==== 0.1.16 (ongoing) ===
+==== 0.1.17 (ongoing) ===
 
 - autopublisher tests! TBD!
+
+
+==== 0.1.16 (2020-02-21) ===
+
+- fix clipboard not appearing anymore
 
 
 ==== 0.1.15 (2020-02-11) ===
