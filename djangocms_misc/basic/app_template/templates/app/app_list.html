@@ -1,27 +1,33 @@
-{% extends "djangocms_baseplugins/baseplugin.html" %}
-{% load cms_tags %}
+{% extends "base.html" %}
+{% load cms_tags easy_thumbnails quadrat_tags %}
 
 
-{% block plugin_content %}
+{#{% block plugin_content %}#}
+{% block content %}
 
-    <section {{ object.html_wrapper_attributes }}>
+    {{ block.super }}
 
-        {% block plugin_inner_content %}
-            {% block plugin_title %}
-                {% if object.title %}<h2>{{ object.title }}</h2>{% endif %}
-            {% endblock %}
-        {% endblock %}
+    {% if request.toolbar.edit_mode_active %}
+    <div class="cms-add-item">
+        {% render_model_add_block object_list.0 %}
+            <span><a href="#">New&nbsp;Article</a></span>
+        {% endrender_model_add_block %}
+    </div>
+    {% endif %}
 
-        {% block plugin_children %}
-            {% if object.child_plugin_instances|length %}
-                <div class="plugin-children">
-                    {% for plugin in object.child_plugin_instances %}
-                        {% render_plugin plugin %}
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endblock %}
-
-    </section>
+    <div class="article-list">
+        {% for object in object_list %}
+            {% render_model_block object %}
+                <a href="{{ object.get_absolute_url }}" class="article-item" style="padding-top: {% quadrat_random_int 1 6 %}vw">
+                    {% thumbnail object.preview_image 1000x600 crop=1 upscale=1 as resized %}
+                    <img src="{{ resized.url }}" alt="{{ instance.title }}">
+                    <h2>
+                        {{ object.title }}
+                        <span>{{ object.date|date:"F Y" }}</span>
+                    </h2>
+                </a>
+            {% endrender_model_block %}
+        {% endfor %}
+    </div>
 
 {% endblock %}
