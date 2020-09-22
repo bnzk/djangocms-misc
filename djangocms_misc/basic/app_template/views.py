@@ -1,12 +1,17 @@
 from django.views.generic import ListView, DetailView
 
 from .models import AppTemplate
-from yourcustomapp.views import PublishedViewMixin, AutoSlugMixin
+from .views_utils import PublishedViewMixin, AutoSlugMixin, LanguageChooserEnhancerMixin
 
 
 class AppTemplateListView(PublishedViewMixin, ListView):
     model = AppTemplate
 
 
-class AppTemplateDetailView(AutoSlugMixin, PublishedViewMixin, DetailView):
+class AppTemplateDetailView(
+    AutoSlugMixin,
+    PublishedViewMixin,
+    LanguageChooserEnhancerMixin,
+    DetailView,
+):
     model = AppTemplate
