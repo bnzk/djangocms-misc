@@ -3,7 +3,7 @@
 
 
 {#{% block plugin_content %}#}
-{% block content %}
+{% block content_inner %}
 
     {{ block.super }}
 
@@ -18,13 +18,16 @@
     <div class="article-list">
         {% for object in object_list %}
             {% render_model_block object %}
-                <a href="{{ object.get_absolute_url }}" class="article-item" style="padding-top: {% quadrat_random_int 1 6 %}vw">
-                    {% thumbnail object.preview_image 1000x600 crop=1 upscale=1 as resized %}
+                <a href="{{ object.get_absolute_url }}" class="article-item">
+                    {% thumbnail object.preview_image 700x700 crop=0 upscale=1 as resized %}
                     <img src="{{ resized.url }}" alt="{{ instance.title }}">
                     <h2>
                         {{ object.title }}
                         <span>{{ object.date|date:"F Y" }}</span>
                     </h2>
+                    <p>
+                        {{ object.preview_text }}
+                    </p>
                 </a>
             {% endrender_model_block %}
         {% endfor %}
