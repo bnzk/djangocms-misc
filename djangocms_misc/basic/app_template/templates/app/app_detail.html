@@ -1,0 +1,27 @@
+{% extends "djangocms_baseplugins/baseplugin.html" %}
+{% load cms_tags %}
+
+
+{% block plugin_content %}
+
+    <section {{ object.html_wrapper_attributes }}>
+
+        {% block plugin_inner_content %}
+            {% block plugin_title %}
+                {% if object.title %}<h2>{{ object.title }}</h2>{% endif %}
+            {% endblock %}
+        {% endblock %}
+
+        {% block plugin_children %}
+            {% if object.child_plugin_instances|length %}
+                <div class="plugin-children">
+                    {% for plugin in object.child_plugin_instances %}
+                        {% render_plugin plugin %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+    </section>
+
+{% endblock %}
