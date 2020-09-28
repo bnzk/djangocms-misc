@@ -11,6 +11,8 @@ from django.dispatch import receiver
 # ugly
 from cms import __version__ as cms_version
 CMS_VERSION_36 = cms_version.startswith('3.6.')
+CMS_VERSION_37 = cms_version.startswith('3.7.')
+CMS_VERSION_38 = cms_version.startswith('3.8.')
 
 
 def check_publish(title_obj, force_non_dirty=False):
@@ -19,7 +21,7 @@ def check_publish(title_obj, force_non_dirty=False):
         # print("published and draft!")
         # print(title_obj.is_dirty())
         # not dirty, after plugin add, in cms 3.6!
-        if title_obj.is_dirty() or force_non_dirty or CMS_VERSION_36:
+        if title_obj.is_dirty() or force_non_dirty or CMS_VERSION_36 or CMS_VERSION_37 or CMS_VERSION_38:
             # print("NEEEEEDs publishing")
             page.publish(title_obj.language)
             # from cms.api import publish_page
