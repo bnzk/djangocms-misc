@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+
+{% block page_title %}{{ object.get_seo_title }} | {{ object.date }}{% endblock %}
+{% block meta_description %}{{ object.meta_description }}{% endblock %}
+
+
+{% block more_menu %}
+    <a class="nav-button nav-button_back" href="javascript:history.back();">zurück</a>
+{% endblock %}
+
+
+{% block content %}
+    <div class="article-detail">
+        <div class="text">
+            {% render_model_block object %}
+                <h1>
+                    {{ object.title }}
+                    <span>{{ object.date }}</span>
+                </h1>
+            {% endrender_model_block %}
+            {% render_placeholder object.content %}
+        </div>
+    </div>
+{% endblock %}

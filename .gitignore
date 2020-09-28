@@ -11,6 +11,7 @@ htmlcov
 test_app_media
 cms_tools/tests/coverage
 /dist/
+/test_apps/
 _build
 /build/
 

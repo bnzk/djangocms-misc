@@ -6,16 +6,18 @@ flake8
 # mock
 selenium
 
-django<2
+django<=3
 django-appconf
-django-cms==3.4.5
+django-cms==3.7.3
 # djangocms-admin-style==1.3.0
-djangocms-admin-style==1.5.0
+# djangocms-admin-style==1.5.0
 django-filer==1.3
 django-modeltranslation==0.12
 
 # for running cms tests
 iptools
-djangocms-link<2.5
-djangocms-text-ckeditor<3.6
+# djangocms-link<2.5
+djangocms-link
+# djangocms-text-ckeditor<3.6
+djangocms-text-ckeditor
 django-hvad

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load cms_tags thumbnail %}
+
+
+{#{% block plugin_content %}#}
+{% block content_inner %}
+
+    {{ block.super }}
+
+    {% if request.toolbar.edit_mode_active %}
+    <div class="cms-add-item">
+        {% render_model_add_block object_list.0 %}
+            <span><a href="#">New&nbsp;Article</a></span>
+        {% endrender_model_add_block %}
+    </div>
+    {% endif %}
+
+    <div class="article-list">
+        {% for object in object_list %}
+            {% render_model_block object %}
+                <a href="{{ object.get_absolute_url }}" class="article-item">
+                    {% thumbnail object.preview_image 700x700 crop=0 upscale=1 as resized %}
+                    <img src="{{ resized.url }}" alt="{{ instance.title }}">
+                    <h2>
+                        {{ object.title }}
+                        <span>{{ object.date|date:"F Y" }}</span>
+                    </h2>
+                    <p>
+                        {{ object.preview_text }}
+                    </p>
+                </a>
+            {% endrender_model_block %}
+        {% endfor %}
+    </div>
+
+{% endblock %}
