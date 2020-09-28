@@ -1,9 +1,11 @@
 
+==== 0.1.18 (ongoing) ===
 
 
-==== 0.1.17 (ongoing) ===
+==== 0.1.17 (2020-09-28) ===
 
-- autopublisher tests! TBD!
+- `djangocms_misc_startapp` command, for easy django-cms enabled app bootstrapping
+- `LanguageTabsMixin` now supports tabular inlines
 
 
 ==== 0.1.16 (2020-02-21) ===
