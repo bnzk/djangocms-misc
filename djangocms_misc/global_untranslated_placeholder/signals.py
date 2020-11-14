@@ -1,9 +1,5 @@
-from __future__ import unicode_literals
-
-# from django.db.models.signals import post_save, post_delete
 from django.conf import settings
 from django.dispatch import receiver
-# from cms.models import Title
 from cms.constants import PUBLISHER_STATE_DIRTY
 from cms.signals import post_placeholder_operation, post_publish  # , post_obj_operation
 
