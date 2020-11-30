@@ -95,8 +95,8 @@ def get_from_page_content(request, config, page):
             if 'djangocms_misc.global_untranslated_placeholder' in settings.INSTALLED_APPS and\
                     settings.DJANGOCMS_MISC_UNTRANSLATED_PLACEHOLDERS:
                 from djangocms_misc.global_untranslated_placeholder.utils import \
-                    get_untranslated_default_language
-                language = get_untranslated_default_language()
+                    get_untranslated_default_language_if_enabled
+                language = get_untranslated_default_language_if_enabled()
             plugins = placeholder[0].get_plugins(language).order_by('position')
             for plugin in plugins:
                 if plugin.plugin_type in to_scan_plugins:

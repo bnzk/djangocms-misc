@@ -1,5 +1,4 @@
 # coding: utf-8
-from django.conf import settings
 from cms.models import Placeholder  # noqa - needed, circular import otherwise
 from cms.plugin_rendering import ContentRenderer  # , RenderedPlaceholder
 
@@ -15,6 +14,7 @@ except ImportError:
 from .conf import UntranslatedPlaceholderConf  # noqa
 # import signals at startup
 from .signals import *  # noqa (will forget to update otherwise!)
+from .utils import get_untranslated_default_language_if_enabled
 
 
 def new_renderer__init__(self, request):
