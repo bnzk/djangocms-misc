@@ -1,8 +1,12 @@
+==== 0.1.19 (ongoing) ===
+
+- more tests: autopublisher, for example!
+
 
 ==== 0.1.18 (ongoing) ===
 
-- more tests: autopublisher, for example!
-- drop python2! (already in 0.1.17!)
+- officially drop python2 support
+- fix for `djangocms_misc_startapp` command (not doing anything with .pyc files)
 
 
 ==== 0.1.17 (2020-09-28) ===
