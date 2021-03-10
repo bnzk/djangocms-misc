@@ -15,7 +15,7 @@
     </div>
     {% endif %}
 
-    <div class="article-list">
+    <div class="apptemplate-list">
         {% for object in object_list %}
             {% render_model_block object %}
                 <a href="{{ object.get_absolute_url }}" class="article-item">

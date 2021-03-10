@@ -32,6 +32,6 @@ class PublishedViewMixin():
     in edit mode, get all, otherwise only published
     """
     def get_queryset(self):
-        if self.request.toolbar.edit_mode:
+        if self.request.toolbar.edit_mode_active:
             return self.model.objects.all()
         return self.model.objects.published()
