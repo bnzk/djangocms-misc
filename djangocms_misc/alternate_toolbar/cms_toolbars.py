@@ -21,6 +21,17 @@ toolbar_pool.unregister(BasicToolbar)
 @toolbar_pool.register
 class AlternateBasicToolbar(BasicToolbar):
 
+    def add_crud_menu_item(self, app, model, menu=None, label=None, view='changelist'):
+        if not menu:
+            menu = self.admin_menu
+        if not label:
+            label = model
+        if self.request.user.has_perm('{}.view_{}'.format(app, model)):
+            menu.add_sideframe_item(
+                label,
+                url=reverse('admin:{}_{}_{}'.format(app, model, view)),
+            )
+
     def populate(self):
         # still dont know why this if!?
         if not self.page:
