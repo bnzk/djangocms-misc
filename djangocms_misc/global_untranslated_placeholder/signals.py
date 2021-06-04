@@ -1,13 +1,26 @@
-from __future__ import unicode_literals
-
-# from django.db.models.signals import post_save, post_delete
 from django.conf import settings
+from django.db.models.signals import pre_save
 from django.dispatch import receiver
-# from cms.models import Title
 from cms.constants import PUBLISHER_STATE_DIRTY
+from cms.models import CMSPlugin
 from cms.signals import post_placeholder_operation, post_publish  # , post_obj_operation
 
-from djangocms_misc.global_untranslated_placeholder.utils import get_untranslated_default_language
+from djangocms_misc.global_untranslated_placeholder.utils import get_untranslated_default_language_if_enabled
+
+
+@receiver(
+    pre_save,
+    dispatch_uid="cmsplugin_pre_save_set_language",
+)
+def pre_cms_plugin_save(**kwargs):
+    """
+    always set language to default language, for all plugins, ever
+    """
+    instance = kwargs.get('instance', None)
+    if instance and isinstance(instance, CMSPlugin):
+        lang = get_untranslated_default_language_if_enabled()
+        if lang:
+            instance.language = lang
 
 
 if 'djangocms_misc.autopublisher' not in settings.INSTALLED_APPS:
@@ -23,7 +36,7 @@ if 'djangocms_misc.autopublisher' not in settings.INSTALLED_APPS:
         if not page_instance:
             return
         published_language = kwargs.get('language', settings.LANGUAGE_CODE)
-        default_language = get_untranslated_default_language()
+        default_language = get_untranslated_default_language_if_enabled()
         if not published_language == default_language:
             page_instance.publish(default_language)
 

@@ -85,6 +85,9 @@ Name of the new app. CamelCase, as you would name the model: Article/ News / Doo
 def recursive_replace_template(target_folder, target, replacement):
     for dname, dirs, files in os.walk(target_folder):
         for fname in files:
+            if fname[-4:] == '.pyc':
+                # nope, dont need em
+                continue
             fpath = os.path.join(dname, fname)
             with open(fpath) as f:
                 s = f.read()
