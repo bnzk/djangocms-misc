@@ -7,6 +7,7 @@
 
 - switched to github actions
 - django 3.2 support
+- experimental django-cms 3.9rc2 support (autopublisher broken)
 
 
 ==== 0.1.18 (2021-06-04) ===
