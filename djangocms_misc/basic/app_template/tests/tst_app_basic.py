@@ -7,4 +7,7 @@ from ..models import AppTemplate
 
 # add some basic things (admin list view, detail view, etc)
 class AppTemplateTests(TestCase):
-    pass
+
+    def fetch_objs(self):
+        all = AppTemplate.objects.all()
+        self.assertEqual(all.count(), 0)
