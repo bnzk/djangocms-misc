@@ -1,6 +1,6 @@
 # djangocms-misc
 
-[![Build Status](https://travis-ci.org/bnzk/djangocms-misc.svg "Build Status")](https://travis-ci.org/bnzk/djangocms-misc/)
+[![CI](https://github.com/bnzk/djangocms-misc/actions/workflows/ci.yml/badge.svg)](https://github.com/bnzk/djangocms-misc/actions/workflows/ci.yml)
 [![PyPi Version](https://img.shields.io/pypi/v/djangocms-misc.svg "PyPi Version")](https://pypi.python.org/pypi/djangocms-misc/)
 [![Licence](https://img.shields.io/pypi/l/djangocms-misc.svg "Licence")](https://pypi.python.org/pypi/djangocms-misc/)
 

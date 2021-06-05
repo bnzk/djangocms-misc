@@ -3,6 +3,13 @@
 - more tests: autopublisher, for example!
 
 
+==== 0.1.19 (2021-06-05) ===
+
+- switched to github actions
+- django 3.2 support
+- experimental django-cms 3.9rc2 support (autopublisher broken)
+
+
 ==== 0.1.18 (2021-06-04) ===
 
 - #27 - feature: add_crud_menu_item for toolbar

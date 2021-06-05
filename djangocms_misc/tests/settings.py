@@ -143,7 +143,7 @@ EXTERNAL_APPS = [
     'menus',
     'filer',
     'mptt',
-    'hvad',
+    # 'hvad',
     'modeltranslation',
     # 'ckeditor',
 

@@ -8,8 +8,8 @@ from django.utils.text import slugify
 # from filer.fields.image import FilerImageField
 from filer_addons.filer_gui.fields import FilerImageField
 
-from quadrat.managers import PublishedQuerySet
-from quadrat.models import PublishedBase, SEOBase
+from project.managers import PublishedQuerySet
+from project.models import PublishedBase, SEOBase
 
 
 class AppTemplate(PublishedBase, SEOBase, models.Model):
