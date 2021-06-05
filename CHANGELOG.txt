@@ -3,7 +3,13 @@
 - more tests: autopublisher, for example!
 
 
-==== 0.1.18 (ongoing) ===
+==== 0.1.19 (2021-06-05) ===
+
+- switched to github actions
+- django 3.2 support
+
+
+==== 0.1.18 (2021-06-04) ===
 
 - officially drop python2 support
 - fix for `djangocms_misc_startapp` command (not doing anything with .pyc files)
