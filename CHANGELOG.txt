@@ -11,6 +11,7 @@
 
 ==== 0.1.18 (2021-06-04) ===
 
+- #27 - feature: add_crud_menu_item for toolbar
 - officially drop python2 support
 - fix for `djangocms_misc_startapp` command (not doing anything with .pyc files)
 
