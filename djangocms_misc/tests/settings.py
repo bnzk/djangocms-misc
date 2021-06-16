@@ -117,6 +117,8 @@ CMS_TEMPLATES = (
     ('base.html', 'Default'),
 )
 
+CMS_PERMISSION = True
+
 COVERAGE_REPORT_HTML_OUTPUT_DIR = os.path.join(
     os.path.join(APP_ROOT, 'tests/coverage'))
 COVERAGE_MODULE_EXCLUDES = [
