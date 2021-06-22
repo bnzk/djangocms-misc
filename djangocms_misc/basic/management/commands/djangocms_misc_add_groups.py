@@ -32,7 +32,3 @@ class Command(BaseCommand):
         call_command('djangocms_misc_add_cms_group', '--cms-publish', '--name=cms_publisher', *args)
         call_command('djangocms_misc_add_cms_group', '--cms-superuser', '--name=cms_superuser', *args)
         call_command('djangocms_misc_add_cms_group', '--cms', '--plugin', '--name=cms_plugin_permissions', *args)
-
-    def add_permission(self, group, q_filter=Q(), q_exclude=Q()):
-        perms = Permission.objects.filter(q_filter).exclude(q_exclude)
-        group.permissions.add(*perms)
