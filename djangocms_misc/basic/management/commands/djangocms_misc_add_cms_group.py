@@ -84,23 +84,23 @@ Force overwrite of existing group and it's permissions.""")
         group.permissions.clear()
         if options.get('cms_base'):
             q_filter = Q(content_type__app_label='cms')
-            q_exclude = Q(name__contains='user')
-            q_exclude |= Q(name__contains='permission')
-            q_exclude |= Q(name__contains='publish')
+            q_exclude = Q(name__icontains='user')
+            q_exclude |= Q(name__icontains='permission')
+            q_exclude |= Q(name__icontains='publish')
             self.add_permission(group, q_filter, q_exclude)
         if options.get('cms_publish'):
             q_filter = Q(content_type__app_label='cms')
-            q_filter &= Q(name__contains='publish')
+            q_filter &= Q(name__icontains='publish')
             self.add_permission(group, q_filter)
         if options.get('cms_superuser'):
             q_filter = Q(content_type__app_label='cms')
             self.add_permission(group, q_filter)
         if options.get('cms'):
-            q_filter = Q(content_type__app_label__contains='cms')
+            q_filter = Q(content_type__app_label__icontains='cms')
             q_exclude = Q(content_type__app_label='cms')
             self.add_permission(group, q_filter, q_exclude)
         if options.get('plugin'):
-            q_filter = Q(content_type__app_label__contains='plugin')
+            q_filter = Q(content_type__app_label__icontains='plugin')
             q_exclude = Q(content_type__app_label='cms')
             self.add_permission(group, q_filter, q_exclude)
 
