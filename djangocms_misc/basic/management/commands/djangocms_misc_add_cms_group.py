@@ -107,7 +107,7 @@ Force overwrite of existing group and it's permissions.""")
         print(logging.INFO, 'Group created! ({})'.format(group_name))
         print(logging.INFO, 'Following permissions were granted:')
         for perm in group.permissions.all():
-            print(logging.INFO, '{}'.format(perm))
+            print(logging.INFO, '{}'.format(perm.name))
 
     def add_permission(self, group, q_filter=Q(), q_exclude=Q()):
         perms = Permission.objects.filter(q_filter).exclude(q_exclude)
