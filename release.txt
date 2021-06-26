@@ -6,6 +6,8 @@ CHANGELOG.txt
 git flow release finish 0.xxx
 git push --all; git push --tags
 git push upstream --all; git push upstream --tags
+
+# no more, is in github action
 python setup.py sdist && python setup.py bdist_wheel --universal
 twine upload dist/* -r pypitest
 twine upload dist/*
