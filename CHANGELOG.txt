@@ -3,6 +3,11 @@
 - more tests: autopublisher, for example!
 
 
+==== 0.1.20 (2021-06-27) ===
+
+- management commands for easy cms/plugin auth group creation
+
+
 ==== 0.1.19 (2021-06-05) ===
 
 - switched to github actions
