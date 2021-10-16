@@ -1,6 +1,4 @@
 import logging
-import os
-import shutil
 
 from django.contrib.auth.models import Group, Permission
 from django.core.management.base import BaseCommand
@@ -28,16 +26,16 @@ class Command(BaseCommand):
             action='store_const',
             const=True,
             default=False,
-            help="adds exactly 'can publish page' permission)."
-        "")
+            help="adds exactly 'can publish page' permission).",
+        )
         parser.add_argument(
             '--cms-superuser',
             required=False,
             action='store_const',
             const=True,
             default=False,
-            help="Superuser CMS permissions (add own users, page permissions, etc, etc)."
-        "")
+            help="Superuser CMS permissions (add own users, page permissions, etc, etc).",
+        )
         parser.add_argument(
             '--plugin',
             required=False,
