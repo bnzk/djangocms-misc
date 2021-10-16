@@ -1,6 +1,11 @@
-==== 0.1.19 (ongoing) ===
+==== 0.1.X (ongoing) ===
 
 - more tests: autopublisher, for example!
+
+
+==== 0.1.21 (2021-10-16) ===
+
+- fixed bug for translation tabs and django 3.2
 
 
 ==== 0.1.20 (2021-06-27) ===
