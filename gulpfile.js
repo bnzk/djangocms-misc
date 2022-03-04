@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-sass')(require('node-sass')),
     jshint= require('gulp-jshint'),
     path = require('path'),
     shell = require('gulp-shell'),
@@ -43,12 +43,12 @@ gulp.task('jshint', function () {
 });
 
 
-gulp.task('default', ['sass', 'flake8', 'jshint']);
+gulp.task('default', gulp.parallel('sass', 'flake8', 'jshint'));
 
 
 gulp.task('watch', function () {
-    gulp.watch('djangocms_misc/**/**.sass', ['sass']);
-    gulp.watch(['gulpfile.js', 'djangocms_misc/**.js'], ['jshint']);
-    gulp.watch('**/*.py', ['flake8']);
+    gulp.watch('djangocms_misc/**/**.sass', gulp.parallel('sass'));
+    gulp.watch(['gulpfile.js', 'djangocms_misc/**.js'], gulp.parallel('jshint'));
+    gulp.watch('**/*.py', gulp.parallel('flake8'));
 });
 

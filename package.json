@@ -1,12 +1,15 @@
 {
   "devDependencies": {
     "es6-promise": "^4.2.4",
-    "gulp": "^3.9.0",
+    "gulp": "^4.0.2",
     "gulp-jshint": "^2.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^4.0.1",
-    "gulp-shell": "^0.6.5",
-    "jshint": "^2.8.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-shell": "^0.8.0",
+    "jshint": "^2.13.4",
     "path": "^0.12.7"
+  },
+  "dependencies": {
+    "node-sass": "^7.0.1"
   }
 }
