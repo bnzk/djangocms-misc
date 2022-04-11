@@ -8,7 +8,7 @@ selenium
 
 django<=3
 django-appconf
-django-cms==3.7.3
+django-cms==3.7.4
 # djangocms-admin-style==1.3.0
 # djangocms-admin-style==1.5.0
 django-filer==2.0
