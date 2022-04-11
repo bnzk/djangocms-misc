@@ -1,6 +1,13 @@
-==== 0.1.X (ongoing) ===
+==== 0.2.X (ongoing) ===
 
 - more tests: autopublisher, for example!
+- fix autopublisher tests
+
+
+==== 0.2.0 (2021-10-16) ===
+
+- remove additional h2 tag in change forms, added in django 3(.2?)
+- experimental things: add cms/plugin groups, start cms app command
 
 
 ==== 0.1.21 (2021-10-16) ===
