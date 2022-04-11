@@ -25,6 +25,8 @@ DATABASES = {
     }
 }
 
+X_FRAME_OPTIONS = 'SAMESITE'
+
 LANGUAGE_CODE = 'en'
 LANGUAGES = (
     ('en', 'English', ),
