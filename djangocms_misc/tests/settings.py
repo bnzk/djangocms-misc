@@ -13,6 +13,8 @@ SITE_ID = 1
 # from selenium.webdriver.phantomjs import webdriver
 # SELENIUM_WEBDRIVER = webdriver
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 APP_ROOT = os.path.abspath(
     os.path.join(os.path.dirname(__file__), ".."))
 
