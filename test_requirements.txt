@@ -11,7 +11,7 @@ django-appconf
 django-cms==3.7.3
 # djangocms-admin-style==1.3.0
 # djangocms-admin-style==1.5.0
-django-filer==1.3
+django-filer==2.0
 django-modeltranslation==0.12
 
 # for running cms tests

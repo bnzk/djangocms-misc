@@ -66,8 +66,8 @@ Name of the new app. CamelCase, as you would name the model: Article/ News / Doo
         )
         test_folder = os.path.join(target_folder, 'tests', )
         os.rename(
-            os.path.join(test_folder, 'app.py'),
-            os.path.join(test_folder, 'test_' + app_name.lower() + ".py"),
+            os.path.join(test_folder, 'tst_app_basic.py'),
+            os.path.join(test_folder, 'test_' + app_name.lower() + "_basic.py"),
         )
 
         logger.log(logging.INFO, 'Success, copied new app files to:')
