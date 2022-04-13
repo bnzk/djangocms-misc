@@ -29,8 +29,7 @@ def check_publish(title_obj, force_non_dirty=False):
                 CMS_VERSION_37 or \
                 CMS_VERSION_38 or \
                 CMS_VERSION_39 or \
-                CMS_VERSION_310 \
-                :
+                CMS_VERSION_310:
             # print("NEEEEEDs publishing")
             page.publish(title_obj.language)
             # from cms.api import publish_page
