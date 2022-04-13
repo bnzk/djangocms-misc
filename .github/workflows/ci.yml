@@ -5,7 +5,7 @@ on: [push, pull_request, ]
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: github.repository == 'bnzk/djangocms-misc'
+    # if: github.repository == 'bnzk/djangocms-misc'
     strategy:
       matrix:
         python: [3.7, 3.8, 3.9, 3.10]
