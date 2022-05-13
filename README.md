@@ -1,8 +1,9 @@
 # djangocms-misc
 
-[![CI](https://github.com/bnzk/djangocms-misc/actions/workflows/ci.yml/badge.svg)](https://github.com/bnzk/djangocms-misc/actions/workflows/ci.yml)
-[![PyPi Version](https://img.shields.io/pypi/v/djangocms-misc.svg "PyPi Version")](https://pypi.python.org/pypi/djangocms-misc/)
-[![Licence](https://img.shields.io/pypi/l/djangocms-misc.svg "Licence")](https://pypi.python.org/pypi/djangocms-misc/)
+[![CI](https://img.shields.io/github/workflow/status/bnzk/djangocms-misc/CI.svg?style=flat-square&logo=github "CI")](https://github.com/bnzk/djangocms-misc/actions/workflows/ci.yml)
+[![Version](https://img.shields.io/pypi/v/djangocms-misc.svg?style=flat-square "Version")](https://pypi.python.org/pypi/djangocms-misc/)
+[![Licence](https://img.shields.io/github/license/bnzk/djangocms-misc.svg?style=flat-square "Licence")](https://pypi.python.org/pypi/djangocms-misc/)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/djangocms-misc?style=flat-square "PyPi Downloads")](https://pypistats.org/packages/djangocms-misc)
 
 customizing [django-cms](https://github.com/divio/django-cms), as a set of diferent apps, that can be installed individually
 
