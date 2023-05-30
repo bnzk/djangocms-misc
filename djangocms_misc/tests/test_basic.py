@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 
 from cms.api import create_page, create_title, add_plugin
 from django.contrib.auth.models import User

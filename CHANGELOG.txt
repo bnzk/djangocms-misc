@@ -1,7 +1,6 @@
-==== 0.2.X (ongoing) ===
+==== 0.2.1 (ongoing) ===
 
-- more tests: autopublisher, for example!
-- fix autopublisher tests
+- some cleanup for django 4 compatibility (ugettext > gettext)
 
 
 ==== 0.2.0 (2021-10-16) ===

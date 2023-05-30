@@ -1,4 +1,3 @@
-# coding: utf-8
 from setuptools import setup, find_packages
 import os
 
@@ -19,7 +18,8 @@ setup(
     license='MIT Licence',
     platforms=['OS Independent'],
     description="djangocms misc",
-    long_description=read('PYPI.rst'),
+    long_description=read('PYPI.md'),
+    long_description_content_type="text/markdown",
     author=u'Ben Stähli',
     author_email='bnzk@bnzk.ch',
     packages=find_packages(),
