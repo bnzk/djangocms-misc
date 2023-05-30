@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 # from cms.admin.static_placeholder import StaticPlaceholderAdmin
 # from django.conf import settings
 # from django.urls import resolve

@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib.auth import get_user_model, get_permission_codename
 from django.contrib import admin
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from cms.utils.urlutils import admin_reverse
 from cms.toolbar_pool import toolbar_pool
 from cms.cms_toolbars import BasicToolbar, ADMIN_MENU_IDENTIFIER, ADMINISTRATION_BREAK
