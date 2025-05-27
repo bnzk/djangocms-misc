@@ -105,7 +105,6 @@ class AutoPublisherTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         response = self.client.get(page.get_absolute_url())
         # helps debugging, when plugin output might have change slightly!
-        print(response.content)
         # print(response.content)
         self.assertContains(
             response,
