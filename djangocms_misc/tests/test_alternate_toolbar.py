@@ -40,6 +40,7 @@ class AlternateToolbarTests(TestCase):
         """
         self.client.login(username='fred', password='test')
         page = create_page('test', 'base.html', 'en')
+        page.save()
         page.publish('en')
 
         url = page.get_absolute_url()
