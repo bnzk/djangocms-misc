@@ -1,0 +1,61 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+exclude: "^package.json|^package-lock.json|^z_legacy\/.*|__zzz\/.*|\/.*migrations.*\/.*"
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      # syntax
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-xml
+      # - id: pretty-format-json
+      # git & filesystem
+      - id: check-added-large-files
+      - id: check-symlinks
+      - id: detect-private-key
+      - id: check-merge-conflict
+      - id: check-case-conflict # file conflicts: a.txt vs. A.txt
+      # formatters
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+        exclude: "(.*\\.html|.*\\.md)$"
+      - id: end-of-file-fixer
+        exclude: "(.*\\.xml|.*\\.svg)$"
+      # python
+      - id: check-ast # abstract syntax tree
+      - id: check-builtin-literals # no {} and [], but dict() and list()
+      - id: debug-statements
+      # naaa
+  #      - id: name-tests-test
+  #        args: [--pytest-test-first]
+  # django-upgrade suggestions
+  - repo: https://github.com/adamchainz/django-upgrade
+    rev: "1.14.0"
+    hooks:
+      - id: django-upgrade
+        args: [--target-version, "4.2"]
+  # tha black
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: "23.7.0"
+    hooks:
+      - id: black
+  # flake8 replacement (&more)
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: "v0.0.284"
+    hooks:
+      - id: ruff
+        args: [--fix]
+  # js/sass/etc formatter
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.0.2
+    hooks:
+      - id: prettier
+        args: [--list-different]
+        exclude: "(.*\\.html|.*\\.md)$"
+  # eslinth, shall we? urrfff
+#  - repo: https://github.com/pre-commit/mirrors-eslint
+#    rev: v8.47.0
+#    hooks:
+#      - id: eslint
