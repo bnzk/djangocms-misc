@@ -22,6 +22,5 @@ jobs:
         python setup.py bdist_wheel --universal
     - name: Publish
       env:
-        TWINE_USERNAME: ${{ secrets.PYPI_USER_BNZK }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_PW_BNZK }}
-      run: twine upload dist/*
+        PYPI_UPLOAD_TOKEN: ${{ secrets.PYPI_UPLOAD_TOKEN }}
+      run: twine upload --user __token__ --password $PYPI_UPLOAD_TOKEN dist/*
