@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python: ["3.12"]
+        python: ["3.11"]
     steps:
       - uses: actions/checkout@v2
       - name: Setup Python ${{ matrix.python }}
@@ -38,7 +38,7 @@ jobs:
       - name: Run tox with coverage
         # Run tox using the version of Python in `PATH`
         # run: tox -e py${{ matrix.python }}-${{ matrix.django }}
-        run: tox -e py312-django42-cms311-treebeard45-coverage
+        run: tox -e py311-django42-cms310-treebeard45-coverage
 
   lint:
     runs-on: ubuntu-latest
