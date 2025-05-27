@@ -1,6 +1,10 @@
-==== 0.2.1 (ongoing) ===
+==== 0.3.1 (ongoing) ===
 
-- some cleanup for django 4 compatibility (ugettext > gettext)
+- ...
+
+==== 0.3.0 (2025-05-27) ===
+
+- breaking: change is_edit_mode to expect a request
 
 
 ==== 0.2.0 (2021-10-16) ===
