@@ -1,4 +1,6 @@
 from .settings import *  # noqa
 
 
-INSTALLED_APPS += ['djangocms_misc.autopublisher', ]  # noqa
+INSTALLED_APPS += [  # noqa
+    "djangocms_misc.autopublisher",
+]

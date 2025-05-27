@@ -2,4 +2,5 @@
 .pseudo-hidden {
   position: absolute;
   left: -9000000px;
-  top: 0; }
+  top: 0;
+}

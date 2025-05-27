@@ -1,4 +1,4 @@
-dist: xenial  # has py35!
+dist: xenial # has py35!
 sudo: false
 language: python
 cache: pip

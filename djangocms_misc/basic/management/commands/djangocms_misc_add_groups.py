@@ -3,26 +3,48 @@ from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
-    """
-    """
+    """ """
+
     help = (
-        "Add an basic set of auth.Groups for cms usage (cms-base, cms-publisher, cms-superuser, plugin-permissions)  that gives basic CMS Permissions. User --plugin or --cms to add additional perms."
-        "")
+        "Add an basic set of auth.Groups for cms usage "
+        "(cms-base, cms-publisher, cms-superuser, plugin-permissions) "
+        "that gives basic CMS Permissions. "
+        "use --plugin or --cms to add additional perms."
+    )
 
     def add_arguments(self, parser):
         parser.add_argument(
-            '--force',
-            action='store_const',
+            "--force",
+            action="store_const",
             const=True,
             required=False,
             help="""
-        Force overwrite of existing group and it's permissions.""")
+        Force overwrite of existing group and it's permissions.""",
+        )
 
     def handle(self, *args, **options):
         args = []
-        if options.get('force'):
-            args = ['--force', ]
-        call_command('djangocms_misc_add_cms_group', '--cms-base', *args)
-        call_command('djangocms_misc_add_cms_group', '--cms-publish', '--name=cms_publisher', *args)
-        call_command('djangocms_misc_add_cms_group', '--cms-superuser', '--name=cms_superuser', *args)
-        call_command('djangocms_misc_add_cms_group', '--cms', '--plugin', '--name=cms_plugin_permissions', *args)
+        if options.get("force"):
+            args = [
+                "--force",
+            ]
+        call_command("djangocms_misc_add_cms_group", "--cms-base", *args)
+        call_command(
+            "djangocms_misc_add_cms_group",
+            "--cms-publish",
+            "--name=cms_publisher",
+            *args
+        )
+        call_command(
+            "djangocms_misc_add_cms_group",
+            "--cms-superuser",
+            "--name=cms_superuser",
+            *args
+        )
+        call_command(
+            "djangocms_misc_add_cms_group",
+            "--cms",
+            "--plugin",
+            "--name=cms_plugin_permissions",
+            *args
+        )

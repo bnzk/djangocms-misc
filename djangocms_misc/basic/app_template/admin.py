@@ -6,19 +6,22 @@ from .models import AppTemplate
 
 @admin.register(AppTemplate)
 class AppTemplateAdmin(PlaceholderAdminMixin, admin.ModelAdmin):
-    list_display = ('date', 'title', 'published', )
+    list_display = (
+        "date",
+        "title",
+        "published",
+    )
     fieldsets = (
-        ('', {
-            'fields': (
-                'published',
-                (
-                    'title',
-                    'seo_title',
-                    'date'
-                ),
-                'meta_description',
-                # 'preview_text',
-                'preview_image',
-            )
-        }),
+        (
+            "",
+            {
+                "fields": (
+                    "published",
+                    ("title", "seo_title", "date"),
+                    "meta_description",
+                    # 'preview_text',
+                    "preview_image",
+                )
+            },
+        ),
     )

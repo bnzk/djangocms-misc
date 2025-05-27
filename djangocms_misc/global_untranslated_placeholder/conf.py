@@ -5,4 +5,4 @@ class UntranslatedPlaceholderConf(AppConf):
     UNTRANSLATED_PLACEHOLDERS = False
 
     class Meta:
-        prefix = 'djangocms_misc'
+        prefix = "djangocms_misc"

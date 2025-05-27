@@ -12,6 +12,7 @@ except ImportError:
 
 # load conf at startup
 from .conf import UntranslatedPlaceholderConf  # noqa
+
 # import signals at startup
 from .signals import *  # noqa (will forget to update otherwise!)
 from .utils import get_untranslated_default_language_if_enabled
@@ -39,5 +40,7 @@ if StructureRenderer:
     # for structure mode
     StructureRenderer.__original_init__ = StructureRenderer.__init__
     StructureRenderer.__init__ = new_renderer__init__
-    StructureRenderer.__original_render_placeholder = StructureRenderer.render_placeholder
+    StructureRenderer.__original_render_placeholder = (
+        StructureRenderer.render_placeholder
+    )
     StructureRenderer.render_placeholder = new_structure_render_placeholder

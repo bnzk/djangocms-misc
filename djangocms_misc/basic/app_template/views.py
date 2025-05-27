@@ -1,7 +1,7 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView, ListView
 
 from .models import AppTemplate
-from .views_utils import PublishedViewMixin, AutoSlugMixin, LanguageChooserEnhancerMixin
+from .views_utils import AutoSlugMixin, LanguageChooserEnhancerMixin, PublishedViewMixin
 
 
 class AppTemplateListView(PublishedViewMixin, ListView):

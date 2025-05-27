@@ -1,13 +1,13 @@
 from cms.menu_bases import CMSAttachMenu  # , Menu
 from django.conf import settings
-from menus.base import NavigationNode
 from django.utils.translation import gettext_lazy as _
+from menus.base import NavigationNode
 
 from .models import AppTemplate
 
 
 class AppTemplateMenu(CMSAttachMenu):
-    name = _('AppTemplate Menu')
+    name = _("AppTemplate Menu")
 
     def get_nodes(self, request):
         # better: check if current Site has a BLOG app somewhere...
@@ -18,5 +18,6 @@ class AppTemplateMenu(CMSAttachMenu):
                 node = NavigationNode(cat.title, cat.get_absolute_url(), cat.id)
                 nodes.append(node)
         return nodes
+
 
 # menu_pool.register_menu(ArticleMenu)

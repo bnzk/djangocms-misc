@@ -1,16 +1,16 @@
+from cms.cms_toolbars import ADMIN_MENU_IDENTIFIER, ADMINISTRATION_BREAK, BasicToolbar
+from cms.toolbar_pool import toolbar_pool
+from cms.utils.urlutils import admin_reverse
 from django.conf import settings
-from django.contrib.auth import get_user_model, get_permission_codename
 from django.contrib import admin
+from django.contrib.auth import get_permission_codename, get_user_model
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from cms.utils.urlutils import admin_reverse
-from cms.toolbar_pool import toolbar_pool
-from cms.cms_toolbars import BasicToolbar, ADMIN_MENU_IDENTIFIER, ADMINISTRATION_BREAK
 
 from djangocms_misc.utils.edit_mode import is_edit_or_build_mode
 
-USER_MENU_IDENTIFIER = 'user-menu'
-CLIPBOARD_MENU_IDENTIFIER = 'clipboard-menu'
+USER_MENU_IDENTIFIER = "user-menu"
+CLIPBOARD_MENU_IDENTIFIER = "clipboard-menu"
 
 
 toolbar_pool.unregister(BasicToolbar)
@@ -18,16 +18,15 @@ toolbar_pool.unregister(BasicToolbar)
 
 @toolbar_pool.register
 class AlternateBasicToolbar(BasicToolbar):
-
-    def add_crud_menu_item(self, app, model, menu=None, label=None, view='changelist'):
+    def add_crud_menu_item(self, app, model, menu=None, label=None, view="changelist"):
         if not menu:
             menu = self.admin_menu
         if not label:
             label = model
-        if self.request.user.has_perm('{}.view_{}'.format(app, model)):
+        if self.request.user.has_perm("{}.view_{}".format(app, model)):
             menu.add_sideframe_item(
                 label,
-                url=reverse('admin:{}_{}_{}'.format(app, model, view)),
+                url=reverse("admin:{}_{}_{}".format(app, model, view)),
             )
 
     def populate(self):
@@ -44,17 +43,17 @@ class AlternateBasicToolbar(BasicToolbar):
         # menu
         self.user_menu = self.toolbar.get_or_create_menu(
             USER_MENU_IDENTIFIER,
-            _('User'),
+            _("User"),
             position=0,
         )
         # buttons / items
         self.user_menu.add_sideframe_item(
             _("Change Password"),
-            url=admin_reverse('password_change'),
+            url=admin_reverse("password_change"),
         )
         self.user_menu.add_sideframe_item(
-            _('User settings'),
-            url=admin_reverse('cms_usersettings_change'),
+            _("User settings"),
+            url=admin_reverse("cms_usersettings_change"),
         )
         self.add_logout_button(self.user_menu)
 
@@ -62,14 +61,13 @@ class AlternateBasicToolbar(BasicToolbar):
         # menu
         self.admin_menu = self.toolbar.get_or_create_menu(
             ADMIN_MENU_IDENTIFIER,
-            _('Administration'),
+            _("Administration"),
             position=1,
         )
         # buttons / items (pages are added automagically, in PageToolbar!)
-        if 'filer' in settings.INSTALLED_APPS:
+        if "filer" in settings.INSTALLED_APPS:
             self.admin_menu.add_sideframe_item(
-                _('Files'),
-                url=admin_reverse('filer_folder_changelist')
+                _("Files"), url=admin_reverse("filer_folder_changelist")
             )
         # in between
         self.add_more_admin_menu_items()
@@ -77,9 +75,7 @@ class AlternateBasicToolbar(BasicToolbar):
         self.admin_menu.add_break(ADMINISTRATION_BREAK, position=199)
         self.add_user_group_button(self.admin_menu, position=200)
         self.admin_menu.add_sideframe_item(
-            _('Administration'),
-            url=admin_reverse('index'),
-            position=200
+            _("Administration"), url=admin_reverse("index"), position=200
         )
 
     # override
@@ -91,35 +87,34 @@ class AlternateBasicToolbar(BasicToolbar):
         if User in admin.site._registry:
             opts = User._meta
             if self.request.user.has_perm(
-                    '%s.%s' % (opts.app_label, get_permission_codename('change', opts))):
+                "%s.%s" % (opts.app_label, get_permission_codename("change", opts))
+            ):
                 user_group_changelist_url = admin_reverse(
-                    'app_list', args=(opts.app_label, ))
+                    "app_list", args=(opts.app_label,)
+                )
                 parent.add_sideframe_item(
-                    _('Users & Groups'),
+                    _("Users & Groups"),
                     url=user_group_changelist_url,
-                    position=position
+                    position=position,
                 )
 
     def add_clipboard_menu(self):
-
         edit_build = is_edit_or_build_mode(self.toolbar)
         # menu
         self.clipboard_menu = self.toolbar.get_or_create_menu(
             CLIPBOARD_MENU_IDENTIFIER,
-            _('Clipboard'),
+            _("Clipboard"),
             position=-1,
             disabled=not edit_build,
         )
         # buttons / items
         # if self.toolbar.edit_mode or getattr(self.toolbar, 'build_mode', None):
         # new, testing for preventing a recursion error!
-        if (edit_build and
-            getattr(self.request, 'current_page', None)
-        ):
+        if edit_build and getattr(self.request, "current_page", None):
             # True if the clipboard exists and there's plugins in it.
-            if getattr(self, 'get_clipboard_plugins', None):
+            if getattr(self, "get_clipboard_plugins", None):
                 # cms up to 4.4.6
-                if getattr(self, 'clipboard_plugin_prevent_recursion', None):
+                if getattr(self, "clipboard_plugin_prevent_recursion", None):
                     # recursive loop, when empty clipboard?!
                     clipboard_is_bound = False
                 else:
@@ -128,14 +123,14 @@ class AlternateBasicToolbar(BasicToolbar):
             else:
                 clipboard_is_bound = self.toolbar.clipboard_plugin
             self.clipboard_menu.add_link_item(
-                _('Clipboard...'),
-                url='#',
-                extra_classes=['cms-clipboard-trigger'],
+                _("Clipboard..."),
+                url="#",
+                extra_classes=["cms-clipboard-trigger"],
                 disabled=not clipboard_is_bound,
             )
             self.clipboard_menu.add_link_item(
-                _('Clear clipboard'),
-                url='#',
-                extra_classes=['cms-clipboard-empty'],
+                _("Clear clipboard"),
+                url="#",
+                extra_classes=["cms-clipboard-empty"],
                 disabled=not clipboard_is_bound,
             )

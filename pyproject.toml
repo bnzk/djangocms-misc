@@ -33,7 +33,7 @@ select = [
   # flake8-gettext
   "INT",
   # pygrep-hooks
-  "PGH",
+  # "PGH",
   # pylint
   # "PL",
   # unused noqa
@@ -80,3 +80,6 @@ dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 # Assume Python 3.9
 target-version = "py39"
+
+[tool.ruff.mccabe]
+max-complexity = 20

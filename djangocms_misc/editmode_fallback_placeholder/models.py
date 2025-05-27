@@ -1,8 +1,7 @@
-
-from cms.utils import plugins
-from .plugins import assign_plugins
-from .plugins import move_plugin
 from cms.admin.placeholderadmin import PlaceholderAdminMixin
+from cms.utils import plugins
+
+from .plugins import assign_plugins, move_plugin
 
 plugins.assign_plugins = assign_plugins
 PlaceholderAdminMixin.original_move = PlaceholderAdminMixin.move_plugin

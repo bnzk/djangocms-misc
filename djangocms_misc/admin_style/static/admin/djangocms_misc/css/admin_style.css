@@ -1,83 +1,125 @@
 .djangocms-admin-style div.calendarbox {
   margin-left: -247px;
-  margin-top: -1px; }
+  margin-top: -1px;
+}
 
 .djangocms-admin-style div.clockbox {
   margin-left: -147px;
-  margin-top: -7px; }
+  margin-top: -7px;
+}
 
-.change-form .content > h2, .change-form #content > h2 {
-  display: none; }
+.change-form .content > h2,
+.change-form #content > h2 {
+  display: none;
+}
 
-.djangocms-admin-style form input.vDateField, .djangocms-admin-style form input.vTimeField {
+.djangocms-admin-style form input.vDateField,
+.djangocms-admin-style form input.vTimeField {
   width: calc(100% - 222px) !important;
-  max-width: 200px !important; }
+  max-width: 200px !important;
+}
 
 .djangocms-admin-style #content h1 {
-  font-size: 21px !important; }
-  .djangocms-admin-style #content h1 select {
-    font-size: inherit !important; }
+  font-size: 21px !important;
+}
+.djangocms-admin-style #content h1 select {
+  font-size: inherit !important;
+}
 
-.djangocms-admin-style #content form label, .djangocms-admin-style #content form label.aligned {
-  text-transform: none; }
+.djangocms-admin-style #content form label,
+.djangocms-admin-style #content form label.aligned {
+  text-transform: none;
+}
 
 .djangocms-admin-style #content form .form-row:not(tr) {
-  padding-bottom: 1.2em; }
+  padding-bottom: 1.2em;
+}
 
-.djangocms-admin-style #content form .field-type label, .djangocms-admin-style #content form .sortedm2m label, .djangocms-admin-style #content form .vCheckboxLabel {
-  font-size: 14px !important; }
+.djangocms-admin-style #content form .field-type label,
+.djangocms-admin-style #content form .sortedm2m label,
+.djangocms-admin-style #content form .vCheckboxLabel {
+  font-size: 14px !important;
+}
 
-.djangocms-admin-style #content form fieldset, .djangocms-admin-style #content form .inline-group {
-  padding-bottom: 0.3em; }
-  .djangocms-admin-style #content form fieldset > h2, .djangocms-admin-style #content form .inline-group > h2 {
-    padding: 1em 0 0.75em 0;
-    box-sizing: border-box;
-    margin-bottom: 0.75em;
-    font-size: 21px !important;
-    font-weight: bold;
-    border-bottom: 3px solid #d3d3d3; }
+.djangocms-admin-style #content form fieldset,
+.djangocms-admin-style #content form .inline-group {
+  padding-bottom: 0.3em;
+}
+.djangocms-admin-style #content form fieldset > h2,
+.djangocms-admin-style #content form .inline-group > h2 {
+  padding: 1em 0 0.75em 0;
+  box-sizing: border-box;
+  margin-bottom: 0.75em;
+  font-size: 21px !important;
+  font-weight: bold;
+  border-bottom: 3px solid #d3d3d3;
+}
 
 .djangocms-admin-style #content form .inline-group .inline-related {
   margin: 0;
-  box-shadow: none; }
-  .djangocms-admin-style #content form .inline-group .inline-related fieldset {
-    padding: 0 0 0 10px !important; }
-  .djangocms-admin-style #content form .inline-group .inline-related h3 {
-    background-color: transparent;
-    border-top: 1px solid #d3d3d3;
-    margin: 0;
-    padding: 0;
-    padding-top: 10px; }
-    .djangocms-admin-style #content form .inline-group .inline-related h3 b {
-      display: none;
-      font-weight: bold; }
-    .djangocms-admin-style #content form .inline-group .inline-related h3 .inline_label {
-      display: none; }
+  box-shadow: none;
+}
+.djangocms-admin-style #content form .inline-group .inline-related fieldset {
+  padding: 0 0 0 10px !important;
+}
+.djangocms-admin-style #content form .inline-group .inline-related h3 {
+  background-color: transparent;
+  border-top: 1px solid #d3d3d3;
+  margin: 0;
+  padding: 0;
+  padding-top: 10px;
+}
+.djangocms-admin-style #content form .inline-group .inline-related h3 b {
+  display: none;
+  font-weight: bold;
+}
+.djangocms-admin-style
+  #content
+  form
+  .inline-group
+  .inline-related
+  h3
+  .inline_label {
+  display: none;
+}
 
 .djangocms-admin-style #content form .inline-group .form-row {
-  padding: 0 0 1.2em; }
-  .djangocms-admin-style #content form .inline-group .form-row input[type="text"]:not(.vDateField):not(.vTimeField) {
-    width: 100% !important; }
+  padding: 0 0 1.2em;
+}
+.djangocms-admin-style
+  #content
+  form
+  .inline-group
+  .form-row
+  input[type="text"]:not(.vDateField):not(.vTimeField) {
+  width: 100% !important;
+}
 
 .djangocms-admin-style #content form .inline-group .add-row {
   padding: 0.8em;
   padding-left: 8px;
   border-top: 1px solid #d3d3d3;
   border-bottom: 1px solid #d3d3d3 !important;
-  line-height: 2.3em; }
+  line-height: 2.3em;
+}
 
 .djangocms-admin-style #content form .tabular table tbody td {
-  padding: 0.8em !important; }
-  .djangocms-admin-style #content form .tabular table tbody td.original p {
-    display: none; }
+  padding: 0.8em !important;
+}
+.djangocms-admin-style #content form .tabular table tbody td.original p {
+  display: none;
+}
 
 .djangocms-admin-style #content form .tabular table tbody tr.add-row td {
-  padding-left: 0 !important; }
+  padding-left: 0 !important;
+}
 
 .djangocms-admin-style .ui-tabs .ui-tabs-nav {
   padding: 0;
   border: none;
-  margin: 0; }
-  .djangocms-admin-style .ui-tabs .ui-tabs-nav .ui-state-default {
-    border: none;
-    padding-top: 0; }
+  margin: 0;
+}
+.djangocms-admin-style .ui-tabs .ui-tabs-nav .ui-state-default {
+  border: none;
+  padding-top: 0;
+}

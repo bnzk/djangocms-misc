@@ -20,7 +20,7 @@ class Bot404Middleware(object):
 
     def process_request(self, request):
         # raise a 404 if bot and enabled.
-        enabled = getattr(settings, 'DJANGOCMS_MISC_BOT404', None)
-        user_agent = getattr(request, 'user_agent', None)
+        enabled = getattr(settings, "DJANGOCMS_MISC_BOT404", None)
+        user_agent = getattr(request, "user_agent", None)
         if enabled and user_agent and user_agent.is_bot:
             raise Http404
