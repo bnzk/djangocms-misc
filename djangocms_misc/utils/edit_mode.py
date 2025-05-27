@@ -1,6 +1,9 @@
 
 
-def is_edit_mode(toolbar):
+def is_edit_mode(request):
+    toolbar = getattr(request, "toolbar", None)
+    if not toolbar:
+        return False
     if (getattr(toolbar, 'edit_mode', None)  # cms pre 3.6
         or getattr(toolbar, 'edit_mode_active', None)  # cms 3.6+
     ):
@@ -8,7 +11,10 @@ def is_edit_mode(toolbar):
     return False
 
 
-def is_edit_or_build_mode(toolbar):
+def is_edit_or_build_mode(request):
+    toolbar = getattr(request, "toolbar", None)
+    if not toolbar:
+        return False
     if (getattr(toolbar, 'edit_mode', None)  # cms pre 3.6
         or getattr(toolbar, 'edit_mode_active', None)  # noqa cms 3.6+
         or getattr(toolbar, 'build_mode', None)  # noqa
